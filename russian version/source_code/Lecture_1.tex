@@ -2,13 +2,15 @@
 \input{preamb.tex}
 
 
-\title{A Primer in Econometric Theory}
+\title{Учебник по эконометрике}
 
 \subtitle
-{Lecture 1: Vector Spaces}
+{Лекция 1: Векторные Пространства}
 
 
-\author{John Stachurski \\ \tiny Lectures by Akshay Shanker}
+\author{Джон Стачурски \\ \vspace{0.5em} 
+	\scriptsize Лекции: Акшай Шенкер \\ \vspace{0.1em} 
+	\scriptsize Перевел: Алексей Кедо}
 
 \begin{document}
 
@@ -19,46 +21,45 @@
 
 \begin{frame}
 
-    \frametitle{Overview}
+    \frametitle{Обзор}
 
     \vspace{2em}
-    Linear algebra is an important foundation for mathematics and, in particular, for Econometrics: 
+    Линейная алгебра является основой математики и, в частности, Эконометрики: 
     
     \begin{itemize}
-        \item performing basic arithmetic on data 
-        \item solving linear equations using data
-        \item advanced operations such as quadratic minimisation 
+        \item проведение базовых вычислений с данными 
+        \item решение линейных уравнений используя данные
+        \item продвинутые операции, такие как квадратичная минимизация 
     \end{itemize}
     
     \vspace{1em}
-    Focus of this chapter:
+    В центре внимания данной главы:
     \begin{enumerate}
-        \item vector spaces: linear operations, norms, linear subspaces, 
-        linear independence, bases, etc.
-        \item orthogonal projection theorem 
+        \item векторные пространства: линейные операции, нормы, линейные подпространства, 
+        линейная независимость, базисы и т.д. 
+        \item теорема ортогональной проекции 
     \end{enumerate}
  
 \end{frame}
 
-\section{Vector Space}
+\section{Векторное Пространство}
 
 \begin{frame}
-    \frametitle{Vector Space}
+    \frametitle{Векторное Пространство}
     
     \vspace{2em}
-    The symbol $\RR^N$ represents set of all vectors of length $N$, or $N$ vectors 
+    Символ $\RR^N$ показывает набор любых векторов длины $N$, или $N$ векторов 
 
     \vspace{.7em}
 
-    An $N$-vector $\boldx$ is a tuple of $N$ real numbers:
+    $N$-вектор $\boldx$ -- это список из $N$ действительных чисел:
     $$
     \boldx = (x_1, \ldots, x_N)
-        \quad
-        \text{ where } 
-        \quad x_n \in \RR \text{ for each } n
+        \text{~,где } 
+        \quad x_n \in \RR \text{ для любого } n
     $$  
     \vspace{1em}
-    We can also write $\boldx$ vertically, like so: 
+    Также мы можем записать $\boldx$ вертикально, вот так: 
     %
     \begin{equation*}
         \boldx = 
@@ -91,7 +92,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.4}{\includegraphics{vecs.pdf}}
-        \caption{Three vectors in $\RR^2$ }
+        \caption{Три вектора в $\RR^2$ }
        \end{center}
     \end{figure}
 
@@ -101,7 +102,7 @@
 \begin{frame}
 
     \vspace{2em}
-    The vector of ones will be denoted $\boldone$ 
+    Вектор из единиц будет обозначен $\boldone$ 
     
     %
     \begin{equation*}
@@ -116,7 +117,7 @@
     \end{equation*}
     %
 
-    Vector of zeros will be denoted $\boldzero$
+    Вектор из нулей будет обозначен $\boldzero$
 
     %
     \begin{equation*}
@@ -134,19 +135,19 @@
 
 
 \begin{frame}
-    \frametitle{Linear Operations}
+    \frametitle{Линейные операции}
 
     \vspace{2em}
     
-    Two fundamental algebraic operations: 
+    Две базовые алгебраические операции: 
     %
     \begin{enumerate}
-        \item Vector addition 
-        \item Scalar multiplication
+        \item Сложение векторов 
+        \item Умножение на скаляр
     \end{enumerate}
     
     
-    1. \navy{Sum} of $\boldx \in \RR^N$ and $\boldy \in \RR^N$ defined by
+    1. \navy{Сумма} $\boldx \in \RR^N$ и $\boldy \in \RR^N$ обозначается
     
     \begin{equation*}
         \boldx + \boldy 
@@ -186,7 +187,7 @@
 
 \begin{frame}
 
-    Example 1:
+    Пример 1:
 
     \begin{equation*}
         \left(
@@ -218,7 +219,7 @@
     \end{equation*}
     %
 
-    Example 2:
+    Пример 2:
 
     \begin{equation*}
         \left(
@@ -258,7 +259,7 @@
 
   \begin{center}
     \scalebox{.4}{\includegraphics{vec_add.pdf}}
-   \caption{\label{f:vec_add} Vector addition}
+   \caption{\label{f:vec_add} Сложение векторов}
   \end{center}
   
 \end{figure}
@@ -270,7 +271,7 @@
 
 \begin{frame}
     
-    2. \navy{Scalar product} of $\alpha \in \RR$ and $\boldx \in \RR^N$ defined by
+    2. \navy{Умножение на скаляр} $\alpha \in \RR$ и $\boldx \in \RR^N$ обозначается
     
     \begin{equation*}
         \alpha \boldx 
@@ -301,7 +302,7 @@
 
 \begin{frame}
 
-    Example 1:
+    Пример 1:
 
     \begin{equation*}
         0.5 
@@ -325,7 +326,7 @@
     \end{equation*}
     %
 
-    Example 2:
+    Пример 2:
 
     \begin{equation*}
         -1
@@ -355,7 +356,7 @@
 \begin{figure}
   \begin{center}
    \scalebox{.4}{\includegraphics{vec_scalar.pdf}}
-    \caption{\label{f:vec_scalar} Scalar multiplication}
+    \caption{\label{f:vec_scalar} Уножение на скаляр}
  \end{center}
 \end{figure}
 
@@ -366,7 +367,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Subtraction performed element by element, analogous to addition 
+    Вычитание выполняется поэлементно, аналогично умножению 
 
     \begin{equation*}
         \boldx - \boldy 
@@ -382,7 +383,7 @@
     \end{equation*}
     
     \vspace{.7em}
-    Definition can be given in terms of addition and scalar multiplication
+    Определение можно дать в терминах сложения и умножения на скаляр
 
     \begin{equation*}
       \boldx - \boldy := \boldx + (-1) \boldy      
@@ -398,7 +399,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.375}{\includegraphics{vec_minus.pdf}}
-       \caption{\label{f:vec_minus} Difference between vectors}
+       \caption{\label{f:vec_minus} Разница векторов}
        \end{center}
     \end{figure}
 
@@ -410,7 +411,7 @@
 %begin{frame}[fragile]
     
 %    Incidentally, most high level numerical libraries treat vector addition
-%    and scalar multiplication in the same way --- elementwise
+%    и scalar multiplication in the same way --- elementwise
 
 %\begin{pythoncode}
 %    In [1]: import numpy as np
@@ -430,12 +431,10 @@
 %\end{frame}
 
 \begin{frame}
-    \frametitle{Inner Product}
+    \frametitle{Скалярное произведение}
     
      \vspace{2em}
-    The \navy{inner product} of two vectors $\boldx$ and $\boldy$ in $\RR^N$ is
-    denoted by $\inner{\boldx,  \boldy}$, and defined
-    as the sum of the products of their elements:
+    \navy{Скалярное произведение} двух векторов $\boldx$ и $\boldy$ в $\RR^N$ обозначается $\inner{\boldx,  \boldy}$, и является суммой произведения их элементов:
     
     \vspace{.7em}
     \begin{equation*}
@@ -468,22 +467,20 @@
     \vspace{2em}
     \Fact \eqref{ET-fa:profno}
     
-    For any $\alpha, \beta \in \RR$ and any $\boldx, \boldy \in \RR^N$, the following 
-    statements are true:
+    Для любых $\alpha, \beta \in \RR$ и любых $\boldx, \boldy \in \RR^N$, верны следующие утверждения:
     %
     \begin{enumerate}
         \item $\inner{\boldx, \boldy} = \inner{\boldy, \boldx}$,
         \item $\inner{\alpha \boldx, \beta \boldy} =  \alpha \beta
-            \inner{\boldx, \boldy}$, and
+            \inner{\boldx, \boldy}$, и
         \item $\inner{\boldx, \alpha \boldy + \beta \boldz} =  \alpha
             \inner{\boldx, \boldy} + \beta \inner{\boldx, \boldz}$.
     \end{enumerate}
     
     \vspace{1em}
-    Properties easy to check using definitions of scalar multiplication and inner product
+    Свойства можно легко проверить с помощью определений умножения на скаляр и скалярного произведения.
 
-    For example, to show 2.,
-    pick any $\alpha, \beta \in \RR$ and any $\boldx, \boldy \in
+    Для 2., например, возьмите любые $\alpha, \beta \in \RR$ и любые $\boldx, \boldy \in
     \RR^N$:
     %
     \begin{equation*}
@@ -496,10 +493,10 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Norms and Distance}
+    \frametitle{Нормы и расстояние}
     
      \vspace{2em}
-    The (Euclidean) \navy{norm} of $\boldx \in \RR^N$ is defined as
+    \navy{Норма} (Эвклида) $\boldx \in \RR^N$ обозначается
     %
     \begin{equation*}
         \label{eq:eucnorm}
@@ -508,12 +505,12 @@
     %
     
     \vspace{.7em}
-    Interpretation:
+    Интерпретация:
     %
     \begin{itemize}
-        \item $\| \boldx \|$ represents the ``length'' of $\boldx$
+        \item $\| \boldx \|$ показывает ``длину'' вектора $\boldx$
             \vspace{0.5em}
-        \item $\| \boldx - \boldy \|$ represents distance between $\boldx$ and $\boldy$
+        \item $\| \boldx - \boldy \|$ показывает расстояние между векторами $\boldx$ и $\boldy$
     \end{itemize}
 
 \end{frame}
@@ -533,36 +530,32 @@
 \begin{frame}
     
     \vspace{2em}
-    \Fact\eqref{ET-fa:profno} For any $\alpha \in \RR$ and any $\boldx, \boldy \in \RR^N$,
-    the following 
-    statements are true:
-    %
+    \Fact\eqref{ET-fa:profno} Для любого $\alpha \in \RR$ и любых $\boldx, \boldy \in \RR^N$, верны следующие утверждения:
     \begin{enumerate}
-        \item $\| \boldx \| \geq 0$ and $\| \boldx \| = 0$ if and only if
+        \item $\| \boldx \| \geq 0$ и $\| \boldx \| = 0$ тогда и только тогда, когда
             $\boldx = \boldzero$
             \vspace{1em}
         \item $\| \alpha \boldx \| = |\alpha| \| \boldx \|$
             \vspace{1em}
         \item $\| \boldx + \boldy \| \leq  \| \boldx \| + \| \boldy \|$
-            (\navy{triangle inequality})
+            (\navy{неравенство треугольника})
             \vspace{1em}
-        \item $| \boldx' \boldy | \leq  \| \boldx \| \| \boldy \|$
-            (\navy{Cauchy-Schwarz inequality})
+        \item $|\inner{\boldx, \boldy}| \leq  \| \boldx \| \| \boldy \|$
+            (\navy{неравенство Коши — Буняковского})
     \end{enumerate}
-    %
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Properties 1. and 2. are straight-forward to prove (exercise)
+    Свойства 1. и 2. легко доказать (упражнение)
     
-    Property 4. is addressed in ET exercise \ref{ET-ex:pcsin}
+    Свойство 4. рассматривается в ET упражнении \ref{ET-ex:pcsin}
     
     \vspace{.7em}
-    To show property 3, by properties of the inner product in fact \ref{ET-fa:innpp}
-    %
+    Покажем доказательство свойства 3. с помощью свойств скалярного произведения (факт \ref{ET-fa:innpp})
+    
     \begin{align*}
         \label{eq:tifcs}
          \| \boldx + \boldy \|^2
@@ -578,14 +571,14 @@
 \begin{frame}
     
      \vspace{2em}
-    Apply the Cauchy--Schwarz inequality
-    %
+    Применим неравенство Коши — Буняковского
+    
     \begin{equation*}
         \| \boldx + \boldy \|^2 \leq ( \| \boldx \| + \| \boldy\|)^2
     \end{equation*}
     
       \vspace{.7em}
-    Taking the square root gives the triangle inequality
+    Убираем квадраты и получаем неравенство треугольника
     
 \end{frame}
 
@@ -593,20 +586,20 @@
 \begin{frame}
     
     \vspace{2em}
-    A \navy{linear combination} of vectors $\boldx_1,\ldots, \boldx_K$ in $\RR^N$ 
-    is a vector 
+    \navy{Линейная комбинация} векторов $\boldx_1,\ldots, \boldx_K$ in $\RR^N$ 
+    --- это вектор 
     %
     \begin{equation*}
         \boldy = \sum_{k=1}^K \alpha_k \boldx_k 
         =  \alpha_1 \boldx_1 + \cdots +  \alpha_K \boldx_K 
     \end{equation*}
     %
-    where $\alpha_1,\ldots, \alpha_K$ are scalars
+    где $\alpha_1,\ldots, \alpha_K$ скаляры
 
     \vspace{.7em}
 
     \Eg
-    %
+    
     \begin{equation*}
         0.5 \left(
         \begin{array}{c}
@@ -642,7 +635,7 @@
     \begin{figure}
        \begin{center}
            \scalebox{.375}{\includegraphics[trim={4em 4em 4em 1em}, clip]{lin_comb.pdf}}
-        \caption{\label{f:lin_comb} Linear combinations of $\boldx_1, \boldx_2$}
+        \caption{\label{f:lin_comb} Линейные комбинации $\boldx_1, \boldx_2$}
        \end{center}
     \end{figure}
 
@@ -650,24 +643,22 @@
 
 \begin{frame}
 
-    \frametitle{Span}
+    \frametitle{Линейная оболочка}
 
     \vspace{2em}
-    Let $X \subset \RR^N$ be any nonempty set
+    Пусть $X \subset \RR^N$ некое непустое множество
 
     \vspace{1em}
 
-    Set of all possible linear combinations of elements of $X$ is 
-    called the \navy{span} of $X$, denoted by $\Span(X)$
+    Множество всех возможных линейных комбинаций $X$ называют \navy{линейной оболочкой} $X$, обозначается $\Span(X)$
 
     \vspace{.7em}
 
-    For finite $X := \{\boldx_1,\ldots, \boldx_K\}$ the span can be expressed
-    as 
+    Для конечного $X := \{\boldx_1,\ldots, \boldx_K\}$ линейную оболочку можно записать так 
     
     \begin{equation*}
-        \Span(X):= \left\{ \text{ all } \sum_{k=1}^K \alpha_k \boldx_k 
-        \text{ such that }
+        \Span(X):= \left\{ \text{ все } \sum_{k=1}^K \alpha_k \boldx_k 
+        \text{, где }
          (\alpha_1,\ldots, \alpha_K) \in \RR^K \right\}
     \end{equation*}
     
@@ -677,16 +668,13 @@
 
     \vspace{2em}
     \Eg
-    The four vectors labeled $\boldy$ 
-    in the previous figure  lie
-    in the span of $X = \{\boldx_1, \boldx_2\}$
+    Четыре вектора, обозначенные $\boldy$ 
+    на предыдущем рисунке, лежат в линейной оболочке $X = \{\boldx_1, \boldx_2\}$
     
     \vspace{.7em}
-    Can \emph{any} vector in $\RR^2$ be created as a
-    linear combination of $\boldx_1, \boldx_2$?  
+    Может ли \emph{любой} вектор в $\RR^2$ быть создан линейной комбинацией $\boldx_1, \boldx_2$?  
     
-    The answer is affirmative. 
-    We'll prove this in \S\ref{ET-ss:bad}
+    Ответ да. Мы докажем это в \S\ref{ET-ss:bad}
     
 \end{frame}
 
@@ -696,9 +684,9 @@
     
     \vspace{2em}
     \Eg
-    Let $X = \{ \boldone \} \subset \RR^2$, where $\boldone := (1,1)$  
+    Пусть $X = \{ \boldone \} \subset \RR^2$, где $\boldone := (1,1)$  
     
-    The span of $X$ is all vectors of the form 
+    Линейная оболочка $X$ состоит из всех векторов вида 
     %
     \[
     \alpha \boldone 
@@ -709,15 +697,15 @@
         \alpha
     \end{array}
     \right)
-    \quad \text{ with } \quad \alpha \in \RR  
+    \quad \text{, где } \quad \alpha \in \RR  
     \]
    
     \vspace{2em}
-    Constitutes a line in the plane that passes through
+    Представляет собой прямую на плоскости, которая проходит через
     %
     \begin{itemize}
-        \item the vector $\boldone$  (set $\alpha = 1$)
-        \item the origin $\boldzero$ (set $\alpha = 0$)
+        \item вектор $\boldone$  (при $\alpha = 1$)
+        \item начало координат $\boldzero$ (при $\alpha = 0$)
     \end{itemize}
 
 \end{frame}
@@ -728,7 +716,7 @@
     \begin{figure}
        \centering
         \scalebox{.4}{\includegraphics{span_of_one_vec.pdf}}
-        \caption{The span of $\boldone := (1,1)$ in $\RR^2$}
+        \caption{Линейная оболочка $\boldone := (1,1)$ в $\RR^2$}
     \end{figure}
 
 \end{frame}
@@ -737,13 +725,13 @@
     
     \vspace{2em}
     \Eg
-    The set of canonical basis vectors $\{\bolde_1, \ldots, \bolde_N\}$
-    is linearly independent in $\RR^N$
+    Набор канонически базисных векторов $\{\bolde_1, \ldots, \bolde_N\}$
+    линейно независим в $\RR^N$
     
-    \Prf Let $\alpha_1, \ldots, \alpha_N$ be coefficients such that
+    \Prf Пусть $\alpha_1, \ldots, \alpha_N$ коэффициенты, такие что
     $\sum_{k=1}^N \alpha_k \bolde_k = \boldzero$
 
-    Equivalently,
+    Эквивалентно,
     %
     \begin{equation*}
         \left(
@@ -769,7 +757,7 @@
 
     \vspace{1em}
 
-    In particular, $\alpha_k = 0$ for all $k$
+    В частности, $\alpha_k = 0$ для всех $k$
     
 \end{frame}
 
@@ -780,11 +768,10 @@
 
     \vspace{2em}
     \Eg
-    Let $\boldx_1 = (3, 4, 2)$ and let $\boldx_2 = (3, -4, 0.4)$
+    Пусть $\boldx_1 = (3, 4, 2)$ и $\boldx_2 = (3, -4, 0.4)$
 
     \vspace{1em}
-    By definition, the span is all vectors of the form
-
+    По определению, линейная оболочка --- все возможные вектора в виде
 
     \begin{equation*}
         \boldy = 
@@ -803,17 +790,17 @@
              0.4
         \end{array}
         \right)
-        \quad \text{where} \quad
+        \quad \text{, где} \quad
         \alpha, \beta \in \RR
     \end{equation*}
     %
     
-    This is a plane that passes through
+    Это плоскость, проходящая через
     %
     \begin{itemize}
-        \item the vector $\boldx_1$
-        \item the vector $\boldx_2$
-        \item the origin $\boldzero$
+        \item вектор $\boldx_1$
+        \item вектор $\boldx_2$
+        \item начало координат $\boldzero$
     \end{itemize}
 
 
@@ -825,7 +812,7 @@
     \vspace{2em}
    \begin{figure}
        \scalebox{.40}{\includegraphics[trim=110 0 50 10, clip]{span_plane.pdf}}
-       \caption{\label{f:span_plane} Span of $\boldx_1, \boldx_2$}
+       \caption{\label{f:span_plane} Линейная оболочка $\boldx_1, \boldx_2$}
    \end{figure}
 
 \end{frame}
@@ -835,7 +822,7 @@
 
 %\begin{frame}
     
-%    Let $Y$ be any subset of $\RR^N$, and let $X:= \{\boldx_1,\ldots, \boldx_K\}$ 
+%    Let $Y$ be any subset of $\RR^N$, и let $X:= \{\boldx_1,\ldots, \boldx_K\}$ 
 %    
 %    \vspace{1em}
 %
@@ -858,7 +845,7 @@
     
     \vspace{2em}
     \Eg 
-    Consider the vectors $\{\bolde_1, \ldots, \bolde_N\} \subset \RR^N$, where
+    Рассмотрим векторы $\{\bolde_1, \ldots, \bolde_N\} \subset \RR^N$, где
 
     \begin{equation*}
         \bolde_1 := 
@@ -897,12 +884,12 @@
 
     \vspace{1em}
 
-    That is, $\bolde_n$ has all zeros except for a $1$ as the $n$-th element
+    $\bolde_n$ состоит из нулей, кроме $n$-ого элемента равного $1$
     
     \vspace{1em}
 
-    Vectors $\bolde_1, \ldots, \bolde_N$ are called the
-    \navy{canonical basis vectors} of $\RR^N$
+    Вектора $\bolde_1, \ldots, \bolde_N$ назвают
+    \navy{каноническими базисными векторами} of $\RR^N$
 
 \end{frame}
 
@@ -911,7 +898,7 @@
     \begin{figure}
        \begin{center}
         \input{figs_code/tikzfigs/vec_canon_x.tex}
-        \caption{\label{f:vec_canon} Canonical basis vectors in $\RR^2$}
+        \caption{\label{f:vec_canon} Базисные векторы в $\RR^2$}
        \end{center}
     \end{figure}
 
@@ -921,14 +908,13 @@
 \begin{frame}
     
     \vspace{2em}
-    \Eg (cont.) 
+    \Eg (прод.) 
     
-    The span of $\{\bolde_1, \ldots, \bolde_N\}$ is equal
-    to all of $\RR^N$
+    Линейная оболочка $\{\bolde_1, \ldots, \bolde_N\}$ эквивалентна всему $\RR^N$
     
-    Proof for $N=2$: 
+    Доказательство для $N=2$: 
     
-    Pick any $\boldy \in \RR^2$, we have
+    Пусть $\boldy \in \RR^2$, тогда
     %
     \begin{align*}
         \boldy 
@@ -950,7 +936,7 @@
         \left(
         \begin{array}{c}
             0 \\
-            y_1
+            y_2
         \end{array}
         \right)
         \\
@@ -973,9 +959,9 @@
         = y_1 \bolde_1 + y_2 \bolde_2
     \end{align*}
     %
-    Thus, $\boldy \in \Span \{\bolde_1, \bolde_2\}$ 
+    Таким образом, $\boldy \in \Span \{\bolde_1, \bolde_2\}$ 
     
-    Since $\boldy$ arbitrary, we have shown $\Span \{\bolde_1,
+    Так как $\boldy$ произвольный, мы показали, что $\Span \{\bolde_1,
     \bolde_2\} = \RR^2$
 
 \end{frame}
@@ -996,14 +982,13 @@
     
     \vspace{2em}
     \Eg 
-    Consider the set 
+    Рассмотрим множество 
     %
     \begin{equation*}
         P := \setntn{(x_1, x_2, 0) \in \RR^3}{ x_1, x_2 \in \RR}
     \end{equation*}
     %
-    Graphically, $P =$ flat plane in $\RR^3$, where height
-    coordinate $=0$
+    Графически, $P =$ плоскость в $\RR^3$с координатой высоты $=0$
     %
     \begin{figure}
        \begin{center}
@@ -1018,12 +1003,12 @@
 \begin{frame}
 
     \vspace{2em}
-    \Eg (cont.)
+    \Eg (прод.)
     
-    If $\bolde_1 = (1,0,0)$ and $\bolde_2=(0,1,0)$, then $\Span\{\bolde_1, \bolde_2\} = P$ 
+    Если $\bolde_1 = (1,0,0)$ и $\bolde_2=(0,1,0)$, тогда $\Span\{\bolde_1, \bolde_2\} = P$ 
     
-   To verify the claim, let $\boldx = (x_1, x_2, 0)$ be any element of $P$. 
-   We can write $\boldx$ as  
+   Чтобы подтвердить утверждение, возьмем $\boldx = (x_1, x_2, 0)$, любой элемент $P$. 
+   Можно записать $\boldx$ в следующем виде  
     %
     \begin{equation*}
         \boldx = 
@@ -1056,9 +1041,9 @@
     \end{equation*}
     %
 
-    In other words, $P \subset \Span\{\bolde_1, \bolde_2\}$
+    Другими словами, $P \subset \Span\{\bolde_1, \bolde_2\}$
 
-    Conversely we have $\Span\{\bolde_1, \bolde_2\} \subset P$ (why?)
+    И наоборот, у нас имеется $\Span\{\bolde_1, \bolde_2\} \subset P$ (почему?)
 
 
 \end{frame}
@@ -1081,18 +1066,18 @@
     
     \vspace{2em}
     \Fact{\eqref{ET-fa:xsys}} 
-    If $X$ and $Y$ are non-empty subsets of $\mathbb{R}^{N}$ and $X \subset Y$, 
-    then $\Span(X) \subset \Span(Y)$
+    Если $X$ и $Y$ непустые подмножества $\mathbb{R}^{N}$ и $X \subset Y$, 
+    тода $\Span(X) \subset \Span(Y)$
     \vspace{2em}
     
     \Prf
-    Pick any nonempty $X \subset Y \subset \RR^N$
+    Возьмем любой непустой $X \subset Y \subset \RR^N$
     
-    Let $\boldz \in \Span(X)$, we have
+    Пусть $\boldz \in \Span(X)$, тогда имеется
     %
     \begin{equation*}
         \boldz = \sum_{k=1}^K \alpha_k \boldx_k 
-        \text{ for some }
+        \text{ для некоторых }
         \boldx_1, \ldots, \boldx_K \in X, \; 
         \alpha_1, \ldots, \alpha_K \in \RR
     \end{equation*}
@@ -1102,35 +1087,35 @@
 \begin{frame}
 
    \vspace{2em}
-    \Prf(cont.)
-    Since $X \subset Y$, each $\boldx_k$ is also in $Y$, giving us
+    \Prf(прод.)
+    Так как $X \subset Y$, каждый $\boldx_k$ также находится в $Y$, получается
     %
     \begin{equation*}
         \boldz = \sum_{k=1}^K \alpha_k \boldx_k 
-        \text{ for some }
+        \text{ для некоторых }
         \boldx_1, \ldots, \boldx_K \in Y, \; 
         \alpha_1, \ldots, \alpha_K \in \RR
     \end{equation*}
 
     \vspace{.7em}
-    Hence $\boldz \in \Span(Y)$
+    Значит, $\boldz \in \Span(Y)$
 
 \end{frame}
 
 
 \begin{frame}
-    \frametitle{Linear Independence}
+    \frametitle{Линейная независимость}
     
     \vspace{2em}
-    Important applied questions:
+    Важные вопросы:
 
     \begin{itemize}
-        \item When is a matrix invertible?
-        \item When do regression arguments suffer from collinearity?
-        \item When does a set of linear equations have a solution?
+        \item Когда матрица обратима?
+        \item Когда аргументы регрессии страдают от коллинеарности?
+        \item Когда система линейных уравнений имеет решение?
     \end{itemize}
 
-    All of these questions closely related to linear independence 
+    Все эти вопросы тесно связаны с линейной независимостью 
 
 \end{frame}
 
@@ -1140,8 +1125,8 @@
     \vspace{2em}
    
 
-    A nonempty collection of vectors $X := \{\boldx_1,\ldots, \boldx_K\}
-    \subset \RR^N$ is called \navy{linearly independent} if
+    Непустое множество векторов $X := \{\boldx_1,\ldots, \boldx_K\}
+    \subset \RR^N$ называется \navy{линейно независимым}, если
     %
     \begin{equation*}
         \sum_{k=1}^K \alpha_k \boldx_k
@@ -1151,8 +1136,6 @@
     \end{equation*}
 
     \vspace{1em}
-    
-    Informally, linearly independent sets span large spaces
 
 \end{frame}
 
@@ -1161,9 +1144,9 @@
     
     \vspace{2em}
     \Eg 
-    Consider the two vectors $\boldx_1 = (1.2, 1.1)$ and $\boldx_2 = (-2.2, 1.4)$
+    Рассмотрим $\boldx_1 = (1.2, 1.1)$ и $\boldx_2 = (-2.2, 1.4)$
     
-    Suppose $\alpha_1$ and $\alpha_2$ are scalars with
+    Пусть $\alpha_1$ и $\alpha_2$ скаляры, такие что
     %
     \begin{equation*}
         \alpha_1
@@ -1185,12 +1168,11 @@
         \boldzero
     \end{equation*}
     
-    This translates to a linear, two-equation system, where the unknowns
-    are $\alpha_1$ and $\alpha_2$ 
+    Это является линейной системой из двух уравнений $\alpha_1$ и $\alpha_2$ 
     
-    The only solution is $\alpha_1 = \alpha_2 = 0$
+    Единственное решение $\alpha_1 = \alpha_2 = 0$
     
-    $\{\boldx_1, \boldx_2\}$ is linearly independent
+    $\{\boldx_1, \boldx_2\}$ линейно независимы
 
 
 \end{frame}
@@ -1199,7 +1181,7 @@
         \begin{figure}
        \begin{center}
            \scalebox{.46}{\includegraphics[trim={0 4em 0 1em}, clip]{alpha_eq.pdf}}
-           \caption{\label{f:alpha_eq} The only solution is $\alpha_1 = \alpha_2 = 0$}
+           \caption{\label{f:alpha_eq} Единственное решение $\alpha_1 = \alpha_2 = 0$}
        \end{center}
     \end{figure}
 
@@ -1208,11 +1190,11 @@
 \begin{frame}
     
     \vspace{2em}
-    \Eg The set of canonical basis vectors $\{\bolde_1, \ldots, \bolde_N\}$
-    is linearly independent in $\RR^N$
+    \Eg Базисные векторы $\{\bolde_1, \ldots, \bolde_N\}$
+    линейно независимы в $\RR^N$
 
-    To see this, let $\alpha_1, \ldots, \alpha_N$ be coefficients such that
-    $\sum_{k=1}^N \alpha_k \bolde_k = \boldzero$. We have
+    Проверим это. Пусть $\alpha_1, \ldots, \alpha_N$ коэффициенты, такие что
+    $\sum_{k=1}^N \alpha_k \bolde_k = \boldzero$, тогда
     %
     \begin{equation*}
         \left(
@@ -1236,9 +1218,9 @@
         \right)
     \end{equation*}
 
-    In particular, $\alpha_k = 0$ for all $k$
+    То есть $\alpha_k = 0$ для всех $k$
     
-    Hence  $\{\bolde_1, \ldots, \bolde_N\}$ linearly independent
+    Таким образом, $\{\bolde_1, \ldots, \bolde_N\}$ линейно независимы
 
 \end{frame}
 
@@ -1246,17 +1228,16 @@
 
     \vspace{2em}
     \Thm\eqref{ET-t:fdlinin}
-        Let $X := \{\boldx_1,\ldots, \boldx_K\} \subset \RR^N$.  For $K > 1$, the
-        following statements are equivalent:
+        Пусть $X := \{\boldx_1,\ldots, \boldx_K\} \subset \RR^N$.  Для $K > 1$, следующие утверждения эквивалентны:
         %
         \begin{enumerate}
-            \item $X$ is linearly independent
-            \item $X_0$ is a proper subset of $X$
-                $\,\implies\,$ $\Span X_0$ is a proper subset of $\Span X$
-            \item No vector in $X$ can be written as a linear combination of the others
+            \item $X$ линейно независим
+            \item $X_0$ --- подходящее подмножество $X$
+                $\,\implies\,$ $\Span X_0$ --- подходящее подмножество $\Span X$
+            \item Ни один из векторов $X$ не может быть записан как линейная комбинация оставшихся
         \end{enumerate}
         %
-    Proof is an exercise. See ET ex. \ref{ET-ex:ott} and solution
+    Доказательство есть в упражнениях. См. ET упр. \ref{ET-ex:ott} и решение
     
 \end{frame}
 
@@ -1264,14 +1245,14 @@
 
     \vspace{2em}
     \Eg 
-    Dropping any of the canonical basis vectors reduces span
+    Если убрать любой базисный вектор, линейная оболочка уменьшится
 
-    Consider the $N=2$ case
+    Рассмотрим случай с $N=2$
     
-    We know $\Span \{\bolde_1, \bolde_2\} = \RR^2$
+    Мы знаем, что $\Span \{\bolde_1, \bolde_2\} = \RR^2$
     
     \begin{itemize}
-    \item removing either element of $\Span \{\bolde_1, \bolde_2\}$ reduces the span to a line
+    \item Если убрать любой элемент из $\Span \{\bolde_1, \bolde_2\}$, линейная оболочка превратится в прямую. 
     \end{itemize}
     
 \end{frame}
@@ -1279,16 +1260,14 @@
 \begin{frame}
 
     \vspace{2em}
-    However, let $\boldx_1 = (1,0)$ and $\boldx_2 = (-2,0)$
+    Тем не менее, пусть $\boldx_1 = (1,0)$ и $\boldx_2 = (-2,0)$
     
     \vspace{1em}
-    The pair are not linearly independent since $\boldx_2 = -2\boldx_1$
+    Векторы не являются линейно независимыми, так как $\boldx_2 = -2\boldx_1$
         \begin{itemize}
-            \item dropping
-                either vector does not change the span---the span remains the horizontal axis 
-            \item we have $\boldx_2 = -2
-            \boldx_1$, which means that each vector can be written as a linear combination
-            of the other
+            \item Если убрать любой из векторов, линейная оболочка не изменится --- останется горизонтальной прямой 
+            \item имеется $\boldx_2 = -2
+            \boldx_1$, значит любой вектор может быть записан как линейная комбинация оставшегося
         \end{itemize}
         
         \begin{center}
@@ -1301,35 +1280,34 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:slili}
-        If $X := \{\boldx_1,\ldots, \boldx_K\}$ is linearly independent, then
+        Если $X := \{\boldx_1,\ldots, \boldx_K\}$ линейно независимы, тогда
         %
         \begin{enumerate}
-            \item every subset of $X$ is linearly independent, 
-            \item $X$ does not contain $\boldzero$, and
-            \item $X \cup \{ \boldx \}$ is linearly independent for all $\boldx
-                \in \RR^N$ such that $\boldx \notin \Span X$.
+            \item любое подмножество $X$ линейно независимо, 
+            \item $X$ не содержит $\boldzero$, и
+            \item $X \cup \{ \boldx \}$ линейно независимы для всех $\boldx
+                \in \RR^N$, таких что $\boldx \notin \Span X$.
         \end{enumerate}
         %
    
-    The proof is a solved exercise (ex.~\ref{ET-ex:slili} in ET)
+    Доказательство показано в упражнении (упр.~\ref{ET-ex:slili} в ET)
 \end{frame}
 
-\begin{frame}\frametitle{Linear Independence and Uniqueness}
+\begin{frame}\frametitle{Линейная независимость и Единственность}
     
     \vspace{2em}
-    Linear independence is the key condition for existence \emph{and} 
-    uniqueness of solutions to system of linear equations 
-    
+    Линейная независимость - ключевое условие для того, чтобы решение системы линейных уравнений существовало \emph{и} было единственным
+
     \vspace{.7em}
     \Thm\eqref{ET-t:unor}
-    Let $X := \{\boldx_1,\ldots,\boldx_K\}$ be any collection of vectors in
-    $\RR^N$.  The following statements are equivalent:
+    Пусть $X := \{\boldx_1,\ldots,\boldx_K\}$ некоторое множество векторов в
+    $\RR^N$. Следующие утверждения эквивалентны:
     %
     \begin{enumerate}
-        \item $X$ is linearly independent  
-        \item For each $\boldy \in \RR^N$
-            there exists at most one set of scalars $\alpha_1,\ldots,\alpha_K$
-            such that 
+        \item $X$ линейно независим  
+        \item Для каждого $\boldy \in \RR^N$
+            существует не более одного множества скаляров $\alpha_1,\ldots,\alpha_K$,
+            такого что 
             %
             \begin{equation}
                 \label{eq:yilcx}
@@ -1349,14 +1327,14 @@
     \Prf 
     (1. $\implies$ 2.)
     
-    Let $X$ be linearly independent and pick any $\boldy$  
+    Пусть $X$ линейно независим, возьмем любой $\boldy$  
     
-    Suppose by contradiction that \eqref{eq:yilcx} holds for more than one set of scalars; we have
+    Предположим противоположное --- \eqref{eq:yilcx} выполняется для нескольких наборов скаляров, получается
     %
     \begin{equation*}
         \exists \;
         \alpha_1, \ldots, \alpha_K
-        \text{ and } \beta_1, \ldots, \beta_K
+        \text{ и } \beta_1, \ldots, \beta_K
         \; \st \; 
         \boldy 
         = \sum_{k=1}^K \alpha_k \boldx_k
@@ -1370,7 +1348,7 @@
     \begin{equation*}
         \fore
         \alpha_k = \beta_k 
-        \quad \text{for all} \quad k
+        \quad \text{для всех} \quad k
     \end{equation*}
  
 \end{frame}
@@ -1379,43 +1357,38 @@
     
     \Prf (2. $\implies$1.)
     
-    If 2. holds, then there exists at most one set of scalars such that \[\boldzero =
-    \sum_{k=1}^K \alpha_k \boldx_k\]
+    Если 2. выполняется, то существует не более одного набора скаляров, такого что 
+    \[\boldzero = \sum_{k=1}^K \alpha_k \boldx_k\]
     
-    Because $\alpha_1 = \cdots = \alpha_k = 0$
-    has this property, no nonzero scalars yield $\boldzero =
+    Так как при $\alpha_1 = \cdots = \alpha_k = 0$
+    это равенство выполняется, больше не существует скаляров, при которых $\boldzero =
     \sum_{k=1}^K \alpha_k \boldx_k$
     
-    We can then conclude $X$ is linearly
-    independent, by the definition of linear independence 
-    
+    Значит, $X$ линейно независим по определению
 
 \end{frame}
 
 
-\begin{frame}\frametitle{Linear Subspaces}
+\begin{frame}\frametitle{Линейные подпространства}
 
     \vspace{2em}
-    A  nonempty subset $S$ of $\RR^N$ is called a \navy{linear subspace} (or just
-    \navy{subspace}) of $\RR^N$
-    if
+   Непустое подмножество $S$ множества $\RR^N$ называется \navy{линейным подпространством} 
+   (или просто \navy{подпространством}) множества $\RR^N$, если
     %
     \begin{equation*}
         \label{eq:lsubd}
         \boldx, \, \boldy \in S
-        \text{ and } \alpha, \, \beta \in \RR
+        \text{ и } \alpha, \, \beta \in \RR
         \; \implies \; 
         \alpha \boldx + \beta \boldy \in S
     \end{equation*}
     %
-    In other words, $S\subset \mathbb{R}^{N}$ is ``closed" under vector addition
-     and scalar multiplication 
+    Другими словами, $S\subset \mathbb{R}^{N}$ 'заперт' с векторным сложением и умножением на скаляр
     
     \vspace{2em}
     \Eg 
-    If $X$ is any
-    nonempty subset of $\RR^N$, then $\Span X$ is a linear subspace of
-    $\RR^N$
+    Если $X$ --- некое непустое подмножество $\RR^N$, тогда 
+    $\Span X$ --- линейное подпространство $\RR^N$
 
 \end{frame}
 
@@ -1423,19 +1396,18 @@
 
     \vspace{2em}
     \Eg 
-    $\mathbb{R}^{N}$ is a linear subspace of $\mathbb{R}^{N}$
+    $\mathbb{R}^{N}$ --- линейное подпространство $\mathbb{R}^{N}$
     
     \vspace{.7em}
     \Eg 
-    Given any $\bolda \in \RR^N$, the set $A := \setntn{\boldx \in
-    \RR^N}{\inner{\bolda, \boldx}  = 0}$
-    is a linear subspace of $\RR^N$
+    Возьмем любой вектор $\bolda \in \RR^N$, множество $A := \setntn{\boldx \in
+    \RR^N}{\inner{\bolda, \boldx}  = 0}$ является линейным подпространством $\RR^N$
     
     \vspace{2em}
-    To see this, let $\boldx, \boldy \in A$, let $\alpha, \beta \in \RR$ and 
-    define $\boldz := \alpha \boldx + \beta \boldy \in A$
+    Чтобы показать это, пусть $\boldx, \boldy \in A$, $\alpha, \beta \in \RR$ и 
+    $\boldz := \alpha \boldx + \beta \boldy \in A$
     
-    We have 
+    Получается 
         %
         $$
         \inner{\bolda, \boldz} =
@@ -1443,7 +1415,7 @@
         = \alpha \inner{ \bolda, \boldx}
         + \beta \inner{\bolda, \boldy} = 0 + 0 = 0
         $$
-    Hence $\boldz\in A$
+    Значит, $\boldz\in A$
 
 
 \end{frame}
@@ -1452,19 +1424,19 @@
 
     \vspace{.7em}
     \Fact\eqref{ET-fa:eplsub}
-    If $S$ is a linear subspace of $\RR^N$, then
+    Если $S$ --- линейное подпространство $\RR^N$, тогда
     %
     \begin{enumerate}
         \item $\boldzero \in S$
-        \item $X \subset S \implies \Span X \subset S$, and
+        \item $X \subset S \implies \Span X \subset S$, и
         \item $\Span S = S$
     \end{enumerate}
     \vspace{2em}
     
     \Thm\eqref{ET-t:exth}
-    Let $S$ be a linear subspace of $\RR^N$. If $S$ is spanned by $K$ vectors,
-    then any linearly independent subset of $S$ has at most $K$
-    vectors
+    Пусть $S$ --- линейное подпространство $\RR^N$. Если $S$ охватывает $K$ векторов,
+    тогда любое линейно независимое подмножество $S$ имеет не более $K$
+    векторов
     
 \end{frame}
 
@@ -1472,9 +1444,9 @@
 
     \vspace{2em}
     \Eg
-    Recall the canonical basis vectors
-    $\{\bolde_1, \bolde_2\}$ spanned $\RR^2$. As such, from Theorem~\ref{ET-t:exth}, 
-    the three vectors below are linearly dependent 
+    Вспомним базисные векторы
+    $\{\bolde_1, \bolde_2\}$, охватывающие $\RR^2$. Из Теоремы~\ref{ET-t:exth} 
+    следует, что три вектора ниже линейно зависимы
     %
     \begin{figure}
        \begin{center}
@@ -1488,13 +1460,11 @@
 
     \vspace{2em}
     \Eg
-    The plane
+    Плоскость
         $P := \setntn{(x_1, x_2, 0) \in \RR^3}{ x_1, x_2 \in \RR}$
-    from example~\ref{ET-eg:planein3d} in ET can be
-    spanned by two vectors
+    из примера~\ref{ET-eg:planein3d} в ET может быть образована двумя векторами
     
-    By theorem~\ref{ET-t:exth}, the three vectors in the
-    figure below are linearly dependent 
+    По теореме~\ref{ET-t:exth}, три вектора на рисунке ниже линейно независимы 
     %
     \begin{figure}
        \begin{center}
@@ -1504,53 +1474,50 @@
 
 \end{frame}
 
-\begin{frame}\frametitle{Bases and Dimension}
+\begin{frame}\frametitle{Базисы и Размерность}
 
     \vspace{2em}
     \Thm\eqref{ET-t:bsili}
-        Let $X := \{ \boldx_1, \ldots, \boldx_N \}$ be any $N$ vectors in $\RR^N$.
-        The following statements are equivalent:
+        Пусть $X := \{ \boldx_1, \ldots, \boldx_N \}$ --- некие $N$ векторов в $\RR^N$.
+        Следующие утверждения эквивалентны:
         %
         \begin{enumerate}
             \item $\Span X = \RR^N$
-            \item $X$ is linearly independent
+            \item $X$ линейно независим
         \end{enumerate}
     
     \vspace{.7em}
-    For a proof see page~\pageref{ET-t:bsili} in ET
+    Для доказательства смотрите~\pageref{ET-t:bsili} в ET
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Let $S$ be a linear subspace of $\RR^N$ and
-    let $B \subset S$
+    Пусть $S$ --- линейное подпространство $\RR^N$ и $B \subset S$
     
     \vspace{.7em}
-    The set $B$ is called a \navy{basis} of $S$
-    if 
+    Множество $B$ называется \navy{базисом} $S$, если
     %
     \begin{enumerate}
-        \item $B$ spans $S$ and
-        \item $B$ is linearly independent
+        \item $B$ охватывает $S$ и
+        \item $B$ линейно независимо
     \end{enumerate}
     
     \vspace{.7em}
-    The plural of basis is \navy{bases}
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    From theorem~\ref{ET-t:unor}, when
-    $B$ is a basis of $S$, each point in $S$ has exactly one representation as a
-    linear combination of elements of $B$
+    Из Теоремы~\ref{ET-t:unor}, когда
+    $B$ является базисом $S$, каждая точка $S$ имеет ровно представление
+    как линейной комбинации элементов $B$
     
     \vspace{.7em}
-    From theorem~\ref{ET-t:bsili}, any $N$ linearly
-    independent vectors in $\RR^N$ form a basis of $\RR^N$
+    Из Теоремы~\ref{ET-t:bsili}, любые $N$ линейно
+    независимых векторов в $\RR^N$ формируют базис в $\RR^N$
     
 \end{frame}
 
@@ -1558,13 +1525,13 @@
     
     \vspace{2em}
     \Eg
-    Recall the plane from the example above
+    Вспомним плоскость из примера выше 
     %
     \begin{equation*}
         P := \setntn{(x_1, x_2, 0) \in \RR^3}{ x_1, x_2 \in \RR}
     \end{equation*}
     %
-    We showed $\Span\{\bolde_1, \bolde_2\} = P$ for 
+    Мы показали, что $\Span\{\bolde_1, \bolde_2\} = P$ для 
     %
     \begin{equation*}
         \bolde_1 := 
@@ -1587,9 +1554,9 @@
     \end{equation*}
     %
     
-    Moreover, $\{\bolde_1, \bolde_2\}$ is linearly independent (why?)
+    Более того, $\{\bolde_1, \bolde_2\}$ линейно независимы (почему?)
 
-    Hence $\{\bolde_1, \bolde_2\}$ is a basis for $P$
+    Значит, $\{\bolde_1, \bolde_2\}$ являются базисом для $P$
 
 
 \end{frame}
@@ -1598,16 +1565,16 @@
 
     \vspace{2em}
     \Thm{\eqref{ET-t:basis}}
-    If $S$ is a linear subspace of $\RR^N$ distinct from $\{\boldzero\}$, then 
+    Если $S$ --- линейное подпространство $\RR^N$ отличное от $\{\boldzero\}$, тогда 
     %
     \begin{enumerate}
-        \item $S$ has at least one basis and
-        \item every basis of $S$ has the same number of elements.
+        \item $S$ имеет по меньшей мере один базис и
+        \item каждый базис $S$ имеет одинаковое количество элементов.
     \end{enumerate}
     %
-    If $S$ is a linear subspace of $\RR^N$, then the common number identified in
-    theorem~\ref{ET-t:basis} is called the \navy{dimension} of $S$, and written as
-    $\dim S$
+    Если $S$ --- линейное подпространство $\RR^N$, то обычное число, 
+    определенное в Теореме~\ref{ET-t:basis} называется \navy{размерностью} $S$,
+    и обозначается $\dim S$
     
 \end{frame}
 
@@ -1615,7 +1582,8 @@
     
     \vspace{2em}
     \Eg
-    For $P := \setntn{(x_1, x_2, 0) \in \RR^3}{ x_1, x_2 \in \RR}$, $\dim P = 2$ because 
+    Для $P := \setntn{(x_1, x_2, 0) \in \RR^3}{ x_1, x_2 \in \RR}$, $\dim P = 2$, 
+    потому что
     %
     \begin{equation*}
         \bolde_1 := 
@@ -1637,34 +1605,33 @@
         \right)
     \end{equation*}
     %
-    is a basis with two elements
+    базис имеет два элемента
     
     \vspace{.7em}
     \Eg
-    A line $\setntn{\alpha \boldx \in \RR^N}{\alpha \in \RR}$ through
-    the origin is one dimensional
+    Прямая $\setntn{\alpha \boldx \in \RR^N}{\alpha \in \RR}$, проходящая через начало координат, имеет размерность $1$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    In $\RR^N$ the singleton subspace $\{\boldzero\}$ is said to have zero
-    dimension
-
-    If we take a set of $K$ vectors, then how large will its span be in terms
-    of dimension?  
+    Говорят, что в $\RR^N$ одноэлементное подпространство $\{\boldzero\}$ имеет 
+    нулевую размерность
+    
+    Возьмем множество из $K$ векторов, насколько большой будет его 
+    линейная оболочка с точки зрения размерности?  
     
     \vspace{.7em}
     \Thm\eqref{ET-t:dimspan}
-        If $X := \{\boldx_1,\ldots,\boldx_K\} \subset \RR^N$, then
+        Если $X := \{\boldx_1,\ldots,\boldx_K\} \subset \RR^N$, то
         %
         \begin{enumerate}
-            \item $\dim \Span X \leq K$ and
-            \item $\dim \Span X = K$ if and only if $X$ is linearly independent.
+            \item $\dim \Span X \leq K$ и
+            \item $\dim \Span X = K$ тогда и только тогда, когда $X$ линейно независим
         \end{enumerate}
         %
-    For a proof, see exercise~\ref{ET-ex:dimspan} in ET
+    Для доказательства смотрите упражнение~\ref{ET-ex:dimspan} в ET
     
 \end{frame}
 
@@ -1672,13 +1639,13 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:ondsrn}}
-        The following statements are true:
+        Следующие утверждения верны:
         %
         \begin{enumerate}
-            \item Let $S$ and $S'$ be $K$-dimensional linear subspaces of $\RR^N$. If $S
-                \subset S'$, then $S = S'$
-            \item If $S$ is an $M$-dimensional linear subspace of $\RR^N$ and $M
-                < N$, then $S \not= \RR^N$
+            \item Пусть $S$ и $S'$ являются линейными подпространствами $\RR^N$ 
+            размерности $K$. Если $S \subset S'$, то $S = S'$
+            \item Если $S$ --- линейное подпространство $\RR^N$ размерности $M$ и $M < N$, 
+            то $S \not= \RR^N$
         \end{enumerate}
         %
         
@@ -1686,11 +1653,11 @@
 
 
 
-\begin{frame}\frametitle{Linear Maps}
+\begin{frame}\frametitle{Линейные отображения}
 
     \vspace{2em}
-    A function $T \colon \RR^K \to \RR^N$ is called
-    \navy{linear} if 
+    Функция $T \colon \RR^K \to \RR^N$ называется
+    \navy{линейной}, если 
     %
     \begin{equation*}
             T(\alpha \boldx + \beta \boldy) = \alpha T\boldx + \beta T\boldy
@@ -1703,12 +1670,13 @@
     %
 
     \vspace{.7em}
-    Notation: 
+    
+    Примечание: 
     
     \begin{itemize}
-        \item Linear functions often written with upper case letters
+        \item Линейные функции обычно записываются с большой буквы
             \vspace{0.5em}
-        \item Typically omit parenthesis around arguments when convenient
+        \item Обычно, когда это удобно, аргументы в скобках опускаются
     \end{itemize}
 
 \end{frame}
@@ -1716,9 +1684,9 @@
 \begin{frame}
 
     \vspace{2em}
-   \Eg $T \colon \RR \to \RR$ defined by $Tx = 2x$ is linear 
+   \Eg Функция $T \colon \RR \to \RR$, определяемая как $Tx = 2x$, линейна 
 
-    To see this, take any $\alpha, \beta, x, y$ in $\RR$ and observe 
+    Чтобы увидеть это, возьмем любые $\alpha, \beta, x, y$ в $\RR$, тогда 
     %
     \begin{equation*}
       T(\alpha x + \beta y)
@@ -1728,52 +1696,51 @@
     \end{equation*}
 
     \vspace{.7em}
-    \Eg The function $f \colon \RR \to \RR$ defined by $f(x) = x^2$ is
-    \underline{non}linear
+    \Eg Функция $f \colon \RR \to \RR$, определяемая как $f(x) = x^2$, \underline{не}линейна
     
-    To see this, set $\alpha = \beta = x = y = 1$. We then have
+    Чтобы увидеть это, возьмем $\alpha = \beta = x = y = 1$, получается
     %
     $$f(\alpha x + \beta y) = f(2) = 4$$
     %
-    However, $\alpha f(x) + \beta f(y) = 1 + 1 = 2$
+    Тем не менее, $\alpha f(x) + \beta f(y) = 1 + 1 = 2$
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    Remark: Thinking of linear functions as those whose graph is a straight
-    line is not correct
+    Примечание: Неправильно думать о линейных функциях как о тех, 
+    чей график является прямой
     
     \vspace{.7em}
     \Eg    
-    Function $f \colon \RR \to \RR$ defined by $f(x) = 1 + 2x$ is
-    \underline{non}linear
+    Функция $f \colon \RR \to \RR$, определяемая $f(x) = 1 + 2x$,
+    \underline{не}линейна
 
-    Take $\alpha = \beta = x = y = 1$. We then have
+    Возьмем $\alpha = \beta = x = y = 1$. Имеется
     %
     $$f(\alpha x + \beta y) = f(2) = 5$$
     
-    However, $\alpha f(x) + \beta f(y) = 3 + 3 = 6$
+    Тем не менее, $\alpha f(x) + \beta f(y) = 3 + 3 = 6$
    
     \vspace{.7em}
     
-    This kind of function is called an \navy{affine} function
+    Такой вид функции называется \navy{афинной} функцией
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    By definition, if $T$ is linear, then the exchange of order in 
+    По определению, если $T$ линейна, то изменение порядка в  
     %
     \[T [ \sum_{k=1}^K \alpha_k \boldx_k ]
     = \sum_{k=1}^K \alpha_k T \boldx_k\]
     %
-    will be valid whenever $K=2$
+    будет действительным пока $K=2$
     
     \vspace{.7em}
-    Inductive argument extends this to arbitrary $K$
+    Индукция расширяет это до произвольных $K$
     
 \end{frame}
 
@@ -1781,37 +1748,37 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:res}}
-    If $T \colon \RR^K \to \RR^N$ is a linear map, then 
+    Если $T \colon \RR^K \to \RR^N$ является линейным отображением, то 
     %
     \begin{equation*}
         \range(T) = \Span(V) 
-        \quad \text{where} \quad
+        \quad \text{, где} \quad
         V := \{T\bolde_1, \ldots, T\bolde_K\}
     \end{equation*}
 
 
-    where $\bolde_k$ is the $k$-th canonical basis vector in $\RR^K$
+    где $\bolde_k$ является $k$-ым базисным вектором в $\RR^K$
     \vspace{1em}
 
-    \Prf Any $\boldx \in \RR^K$ can be expressed as $\sum_{k=1}^K \alpha_k \bolde_k$. 
-    Hence $\range(T)$ is the set of all points of the form
+    \Prf Любой $\boldx \in \RR^K$ может быть выражен как $\sum_{k=1}^K \alpha_k \bolde_k$. 
+    Значит, $\range(T)$ является множеством всех точек следующей формы
     %
     \begin{equation*}
-        T\boldx
+        T\boldx 
         = T \left[ \sum_{k=1}^K \alpha_k \bolde_k \right]
         = \sum_{k=1}^K \alpha_k T \bolde_k 
     \end{equation*}
     %
-    as we vary $\alpha_1, \ldots, \alpha_K$ over all combinations.
-    This coincides with the definition of $\Span(V)$
+    так как $\alpha_1, \ldots, \alpha_K$ меняется для всех комбинаций.
+    Это совпадает с определением $\Span(V)$
 
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    The \navy{null space} or \navy{kernel} of linear map $T \colon \RR^K \to
-    \RR^N$ is
+    \navy{Ядром} линейного отображения $T \colon \RR^K \to
+    \RR^N$ называют
     %
     \begin{equation*}
         \kernel(T) := \setntn{\boldx \in \RR^K}{T\boldx = \boldzero}
@@ -1820,35 +1787,35 @@
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:res}}
-    If $T \colon \RR^K \to \RR^N$ is a linear map, then 
+    Если $T \colon \RR^K \to \RR^N$ линейное отображение, то 
     %
     \begin{equation*}
         \range T = \Span V,
-        \quad \text{where } 
+        \quad \text{где } 
         V := \{T\bolde_1, \ldots, T\bolde_K\}
     \end{equation*}
     %
-    Proofs are straight-forward (complete as exercise)
+    Доказательства простые (выполните в качестве упражнения)
     
 \end{frame}
 
 \begin{frame}
     
-    \frametitle{Linear Independence and Bijections}
+    \frametitle{Линейная независимость и Биекция}
 
     \vspace{.7em}
-    Many scientific and practical problems are ``inverse" problems
+    Много научных и практических задач являются задачами 'обратными'
 
     \begin{itemize}
-        \item we observe outcomes but not what caused them
-        \item how can we work backwards from outcomes to causes?
+        \item мы наблюдаем результаты, но не их причины
+        \item как можно работать в обратном порядке, от результатов к причинам?
     \end{itemize}
     
-    Examples
+    Примеры
 
     \begin{itemize}
-        \item what consumer preferences generated observed market behavior?
-        \item what kinds of expectations led to given shift in exchange rates?
+        \item какие предпочтения потребителей привели к наблюдаемому рыночному поведению?
+        \item какие ожидания привели к данному сдвигу обменных курсов?
     \end{itemize}
 
 \end{frame}
@@ -1856,7 +1823,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Loosely, we can express an inverse problem as
+    В общем, обратную задачу можно выразить как
     
     \begin{figure}
        \begin{center}
@@ -1865,15 +1832,15 @@
     \end{figure}
 
     \begin{itemize}
-        \item does this problem have a solution?
-        \item is it unique?
+        \item имеет ли эта задача решение?
+        \item является ли оно едиственным?
     \end{itemize}
 
-    Answers depend on whether $F$ is one-to-one, onto, etc.
+    Ответы зависят от того, является ли $F$ сюръекцией, инъекцией и т.д. 
 
-    The best case is a bijection
+    Лучший вариант --- биекция
 
-    But other situations also arise
+    Но возникают и другие ситуации
 
 \end{frame}
 
@@ -1881,25 +1848,23 @@
 
     \vspace{2em}
     \Thm {\eqref{ET-t:linfunc}}
-        If $T$ is a linear function from $\RR^N$ to $\RR^N$, then all of the
-        following are equivalent:
+        Если $T$ --- линейная функция из $\RR^N$ в $\RR^N$, то 
+        все следующие утверждения эквивалентны:
         %
         \begin{enumerate}
-            \item $T$ is a bijection.
-            \item $T$ is onto.
-            \item $T$ is one-to-one.
+            \item $T$ является биекцией.
+            \item $T$ является сюръекцией.
+            \item $T$ является инъекцией.
             \item $\kernel T = \{ \boldzero \}$.
-            \item $V := \{T\bolde_1, \ldots, T\bolde_N\}$ is
-                linearly independent.
-            \item $V := \{T\bolde_1, \ldots, T\bolde_N\}$ forms a basis of
-                $\RR^N$.
+            \item $V := \{T\bolde_1, \ldots, T\bolde_N\}$ линейно независимо.
+            \item $V := \{T\bolde_1, \ldots, T\bolde_N\}$ формирует базис $\RR^N$.
         \end{enumerate}
         % 
-    See exercise \ref{ET-ex:linfunc} in ET for proof
+    Смотрите упражнение \ref{ET-ex:linfunc} в ET для доказательства
     
     \vspace{.7em}
-    If any one of these conditions is true, then $T$ is called
-    \navy{nonsingular}. Otherwise $T$ is called \navy{singular}
+    Если любое из этих условий выполняется, то $T$ называют
+    \navy{несингулярной}. В ином случае $T$ назвают \navy{сингулярной}
     
 \end{frame}
 
@@ -1908,7 +1873,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.4}{\includegraphics{linbijec.pdf}}
-        \caption{The case of $N=1$, nonsingular and singular}
+        \caption{Случай с $N=1$, несингулярная и сингулярная функции}
        \end{center}
     \end{figure}
     
@@ -1917,37 +1882,37 @@
 \begin{frame}
     
     \vspace{2em}
-    If $T$ is nonsingular, then, being a bijection, it must have an inverse
-    function $T^{-1}$ that is also a bijection (fact~\ref{ET-fa:bij} on
-    page~\pageref{ET-fa:bij})
+    Если $T$ несингулярна, то, будучи биекцией, она должна иметь обратную
+    функцию $T^{-1}$, которая так же является биекцией (факт~\ref{ET-fa:bij} на
+    странице~\pageref{ET-fa:bij})
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:nsins}}
-        If $T \colon \RR^N \to \RR^N$ is nonsingular, then so is $T^{-1}$.  
+        Если $T \colon \RR^N \to \RR^N$ несингулярна, то и $T^{-1}$ несингулярна.  
 
-    For a proof, see ex.~\ref{ET-ex:nsins}
+    Для доказательства, смотрите упр.~\ref{ET-ex:nsins}
     
 \end{frame}
 
 \begin{frame}
 
-    \frametitle{Maps Across Different Dimensions} 
+    \frametitle{Отображения при различных Размерностях} 
 
     \vspace{2em}
-    Remember that the above results apply to maps from $\RR^N$ to $\RR^N$
+    Помните, что результаты выше применимы к отображениям из $\RR^N$ в $\RR^N$
 
-    Things change when we look at linear maps across dimensions
+    Все меняется, когда мы смотрим на линейные отображения при различных размерностях
 
     \vspace{.7em}
 
-    The general rules for linear maps are 
+    Общие правили для линейных отображений: 
 
     \begin{itemize}
-        \item maps from lower to higher dimensions cannot be onto
-        \item maps from higher to lower dimensions cannot be one-to-one
+        \item отображения из меньших в большие размерности не могут быть сюръекцией
+        \item отображения из больших в меньшие размерности не могут быть инъекцией
     \end{itemize}
 
-    In either case they cannot be bijections
+    Ни один из случаев не может быть биекцией
 
     \vspace{1em}
 
@@ -1957,19 +1922,18 @@
     
     \vspace{2em}
     \Thm{\eqref{ET-t:lfoc}}
-    For a linear map $T$ from $\RR^K \to \RR^N$, the following statements are
-    true:
+    Для линейного отображения $T$ из $\RR^K \to \RR^N$, следующие утверждения верны:
     %
     \begin{enumerate}
-        \item If $K < N$, then $T$ is not onto.
-        \item If $K > N$, then $T$ is not one-to-one.
+        \item Если $K < N$, то $T$ не сюръекция.
+        \item Если $K > N$, то $T$ не инъекция.
     \end{enumerate}
     %
-    \Prf(part 1)
+    \Prf(часть 1)
     
-    Let $K < N$ and let $T \colon \RR^K \to \RR^N$ be linear  
+    Пусть $K < N$ и отображение $T \colon \RR^K \to \RR^N$ линейное  
     
-    Letting $V := \{T\bolde_1, \ldots, T\bolde_K\}$, we have
+    Пусть $V := \{T\bolde_1, \ldots, T\bolde_K\}$, имеется
     %
     $$
     \dim(\range(T)) = \dim(\Span(V)) \leq K < N
@@ -1979,17 +1943,17 @@
     \fore 
         \range(T) \not= \RR^N
     $$
-    Hence $T$ is not onto 
+    Значит, $T$ не сюръекция 
     
 \end{frame}
 
 \begin{frame}
     
-    \Prf(part 2)
+    \Prf(часть 2)
     
-    Suppose to the contrary that $T$ is one-to-one
+    Предположим обратное, что $T$ является инъекцией
 
-    Let $\alpha_1, \ldots, \alpha_K$ be a collection of vectors such that 
+    Пусть $\alpha_1, \ldots, \alpha_K$ набор векторов, такой что 
     %
     \[
     \alpha_1 T \bolde_1 + \cdots + \alpha_K T \bolde_K = \boldzero
@@ -1998,26 +1962,25 @@
     \[
     \fore 
     T (\alpha_1 \bolde_1 + \cdots + \alpha_K \bolde_K) = \boldzero
-    \qquad (\text{by linearity})
+    \qquad (\text{по линейности})
     \]
     %
     \[
     \fore
     \alpha_1 \bolde_1 + \cdots + \alpha_K \bolde_K = \boldzero
-    \qquad (\text{since $\ker(T) = \{\boldzero\}$})
+    \qquad (\text{так как $\ker(T) = \{\boldzero\}$})
     \]
     %
     \[
     \fore 
     \alpha_1 = \cdots = \alpha_K = 0
-    \qquad (\text{by independence of $\{\bolde_1, \ldots \bolde_K\}$)}
+    \qquad (\text{по независимости $\{\bolde_1, \ldots \bolde_K\}$)}
     \]
 
-    We have shown that $\{T\bolde_1, \ldots, T\bolde_K\}$ is linearly
-    independent
+    Мы показали, что $\{T\bolde_1, \ldots, T\bolde_K\}$ линейно независимы
 
-    But then $\RR^N$ contains a linearly independent set
-    with $K > N$ vectors --- contradiction
+    Но тогда $\RR^N$ содержит линейно независимое множество
+    с $K > N$ векторами --- противоречие
 
 \end{frame}
 
@@ -2030,26 +1993,25 @@
        \end{center}
     \end{figure}
 
-   \Eg Cost function $c(k, \ell) = rk + w\ell$ cannot be one-to-one
+   \Eg Функция издержек $c(k, \ell) = rk + w\ell$ не может быть инъекцией
 
 \end{frame}
 
-\begin{frame}\frametitle{Orthogonal Vectors and Projections}
+\begin{frame}\frametitle{Ортогональные Векторы и Проекции}
     
     \vspace{2em}
-    A core concept in the course is orthogonality -- not just of vectors,
-     but random variables 
+    Ключевой концепцией курса является ортогональность -- не только векторов,
+    но и случайных величин 
     
     \vspace{.7em}
-    Let $\boldx$ and $\boldz$ be vectors in $\RR^N$
+    Пусть $\boldx$ и $\boldz$ векторы в $\RR^N$
     
-    If $\inner{\boldx,  \boldz} = 0$,
-    then we  call $\boldx$ and $\boldz$
-    \navy{orthogonal}
+    Если $\inner{\boldx,  \boldz} = 0$,
+    то мы называем $\boldx$ и $\boldz$ \navy{ортогональными}
     
-    Write \navy{$\boldx \perp \boldz$}
+    Записывается \navy{$\boldx \perp \boldz$}
     
-    In $\RR^2$, orthogonal means perpendicular 
+    В $\RR^2$ ортогональный значит перпендикулярный 
     
 \end{frame}
 
@@ -2067,14 +2029,14 @@
 \begin{frame}
 
      \vspace{2em}
-    Let $S$ be a linear subspace
+    Пусть $S$ линейное подпространство
     
     \vspace{.7em}
-    We say that 
-    \navy{$\boldx$ is orthogonal to $S$} if $\boldx \perp \boldz$ for all 
+    Говорят, что 
+    \navy{$\boldx$ ортогонален $S$}, если $\boldx \perp \boldz$ для всех 
     $\boldz \in S$
 
-    Write \navy{$\boldx \perp S$}
+    Записывается \navy{$\boldx \perp S$}
     
 \end{frame}
 
@@ -2094,42 +2056,42 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:pythag}
-        (Pythagorian law)
+        (Теорема Пифагора)
         
-        If $\{\boldz_1,\ldots, \boldz_K\}$ is an orthogonal set, then
+        Если $\{\boldz_1,\ldots, \boldz_K\}$ является ортогональным множеством, то
         %
         \begin{equation*}
             \| \boldz_1 + \cdots + \boldz_K \|^2 
             = \| \boldz_1 \|^2 + \cdots + \| \boldz_K \|^2 
         \end{equation*}
         %
-    Proof is an exercise 
+    Докажите в качестве упражнения 
     
     \vspace{.7em}
     \Fact\eqref{ET-fa:orthii}
-    If $O \subset \RR^N$ is an orthogonal set and $\boldzero \notin O$, then
-    $O$ is linearly independent
+    Если $O \subset \RR^N$ является ортогональным множеством и $\boldzero \notin O$, то
+    $O$ линейно независимо
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    An orthogonal set $O \subset \RR^N$ is called an \navy{orthonormal set} 
-    if $\|\boldu \| = 1$ for all $\boldu \in O$
+    Ортогональной множество $O \subset \RR^N$ называется \navy{ортонормальное множество} 
+    Если $\|\boldu \| = 1$ для всех $\boldu \in O$
 
-    An orthonormal set spanning a linear
-    subspace $S$ of $\RR^N$ is  an \navy{orthonormal basis} of $S$
+    Ортонормальное множество, охватывающее линейное подпространство
+    $S$ в $\RR^N$ называют \navy{ортонормальным базисом} $S$
     
     \begin{itemize}
-        \item example of an orthonormal basis for all of $\RR^N$ is the canonical
-        basis $\{\bolde_1, \ldots, \bolde_N\}$
+        \item примером ортонормального базиса для всего в $\RR^N$ является
+        канонический базис $\{\bolde_1, \ldots, \bolde_N\}$
     \end{itemize}
     
     \vspace{1em}
     \Fact\eqref{ET-fa:bdons}
-    If $\{\boldu_1, \ldots, \boldu_K\}$ is an orthonormal set
-    and $\boldx \in \Span\{\boldu_1, \ldots, \boldu_K\}$, then
+    Если $\{\boldu_1, \ldots, \boldu_K\}$ является ортонормальным множеством
+    и $\boldx \in \Span\{\boldu_1, \ldots, \boldu_K\}$, то
     %
     \begin{equation*}
         \label{eq:exbyob}
@@ -2138,13 +2100,13 @@
     %
 \end{frame}
 
-\section{Orthogonality}
+\section{Ортогональность}
 
 \begin{frame}
     
     \vspace{2em}
-    Given $S \subset \RR^N$, the \navy{orthogonal complement}
-    of $S$ is
+    Возьмем $S \subset \RR^N$, \navy{ортогональное дополнение}
+    $S$ будет
     %
     \begin{equation*}
         S^{\perp} := \setntn{\boldx \in \RR^N}{\boldx \perp S}
@@ -2152,13 +2114,13 @@
     
     \vspace{.5em}
     \Fact\eqref{ET-fa:ocls}
-    For any nonempty $S \subset \RR^N$, the set $S^{\perp}$ is
-    a linear subspace of $\RR^N$
+    Для любого непустого $S \subset \RR^N$, пространство $S^{\perp}$ является
+    линейным подпространством $\RR^N$
     
     \Prf 
-    If $\boldx, \boldy \in S^{\perp}$ and $\alpha, \beta \in \RR$, then 
-    $\alpha \boldx + \beta \boldy \in S^{\perp}$
-    because, for any $\boldz \in S$
+    Если $\boldx, \boldy \in S^{\perp}$ и $\alpha, \beta \in \RR$, то 
+    $\alpha \boldx + \beta \boldy \in S^{\perp}$, 
+    так как для любых $\boldz \in S$
     %
     \begin{equation*}
         \inner{\alpha \boldx + \beta \boldy, \boldz}
@@ -2169,7 +2131,7 @@
     
     \vspace{.5em}
     \Fact{\eqref{ET-fa:scscez}}
-    For $S \subset \RR^N$, we have $S \cap S^{\perp} =
+    Для $S \subset \RR^N$, выполняется $S \cap S^{\perp} =
     \{\boldzero\}$
     
 \end{frame}
@@ -2180,33 +2142,34 @@
     \begin{figure}
        \begin{center}
         \resizebox{7.5cm}{!}{\input{figs_code/tikzfigs/orth_comp.tex}}
-        \caption{\label{f:orth_comp} Orthogonal complement of $S$ in $\mathbb{R}^{2}$}
+        \caption{\label{f:orth_comp} Ортогональное дополнение $S$ в $\mathbb{R}^{2}$}
        \end{center}
     \end{figure}
     
 \end{frame}
 
-\begin{frame}\frametitle{The Orthogonal Projection Theorem}
+\begin{frame}\frametitle{Теорема Ортогональной Проекции}
     
     \vspace{2em}
-    Problem:
+    Задача:
     %
     \begin{center}
-        Given $\boldy \in \RR^N$ and subspace $S$, find closest element of $S$ 
-        to $\boldy$
+        При данном $\boldy \in \RR^N$ и подпространстве $S$, 
+        найти ближайший элемент $S$ к $\boldy$
     \end{center}
     
-    Formally: Solve for
+    Формально: Решаем
     %
     \begin{equation}\label{eq:mproj}
         \hboldy := \argmin_{\boldz \in S} \|\boldy - \boldz\|
     \end{equation}
     %
-    Existence, uniqueness of solution not immediately obvious
+    Существование, единственность решения не очевидны
 
-    Orthogonal projection theorem: $\hboldy$ always exists, unique
+    Теорема ортогональной проекции: $\hboldy$ всегда существует, 
+    причем в единственном числе
 
-    Also provides a useful characterization
+    Также дает полезную характеристику
 
 \end{frame}
 
@@ -2214,23 +2177,22 @@
     
      \vspace{2em}
     \Thm\eqref{ET-t:opt}
-    [Orthogonal Projection Theorem I]
+    [Теорема Ортогональной Проекции I]
     
-    Let $\boldy \in \RR^N$ and let $S$ be any nonempty linear subspace of $\RR^N$. 
+    Пусть $\boldy \in \RR^N$ и $S$ является непустым линейным подпространством в $\RR^N$. 
     
-    The
-    following statements are true:
+    Следующие утверждения верны:
     %
     \begin{enumerate}
-        \item  The optimization problem \eqref{eq:mproj} has exactly one solution
-        \item $\hboldy \in \RR^N$ solves \eqref{eq:mproj}
-            if and only if $\hat \boldy \in S$ and $\boldy - \hat \boldy \perp
-            S$
+        \item  Задача оптимизации \eqref{eq:mproj} имеет ровно одно решение
+        \item $\hboldy \in \RR^N$ является решением \eqref{eq:mproj}
+            тогда и только тогда, когда $\hat \boldy \in S$ и 
+            $\boldy - \hat \boldy \perp S$
     \end{enumerate}
     
     \vspace{.7em}
-    The unique solution $\hboldy$ is called the 
-    \navy{orthogonal projection of $\boldy$ onto $S$}  
+    Единственное решение $\hboldy$ называется 
+    \navy{ортогональной проекцией $\boldy$ на $S$}  
 
 \end{frame}
 
@@ -2240,7 +2202,7 @@
     \begin{figure}
        \begin{center}
         \input{figs_code/tikzfigs/orth_proj2D0.tex}
-        \caption{\label{f:orth_proj2D0} Orthogonal projection}
+        \caption{\label{f:orth_proj2D0} Ортогональная проекция}
        \end{center}
     \end{figure}
 
@@ -2249,14 +2211,15 @@
 \begin{frame}
 
      \vspace{2em}
-    \Prf (sufficiency of 2.)
-    Let $\boldy \in \RR^N$
-    and let $S$ be a linear subspace of $\RR^N$
+    \Prf (достаточности 2.)
     
-    Let $\hat \boldy$ be a vector in
-    $S$ satisfying $\boldy - \hat \boldy \perp S$
+    Пусть $\boldy \in \RR^N$
+    и $S$ является линейным подпространством в $\RR^N$
     
-    Let $\boldz$ be any point in $S$. We have
+    Пусть $\hat \boldy$ --- вектор в 
+    $S$, удовлетворяющий условию $\boldy - \hat \boldy \perp S$
+    
+    Пусть $\boldz$ --- некая точка в $S$. Получается
     %
     \begin{equation*}
     \| \boldy - \boldz \|^2
@@ -2264,13 +2227,13 @@
     = \| \boldy - \hat \boldy \|^2  + \| \hat \boldy - \boldz  \|^2
     \end{equation*}
     %
-    The second equality follows from $\boldy - \hat \boldy \perp S$ and the 
-    Pythagorian law
+    Второе равенство следует из $\boldy - \hat \boldy \perp S$ и 
+    Теоремы Пифагора
     
     \vspace{.7em}
-    Since $\boldz$ was an arbitrary point in $S$,
-    we have $\| \boldy - \boldz \| \geq \| \boldy - \hat \boldy \|$
-    for all $\boldz \in S$
+    Так как $\boldz$ был произвольной точкой в $S$,
+    получается $\| \boldy - \boldz \| \geq \| \boldy - \hat \boldy \|$
+    для всех $\boldz \in S$
     
 \end{frame}
 
@@ -2278,20 +2241,21 @@
 
     \vspace{2em}
     \Eg
-    Let $\boldy \in \RR^N$ and let $\boldone \in \RR^N$ be the vector of ones
+    Пусть $\boldy \in \RR^N$ и $\boldone \in \RR^N$ является вектором из единиц
     
-    Let $S$ be the set of constant vectors in $\RR^N$--- $S$ is the span of $\{\boldone\}$
+    Пусть $S$ является множеством постоянных векторов в $\RR^N$ --- $S$ 
+    является линейной оболочкой $\{\boldone\}$
     
-    Orthogonal projection of $\boldy$ onto $S$ is $\hboldy := \bar y
-    \boldone$, where $\bar y := \frac{1}{N} \sum_{n=1}^N y_n$
+    Ортогональная проекция $\boldy$ на $S$ --- это $\hboldy := \bar y
+    \boldone$, где $\bar y := \frac{1}{N} \sum_{n=1}^N y_n$
     
-    Clearly, $\hboldy \in S$ 
+    Ясно, что $\hboldy \in S$ 
     
     \vspace{.7em}
-    To show $\boldy -
-    \hboldy$ is orthogonal to $S$, we need to check
-    $\inner{\boldy - \hboldy, \boldone} = 0$ (see ex.~\ref{ET-ex:pecb} on
-    page~\pageref{ET-ex:pecb}).  This is true because
+    Чтобы показать, что $\boldy -
+    \hboldy$ ортогонален к $S$, нужно проверить
+    $\inner{\boldy - \hboldy, \boldone} = 0$ (смотрите упр.~\ref{ET-ex:pecb} на
+    странице~\pageref{ET-ex:pecb}). Это верно, так как
     %
     \begin{equation*}
         \inner{\boldy - \hboldy, \boldone }
@@ -2305,22 +2269,23 @@
 \begin{frame}
     
     \vspace{2em}
-    Holding subspace $S$ fixed, we have a functional relationship
+    Если зафиксировать подпространство $S$, мы получим функциональную связь
     %
     \begin{equation*}
-        \boldy \; \mapsto \text{ its orthogonal projection } \hat \boldy \in S
+        \boldy \; \mapsto \text{ его ортогональная проекция } \hat \boldy \in S
     \end{equation*}
     %
-    This is a well-defined function from $\RR^N$ to $\RR^N$
+    Это четко определенная функция из $\RR^N$ в $\RR^N$
     
     \vspace{.7em}
-    The function is typically denoted by $\boldP$
+    Функция обычно обозначается как $\boldP$
 
     \begin{itemize}
-        \item $\boldP(\boldy)$ or $\boldP \boldy$ represents $\hboldy$
+        \item $\boldP(\boldy)$ или $\boldP \boldy$ представляет $\hboldy$
     \end{itemize}
     
-    $\boldP$ is called the \navy{orthogonal projection mapping onto $S$} and we write
+    $\boldP$ называется \navy{ортогональным проекционным отображением на $S$}, 
+    записывается как
     %
     \begin{equation*}
         \boldP = \proj S
@@ -2334,7 +2299,7 @@
     \begin{figure}
        \begin{center}
         \input{figs_code/tikzfigs/orth_proj2Dp.tex}
-        \caption{\label{f:orth_proj2Dp} Orthogonal projection under $\boldP$}
+        \caption{\label{f:orth_proj2Dp} Ортогональная проекция под $\boldP$}
        \end{center}
     \end{figure}
     
@@ -2344,15 +2309,16 @@
 
     \vspace{2em}
     \Thm{\eqref{ET-t:opt2}}
-    [Orthogonal Projection Theorem II]
-    Let $S$ be any linear subspace of $\RR^N$, and let $\boldP = \proj S$.
-    The following statements are true:
+    [Теорема Ортогональной Проекции II]
+    
+    Пусть $S$ является неким линейным подпространством $\RR^N$, и $\boldP = \proj S$.
+    Следующие утверждения верны:
     %
     \begin{enumerate}
-        \item $\boldP$ is a linear function
+        \item $\boldP$ --- линейная функция
     \end{enumerate}
     %
-    Moreover, for any $\boldy \in \RR^N$, we have
+    Более того, для любого $\boldy \in \RR^N$, соблюдается
     %
     \begin{enumerate}
         \setcounter{enumi}{1}
@@ -2361,25 +2327,25 @@
         \item $\| \boldy \|^2 = \| \boldP \boldy \|^2 + \| \boldy - \boldP
             \boldy \|^2$,
         \item $\| \boldP \boldy \| \leq \| \boldy \|$,
-        \item $\boldP \boldy = \boldy$ if and only if $\boldy \in S$, and
-        \item $\boldP \boldy = \boldzero$ if and only if $\boldy \in
+        \item $\boldP \boldy = \boldy$ тогда и только тогда, когда $\boldy \in S$, и
+        \item $\boldP \boldy = \boldzero$ тогда и только тогда, когда $\boldy \in
             S^{\perp}$.
     \end{enumerate}
     %
-    For a discussion of the proof, see page~\pageref{ET-t:opt2} and
-     exercise \ref{ET-ex:prpil}
+    Для доказательства смотрите страницу~\pageref{ET-t:opt2} и
+    упражнение \ref{ET-ex:prpil}
     
 \end{frame}
 
 \begin{frame}
 
-     \vspace{2em}
-    The following is a fundamental result 
+    \vspace{2em}
+    Ниже приводится основополагающий результат 
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:projon}}
-    If $\{\boldu_1, \ldots, \boldu_K\}$ is an orthonormal basis for $S$, then,
-    for each $\boldy \in \RR^N$,
+    Если $\{\boldu_1, \ldots, \boldu_K\}$ является ортонормальным базисом для $S$, 
+    то для каждого $\boldy \in \RR^N$,
     %
     \begin{equation}
         \label{eq:projon}
@@ -2390,16 +2356,16 @@
 
 \begin{frame}
 
-     \vspace{2em}
+    \vspace{2em}
     \Prf 
-     First, the right-hand side of \eqref{eq:projon} lies in $S$ 
-    since it is a linear combination of vectors spanning $S$
+    Для начала, правая сторона \eqref{eq:projon} находится в $S$, 
+    так как это линейная комбинация векторов, охватывающих $S$
     
-    Next, we know $\boldy - \boldP \boldy \perp S$ if and only if 
-    $\boldy - \boldP \boldy \perp \boldu_j$ for each $\boldu_j$ in the 
-    basis set (exercise ex.~\ref{ET-ex:pecb})
+    Далее, мы знаем, что $\boldy - \boldP \boldy \perp S$ тогда и только тогда, когда 
+    $\boldy - \boldP \boldy \perp \boldu_j$ для каждого $\boldu_j$ из 
+    множества базисных векторов (упражнение упр.~\ref{ET-ex:pecb})
     
-    For any $\boldy - \boldP \boldy \perp \boldu_j$, the following holds
+    Дл любого $\boldy - \boldP \boldy \perp \boldu_j$, выполняется слудующее
     %
     \begin{multline*}
         \inner{\boldy - \boldP \boldy, \boldu_j}
@@ -2409,60 +2375,59 @@
         = 0
     \end{multline*}
     %
-    This confirms $\boldy - \boldP \boldy \perp S$ 
+    Это подтверждает, что $\boldy - \boldP \boldy \perp S$ 
     
 \end{frame}
 
 \begin{frame}
 
-     \vspace{2em}
+    \vspace{2em}
     \Fact{\eqref{ET-fa:subsub}}
-    Let $S_i$ be a linear subspace of $\RR^N$ for $i=1,2$ and let $\boldP_i =
-    \proj S_i$.  If $S_1 \subset S_2$, then
+    Пусть $S_i$ является линейным подпространством $\RR^N$ для $i=1,2$ и $\boldP_i =
+    \proj S_i$. Если $S_1 \subset S_2$, то
     %
     \begin{equation*}
         \boldP_1 \boldP_2 \boldy = \boldP_2 \boldP_1 \boldy = \boldP_1 \boldy
-        \quad \text{for all } \boldy \in \RR^N
+        \quad \text{ для всех } \boldy \in \RR^N
     \end{equation*}
     %
 
 \end{frame}
 
-\begin{frame}\frametitle{The Residual Projection}
+\begin{frame}\frametitle{Остаточная Проекция}
 
     \vspace{2em}
-    Project $\boldy$ onto $S$, where $S$ is a linear subspace of $\RR^N$
+    Спроецируем $\boldy$ на $S$, где $S$ является линейным подпространством $\RR^N$
     \begin{itemize}
-    \item Closest point to $\boldy$ in $S$ is $\hboldy := \boldP \boldy$ 
-		    here $\boldP = \proj S$
-    \item Unless $\boldy$ was already in $S$, some error $\boldy -
-    \boldP \boldy$ remains
+    \item Ближайшая точка к $\boldy$ на $S$ --- это $\hboldy := \boldP \boldy$ 
+		    , здесь $\boldP = \proj S$
+    \item Если $\boldy$ не находится в $S$, ошибка 
+    $\boldy - \boldP \boldy$ существует
     \end{itemize}
     
     \vspace{.7em}
-    Introduce operator $\boldM$ that takes $\boldy \in \RR^N$
-    and returns the residual
+    Введем оператор $\boldM$, который берет $\boldy \in \RR^N$
+    и возвращает остаток
     \begin{equation}
         \label{eq:ann0}
         \boldM := \boldI - \boldP
     \end{equation}
     %
-    where $\boldI$ is the identity mapping on $\RR^N$
+    где $\boldI$ является тождественным отображением $\RR^N$
     
 \end{frame}
 
 \begin{frame}
 
      \vspace{2em}
-    For any $\boldy$ we have 
+    Для любых $\boldy$ выполняется 
     $\boldM \boldy = \boldI \boldy - \boldP \boldy = \boldy - \boldP \boldy$
     
     \vspace{.7em}
-    In regression analysis $\boldM$ shows up as a matrix 
-    called the ``annihilator'
+    В регрессионном анализе $\boldM$ проявляется как матрица, называемая 'аннигилятором'
     
     \vspace{.7em}
-    We  refer to $\boldM$ as the \navy{residual projection}
+    Мы говорим о $\boldM$ как об \navy{остаточной проекции}
     
 \end{frame}
 
@@ -2470,15 +2435,15 @@
 
      \vspace{2em}
     \Eg
-    Recall the projection of
-    $\boldy \in \RR^N$ onto $\Span\{\boldone\}$ is
+    Вспомним, что проекция
+    $\boldy \in \RR^N$ на $\Span\{\boldone\}$ --- это
     $\bar y \boldone$
     
-    The residual projection is $\boldM_c \boldy := \boldy -
+    Остаточная проекция $\boldM_c \boldy := \boldy -
     \bar y \boldone$
     \begin{itemize}
-        \item  vector of errors obtained when the elements of a vector are
-         predicted by its sample mean
+        \item  вектор ошибок, полученный, когда элементы вектора предсказываются 
+        его выборочным средним
     \end{itemize}
     
     
@@ -2488,16 +2453,16 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:opt3}}
-    Let $S$ be a linear subspace of $\RR^N$, let $\boldP = \proj S$, and let
-    $\boldM$ be the residual projection as defined in \eqref{eq:ann0}.  The
-    following statements are true:
+    Пусть $S$ является подпространством $\RR^N$, $\boldP = \proj S$, и 
+    $\boldM$ является остаточной проекцией, определенной в \eqref{eq:ann0}.  
+    Верны следующие утверждения:
     %
     \begin{enumerate}
         \item $\boldM = \proj S^{\perp}$
-        \item $\boldy = \boldP \boldy + \boldM \boldy$ for any $\boldy \in
+        \item $\boldy = \boldP \boldy + \boldM \boldy$ для любых $\boldy \in
             \RR^N$
-        \item $\boldP \boldy \perp \boldM \boldy$ for any $\boldy \in \RR^N$
-        \item $\boldM \boldy = \boldzero$ if and only if $\boldy \in S$
+        \item $\boldP \boldy \perp \boldM \boldy$ для любых $\boldy \in \RR^N$
+        \item $\boldM \boldy = \boldzero$ тогда и только тогда, когда $\boldy \in S$
         \item $\boldP \circ \boldM = \boldM \circ \boldP = \boldzero$
     \end{enumerate}
     %
@@ -2509,7 +2474,7 @@
     \begin{figure}
        \begin{center}
         \input{figs_code/tikzfigs/orth_proj2D.tex}
-        \caption{\label{f:orth_proj2D} The residual projection}
+        \caption{\label{f:orth_proj2D} Остаточная проекция}
        \end{center}
     \end{figure}
     
@@ -2519,17 +2484,16 @@
 \begin{frame}
 
     \vspace{2em}
-    If $S_1$ and $S_2$ are two subspaces of $\RR^N$ with $S_1 \subset S_2$, 
-    then $S_2^{\perp} \subset S_1^{\perp}$
+    Если $S_1$ и $S_2$ --- два подпространства $\RR^N$ и $S_1 \subset S_2$, 
+    то $S_2^{\perp} \subset S_1^{\perp}$
 
-    The result in
-    fact~\ref{ET-fa:subsub} is reversed for $\boldM$
+    Результат факта~\ref{ET-fa:subsub} обратный для $\boldM$
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:subsub2}}
-    Let $S_1$ and $S_2$ be two subspaces of $\RR^N$ and let 
-    $\boldy \in \RR^N$.  Let $\boldM_1$ and $\boldM_2$ be the projections onto $S_1^{\perp}$
-    and $S_2^{\perp}$ respectively.  If $S_1 \subset S_2$, then
+    Пусть $S_1$ и $S_2$ --- два подпространства $\RR^N$ и 
+    $\boldy \in \RR^N$. Пусть $\boldM_1$ и $\boldM_2$ являются проекциями на $S_1^{\perp}$
+    и $S_2^{\perp}$ соответственно. Если $S_1 \subset S_2$, то
     %
     \begin{equation*}
         \boldM_1 \boldM_2 \boldy = \boldM_2 \boldM_1 \boldy = \boldM_2 \boldy
@@ -2537,29 +2501,30 @@
         
 \end{frame}
 
-\begin{frame}\frametitle{Gram-- Schmidt Orthogonalization} 
+\begin{frame}\frametitle{Ортогонализация Грама-Шмидта} 
 
     \vspace{2em}
-    Recall we showed every orthogonal subset of $\mathbb{R}^{N}$ not 
-    containing $\textbf{0}$ is linearly independent -- fact~\ref{ET-fa:orthii}
+    Вспомним, что любое ортогональное множество $\mathbb{R}^{N}$ не 
+    содержащее $\textbf{0}$ линейно независимо -- факт~\ref{ET-fa:orthii}
     
-    Here is an (important) partial converse 
+    Вот (важное) частично обратное этому утверждению
     
     \vspace{.7em}
     \Thm{\eqref{ET-t:gso}}
-    For each linearly independent set $\{\boldb_1, \ldots, \boldb_K\} \subset 
-    \RR^N$, there exists an orthonormal set $\{\boldu_1, \ldots, \boldu_K\}$
-    with
+    Для каждого линейно независимого множества $\{\boldb_1, \ldots, \boldb_K\} \subset 
+    \RR^N$, существует ортонормальное множество 
+    $\{\boldu_1, \ldots, \boldu_K\}$, такое что
+    
     %
     \begin{equation*}
         \Span \{\boldb_1, \ldots, \boldb_k\}
         = 
         \Span \{\boldu_1, \ldots, \boldu_k\}
-        \quad \text{for } \;
+        \quad \text{для } \;
         k = 1, \ldots, K
     \end{equation*}
     %
-    Formal proofs are solved as exercises~\ref{ET-ex:gsso}~to~\ref{ET-ex:gssth}
+    Формальные доказательства решаются как упражнения~\ref{ET-ex:gsso}~to~\ref{ET-ex:gssth}
     
 \end{frame}
 
@@ -2567,25 +2532,24 @@
 \begin{frame}
     
     \vspace{2em}
-    The proof provides an important algorithm for generating
-    the orthonormal set $\{\boldu_1, \ldots, \boldu_K\}$
+    Доказательство дает важный алгоритм построения ортонормированного множества $\{\boldu_1, \ldots, \boldu_K\}$
     
     \vspace{1em}
-    The first step is to
-    construct orthogonal sets $\{\boldv_1, \ldots, \boldv_k\}$ with span identical
-    to $\{\boldb_1, \ldots, \boldb_k\}$ for each $k$
+    Первый шаг --- построить ортогональные множества 
+    $\{\boldv_1, \ldots, \boldv_k\}$ с линейной оболочкой, идентичной
+    $\{\boldb_1, \ldots, \boldb_k\}$ для каджого $k$
     
-    The construction of
-    $\{\boldv_1, \ldots, \boldv_K\}$ uses the \navy{Gram--Schmidt
-    orthogonalization} procedure:
+    Построение
+    $\{\boldv_1, \ldots, \boldv_K\}$ использует 
+    \navy{ортогонализацию Грама-Шмидта}:
     
-    For each $k = 1, \ldots, K$, let 
+    Для каждого $k = 1, \ldots, K$, пусть 
     %
     \begin{enumerate}
         \item $B_k := \Span\{\boldb_1, \ldots, \boldb_k\}$,
-        \item $\boldP_k := \proj B_k$ and $\boldM_k := \proj B_k^{\perp}$,
-        \item $\boldv_k := \boldM_{k-1} \boldb_k$ where $\boldM_0$ is the identity
-            mapping, and
+        \item $\boldP_k := \proj B_k$ и $\boldM_k := \proj B_k^{\perp}$,
+        \item $\boldv_k := \boldM_{k-1} \boldb_k$, где $\boldM_0$ является
+            тождественным отображением, и
         \item $V_k := \Span\{\boldv_1, \ldots, \boldv_k\}$.
     \end{enumerate}
     
@@ -2594,15 +2558,16 @@
 \begin{frame}
 
     \vspace{2em}
-    In step 3. we map each successive element $\boldb_k$ into a subspace 
-    orthogonal to the subspace generated by $\boldb_1, \ldots, \boldb_{k-1}$
+    В шаге 3. мы сопоставляем каждый последующий элемент $\boldb_k$ в подпространство, 
+    ортогональное подпространству, созданному с помощью $\boldb_1, \ldots, \boldb_{k-1}$
     
     \vspace{.7em}
-    To complete the argument, define $\boldu_k$ by $\boldu_k :=
+    В завершение, определим $\boldu_k$ с помощью $\boldu_k :=
     \boldv_k / \| \boldv_k \|$ 
     
-    The  set of vectors 
-    $\{\boldu_1, \ldots, \boldu_k\}$ is orthonormal with span equal to $V_k$
+    Множество векторов 
+    $\{\boldu_1, \ldots, \boldu_k\}$ является ортонормальным с линейной оболочкой,
+    равной $V_k$
     
 \end{frame}
 
