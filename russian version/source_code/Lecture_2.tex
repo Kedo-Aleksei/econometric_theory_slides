@@ -10,8 +10,8 @@
 \subtitle
 {Лекция 2: Линейная Алгебра и Матрицы}
 
-\author{Джон Стачурски \\ \vspace{0.5em} 
-	\scriptsize Лекции: Акшай Шенкер \\ \vspace{0.1em} 
+\author{Джон Стачурски \\ \vspace{.5em} 
+	\scriptsize Лекции: Акшай Шенкер \\ \vspace{.1em} 
 	\scriptsize Перевел: Алексей Кедо}
 
 
@@ -1955,14 +1955,14 @@
     Пусть:
     %
     \begin{itemize}
-        \item $\boldA$ и $\boldb$ be as in the statement of the theorem
-        \item $\hboldx$ be as in \eqref{eq:dlse} и
+        \item $\boldA$ и $\boldb$ будут как в формулировке теоремы
+        \item $\hboldx$ как в \eqref{eq:dlse} и
         \item $S := \colspace \boldA$
     \end{itemize}
     %
-    By full column rank assumption, the columns of $\boldA$ form a basis for
-    $S$. Applying theorem~\ref{ET-t:projon}, orthogonal projection of $\boldb$
-    onto $S$ is 
+    При условии полного ранга столбцов, столбцы $\boldA$ формируют базис для
+    $S$. Применяем теорему~\ref{ET-t:projon}, ортогональная проекция $\boldb$
+    на $S$:
     %
     \begin{equation}
         \label{eq:ibprojon}
@@ -1971,8 +1971,8 @@
          = \boldA \hboldx
     \end{equation}
     
-    Since the orthogonal projection theorem gives a unique
-    minimizer in terms of the closest point in $S$ to $\boldb$,
+   Поскольку теорема об ортогональной проекции дает единственный минимизатор в терминах 
+   ближайшей точки в $S$ к $\boldb$,
     %
     \begin{equation}
         \label{eq:sfy}
@@ -1985,36 +1985,36 @@
 \begin{frame}
     
     \vspace{2em}
-    \Prf (cont.) Pick any $\boldx \in \RR^K$ , такая что $\boldx \not= \hboldx$
+    \Prf (прод.) Возьмем любой $\boldx \in \RR^K$, такой что $\boldx \not= \hboldx$
     
-    We have $\boldA \boldx \in S$
+    Получается $\boldA \boldx \in S$
     
-    In addition, since $\boldx \not= \hboldx$, и since $\boldA$ has full column
-    rank, it must be that $\boldA \boldx \not= \boldA \hboldx$
-    (ex.~\ref{ET-ex:ui})
+    К тому же, так как $\boldx \not= \hboldx$ и $\boldA$ имеют полный ранг столбцов, 
+    должно быть $\boldA \boldx \not= \boldA \hboldx$
+    (упр.~\ref{ET-ex:ui})
     
      \vspace{.7em}
-    Hence
+    Значит
     %
     \begin{equation*}
         \| \boldb - \boldA\hboldx \| < \| \boldb - \boldA \boldx\|
         \quad \text{для всех } \boldx \in \RR^K, \; \boldx \not= \hboldx
     \end{equation*}
     %
-    In other words, $\hboldx$ is the unique solution to \eqref{eq:mxls}
+    Другими словами, $\hboldx$ является единственным решением \eqref{eq:mxls}
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    In  \eqref{eq:dlse}, the matrix $(\boldA^\T\boldA)^{-1} \boldA^\T$ 
-    называется the \navy{pseudoinverse} of $\boldA$ 
+    В \eqref{eq:dlse} матрица $(\boldA^\T\boldA)^{-1} \boldA^\T$ 
+    называется \navy{псевдообратной} матрицы $\boldA$ 
     
     \vspace{1em}
-    если $K =
-    N$, then the
-    least squares solution $\hboldx$ in \eqref{eq:dlse} reduces to:
+    Если $K =
+    N$, то
+    решение методом наименьших квадратов $\hboldx$ в \eqref{eq:dlse} сокращается до:
     %
     \begin{equation*}
         \boldx = \boldA^{-1}\boldb
@@ -2025,38 +2025,37 @@
 \begin{frame}
 
      \vspace{2em}
-    What happens если the columns of $\boldA$ are not
-    linearly independent? 
+    Что произойдет, если столбцы $ \ boldA $ не будут
+    линейно независимыми? 
     
     \begin{itemize}
-        \item   the set $\colspace \boldA$ is still a linear
-        subspace и the orthogonal projection theorem still gives us a closest
-        point $\boldP \boldb$ to $\boldb$ in $\colspace \boldA$
-        \item   since $\boldP
-        \boldb \in \colspace \boldA$, there still exists a vector $\hboldx$ such
-        that $\boldP \boldb = \boldA \hboldx$
-        \item    but there
-        exists an infinity of such vectors
+        \item   множество $\colspace \boldA$ все еще линейное
+        подпространство и теорема ортогональной проекции все еще дает нам ближайшую
+        точку $\boldP \boldb$ к $\boldb$ в $\colspace \boldA$
+        \item   так как $\boldP
+        \boldb \in \colspace \boldA$, все еще существует вектор $\hboldx$, такой что
+        $\boldP \boldb = \boldA \hboldx$
+        \item   но таких векторов существует бесконечное множество
     \end{itemize}
     
-    See Exercise~\ref{ET-ex:lsiosol}
+    Смотрите упражнение~\ref{ET-ex:lsiosol}
     
 \end{frame}
 
 
 \section{Diagonalisation и Spectral Theory} 
 
-\begin{frame}\frametitle{QR Decomposition}
+\begin{frame}\frametitle{QR-разложение}
 
      \vspace{2em}
-    The \navy{QR decomposition} of a given matrix $\boldA$ is a product of the form $\boldQ \boldR$
+    \navy{QR-разложение} данной матрицы $\boldA$ --- это произведение вида$\boldQ \boldR$
     \begin{itemize}
-        \item first matrix has orthonormal columns и 
-        \item the second is upper triangular
+        \item первая матрица имеет ортонормированные столбцы и 
+        \item вторая является верхней треугольной
     \end{itemize}
     
     \vspace{1em}
-    Applications include least squares problems и the computation of eigenvalues
+    Приложения включают задачи наименьших квадратов и вычисление собственных значений
     
 \end{frame}
 
@@ -2064,57 +2063,57 @@
 
      \vspace{2em}
     \Thm{\eqref{ET-t:qr}}
-    если $\boldA$ is an $N \times K$ matrix with full column rank, then there exists a
-    factorization $\boldA = \boldQ \boldR$ where
+    Если матрица $\boldA$ размера $N \times K$ имеет полный ранг столбцов, 
+    то существует факторизация $\boldA = \boldQ \boldR$, где
     %
     \begin{enumerate}
-        \item $\boldR$ is $K \times K$, upper triangular и nonsingular, и 
-        \item $\boldQ$ is $N \times K$, with orthonormal columns
+        \item $\boldR$ размера $K \times K$ является верхней треугольной и несингулярной, и 
+        \item $\boldQ$ размера $N \times K$ имеет ортонормированные столбцы
     \end{enumerate}
     %
-    See page~\pageref{ET-t:qr} in ET for a proof
+    Смотрите страницу~\pageref{ET-t:qr} в ET для доказательства
     
 \end{frame}
 
 \begin{frame}
 
      \vspace{2em}
-    Given the decomposition $\boldA = \boldQ \boldR$, the least squares solution
-    $\hboldx$ defined in \eqref{eq:dlse} can also be written as:
+    Возьмем разложение $\boldA = \boldQ \boldR$, рещение методом наименьших квадратов
+    $\hboldx$, определенное в \eqref{eq:dlse}, может также записываться как:
     $$\hboldx =
     \boldR^{-1} \boldQ^\T \boldb$$
     
-    See Ex.~\ref{ET-ex:qrlsq}
+    Смотрите упр.~\ref{ET-ex:qrlsq}
     
     \vspace{.7em}
-    Premultiplying by $\boldR$:
+    Умножение на $\boldR$:
     $$\boldR \hboldx = \boldQ^\T \boldb$$
     
 \end{frame}
 
-\begin{frame}\frametitle{Diagonalisation и Spectral Theory}
+\begin{frame}\frametitle{Диагонализация и спектральная теория}
 
      \vspace{2em}
-    если $f \colon A \to A$ и $g \colon B \to B$, then
-    $g$ is said to be \navy{topologically conjugate} to $f$ whenever there exists
-    a continuous bijection $\tau \colon B \to A$ , такая что $$f = \tau \circ g \circ
+    Если $f \colon A \to A$ и $g \colon B \to B$, то
+    говорят, что $g$ \navy{топологически сопряжен} с $f$ везде, где существует
+    непрерывная биекция $\tau \colon B \to A$, такая что $$f = \tau \circ g \circ
     \tau^{-1}$$
     
     \vspace{.7em}
-    Can be beneficial если $g$ is somehow simpler
-    than $f$
+    Может быть полезно, если $g$ проще $f$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    A square matrix $\boldA$ is said to be \navy{similar} to another matrix $\boldB$ если there exists an invertible matrix $\boldP$ , такая что $\boldA = \boldP \boldB \boldP^{-1}$
+    Говорят, что квадратная матрица $\boldA$ \navy{подобна} матрице $\boldB$, если 
+    существует обратимая матрица $\boldP$, такая что $\boldA = \boldP \boldB \boldP^{-1}$
 
     \begin{figure}
    \begin{center}
     \input{figs_code/tikzfigs/diagonalize.tex}
-    \caption{\label{f:diagonalize} $\boldA$ is similar to $\boldB$}
+    \caption{\label{f:diagonalize} $\boldA$ подобна $\boldB$}
    \end{center}
     \end{figure}
     
@@ -2123,11 +2122,11 @@
 \begin{frame}
    
     \vspace{2em}
-    если $\boldA$ is similar to a diagonal matrix, then $\boldA$ is
-    called \navy{diagonalizable}
+    Если $\boldA$ подобна диагональной матрице, то $\boldA$ 
+    называется \navy{диагонализируемой}
     
     \vspace{.7em}
-    We are interested in similarity to simple matrices, и diagonal matrices are the simplest kind 
+    Нас интересует подобие простым матрицам, диагональные матрицы --- самый простой вид 
     
 \end{frame}
 
@@ -2135,58 +2134,58 @@
 
      \vspace{2em}
     \Fact{\eqref{ET-fa:powsm}}
-        если $\boldA$ is similar to $\boldB$, then $\boldA^t$ is similar to
+        Если $\boldA$ подобна $\boldB$, то $\boldA^t$ подобна
         $\boldB^t$ для всех $t \in \NN$
     
     \vspace{.7em}
     \Eg
-    We want to calculate $\boldA^t$ for some given $t \in \NN$ 
+    Мы хотим вычислить $\boldA^t$ для некоторых данных $t \in \NN$ 
     
-    если $\boldA = \boldP \boldLambda \boldP^{-1}$ for some
-    $\boldLambda = \diag(\lambda_1, \ldots, \lambda_N)$, then by
-    fact~\ref{ET-fa:powsm} и fact~\ref{ET-fa:powdm}, we
-    have
+    Если $\boldA = \boldP \boldLambda \boldP^{-1}$ для некоторых
+    $\boldLambda = \diag(\lambda_1, \ldots, \lambda_N)$, то по 
+    факту~\ref{ET-fa:powsm} и факту~\ref{ET-fa:powdm}, получается
     %
         $$\boldA^t = \boldP \diag(\lambda_1^t, \ldots, \lambda_N^t)
         \boldP^{-1}$$
     
 \end{frame}
 
-\begin{frame}\frametitle{Diagonalization и Eigenvalues}
+\begin{frame}\frametitle{Диагонализация и собственные значения}
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:diagee}}
-    если $\boldA = \boldP \boldLambda \boldP^{-1}$ for some $\boldLambda =
-        \diag(\lambda_1, \ldots, \lambda_N)$, then $(\col_n \boldP,
-            \lambda_n)$ is an eigenpair of $\boldA$ for each $n$
+    Если $\boldA = \boldP \boldLambda \boldP^{-1}$ для некоторых $\boldLambda =
+        \diag(\lambda_1, \ldots, \lambda_N)$, то $(\col_n \boldP,
+            \lambda_n)$ является собственной парой $\boldA$ для любого $n$
             
     \vspace{.7em}    
     
     \Prf
-    Observe $\boldA
-    = \boldP \boldLambda \boldP^{-1}$ implies $\boldA \boldP = \boldP \boldLambda$
+    Заметим, что $\boldA = \boldP \boldLambda \boldP^{-1}$ значит, 
+    что $\boldA \boldP = \boldP \boldLambda$
     
     Equating the $n$th column on each side gives 
+    Рассмотрим столбец $n$ с каждой стороны:
     %
         $$\boldA \boldp_n = \lambda_n
         \boldp_n$$
     %
-    Where $\boldp_n := \col_n \boldP$
+    Где $\boldp_n := \col_n \boldP$
     
-    Note  $\boldp_n$ is not the
-    zero vector because $\boldP$ is invertible
+    Заметим, что $\boldp_n$ --- ненулевой вектор,
+    так как $\boldP$ обратима
         
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    But when is $\boldA$ diagonalizable?  
+    Но когда $\boldA$ диагонализируема?
     
     \vspace{.7em}
     \Fact (3.3.7)
-    An $N \times N$ matrix $\boldA$ is diagonalizable если и only если
-    it has $N$ linearly independent eigenvectors
+    Матрица $\boldA$ размера $N \times N$ диагонализируема тогда и только тогда, когда
+    она имеет $N$ линейно независимых собственных векторов
 
 \end{frame}
 
@@ -2194,18 +2193,18 @@
 \begin{frame}
 
      \vspace{2em}
-    In some cases, we can get an even simpler matrix decomposition если 
-    the matrix $\boldP$ has orthogonal columns 
+    В некоторых случаях, мы можем получить еще более простое разложение матрицы, если 
+    матрица $\boldP$ имеет ортогональные столбцы
 
-    These kinds of matrices are called \navy{orthogonal matrices}
+    Такие матрицы называются \navy{ортогональными матрицами}
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:orthmat}}
-    если $\boldQ$ и $\boldP$ are $N \times N$ orthogonal matrices, then
+    Если $\boldQ$ и $\boldP$ --- ортогональные матрицы размера $N \times N$, то 
     %
     \begin{enumerate}
-        \item $\boldQ^\T$ is orthogonal и $\boldQ^{-1} = \boldQ^\T$,
-        \item $\boldQ \boldP$ is orthogonal, и
+        \item $\boldQ^\T$ ортогональна и $\boldQ^{-1} = \boldQ^\T$,
+        \item $\boldQ \boldP$ ортогонально, и
         \item $\det \boldQ \in \{-1, 1\}$.
     \end{enumerate}
     
@@ -2214,17 +2213,17 @@
 \begin{frame}
 
     \vspace{2em}
-    если $\boldA = \boldQ \boldLambda \boldQ^{-1}$ и $\boldQ$ has orthonormal columns,
-    then $$\boldA = \boldQ \boldLambda \boldQ^\T$$
+    Если $\boldA = \boldQ \boldLambda \boldQ^{-1}$ и $\boldQ$ имеют ортогональные столбцы,
+    то $$\boldA = \boldQ \boldLambda \boldQ^\T$$
     
-    Clearly, $\boldA$ must be symmetric. Next theorem shows symmetry of $\boldA$ is also sufficient
+    Ясно, что $\boldA$ должна быть симметричной. Следующая теорема показывает, что симметрия $\boldA$ также достаточна
     
     \vspace{.7em}
     \Thm{\eqref{ET-t:dismat}}
-    если $\boldA$ is symmetric, then $\boldA$ can be
-    diagonalized as $\boldA = \boldQ \boldLambda \boldQ^\T$, where 
-    $\boldQ$ is an orthogonal matrix и $\boldLambda$ is the 
-    diagonal matrix formed from the eigenvalues of $\boldA$
+    Если $\boldA$ симметрична, то $\boldA$ может быть
+    диагонализована как $\boldA = \boldQ \boldLambda \boldQ^\T$, где 
+    $\boldQ$ --- ортогональная матрица и $\boldLambda$ ---
+    диагональная матрица, сформированная из собственных значений $\boldA$
     
 \end{frame}
 
@@ -2232,20 +2231,20 @@
 
    \vspace{2em}
 
-    Above theorem was a version of the \navy{spectral decomposition theorem}
+    Вышеупомянутая теорема была версией \navy{теоремы о спектральном разложении}
 
-    $\boldQ \boldLambda \boldQ^\T$ называется the \navy{symmetric eigenvalue
-    decomposition} of $\boldA$\ -- action of $\boldA$ on an
-    $N \times 1$ vector $\boldx$:
+    $\boldQ \boldLambda \boldQ^\T$ называется \navy{симметричным разложением на собственные 
+    	значения} матрицы $\boldA$\ -- воздействие $\boldA$ на вектор $\boldx$ 
+    размера $N \times 1$:
     %
     \begin{equation*}
         \boldA\boldx = \sum_{n=1}^N \lambda_n (\boldu_n^\T \boldx) \boldu_n
     \end{equation*}
     %
-    where $\lambda_n$ is the $n$th eigenvalue of $\boldA$ и $\boldu_n = \col_n \boldQ$
+    где $\lambda_n$ является $n$-ым собственным значением $\boldA$ и $\boldu_n = \col_n \boldQ$
     
     \vspace{.7em}
-    Compare with $\boldx = \sum_{n=1}^N (\boldu_n^\T \boldx) \boldu_n$
+    Сравните с $\boldx = \sum_{n=1}^N (\boldu_n^\T \boldx) \boldu_n$
     
 \end{frame}
 
@@ -2253,25 +2252,25 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:sqrtsnd}}
-    если $\boldA$ is nonnegative definite, then $\sqrt{\boldA}$
-    exists и equals $\boldQ \sqrt{\boldLambda} \boldQ^\T$.
-    The matrix $\sqrt{\boldLambda}$ is given by $\diag(\sqrt{\lambda_1},
+    Если $\boldA$ неотрицательно определена, то $\sqrt{\boldA}$
+    существует и равняется $\boldQ \sqrt{\boldLambda} \boldQ^\T$.
+    Матрица $\sqrt{\boldLambda}$ равняется $\diag(\sqrt{\lambda_1},
     \ldots, \sqrt{\lambda_N})$
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:cholesky}}
-    если $\boldA$ is positive definite, then there exists a nonsingular, upper
-    triangular matrix $\boldR$ , такая что $\boldA = \boldR^\T \boldR$
+    Если $\boldA$ положительно определена, то существует несингулярная, верхняя
+    треугольная матрица $\boldR$, такая что $\boldA = \boldR^\T \boldR$
     
-    This decomposition называется the \navy{Cholesky decomposition}
+    Такое разложение называется \navy{разложением Холецкого}
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    \Prf (Cholesky decomposition)
-    We can write:
+    \Prf (Разложение Холецкого)
+    Мы можем написать:
     %
         \begin{equation*}
             \boldA 
@@ -2280,15 +2279,15 @@
             = (\sqrt{ \boldLambda} \boldQ^\T)^\T \sqrt{ \boldLambda} \boldQ^\T
         \end{equation*}
     %
-    Then apply the QR decomposition to $\sqrt{ \boldLambda} \boldQ^\T$:
+    Затем применим QR-разложение к $\sqrt{ \boldLambda} \boldQ^\T$:
     %
         $$\sqrt{ \boldLambda} \boldQ^\T = \tilde \boldQ \boldR$$
     %
-    where $\boldR$ is nonsingular и upper triangular, и $\tilde \boldQ$ has
-    orthonormal columns
+    где $\boldR$ несингулярная и верхняя треугольная, и $\tilde \boldQ$ имеет
+    ортонормированные столбцы
     
     \vspace{.7em}
-    Because the columns of $\tilde \boldQ$ are orthonormal,
+    Так как столбцы $\tilde \boldQ$ ортонормированные,
     %
         \begin{equation*}
         \boldA 
@@ -2303,15 +2302,17 @@
 \begin{frame}
 
     \vspace{2em}
-    \frametitle{Norms и Continuity}
+    \frametitle{Нормы и непрерывность}
     
-    Given vector sequence $\{\boldx_n\}$ in $\RR^K$ и any point $\boldx \in \RR^K$, we say that $\{\boldx_n\}$ \navy{converges} to $\boldx$ и write
-    \navy{$\boldx_n \to \boldx$} если, для любых $\epsilon > 0$, there exists an $N
-    \in \NN$ , такая что $\|\boldx_n - \boldx\| < \epsilon$ whenever $n \geq N$
+    Возьмем векторную последовательность $\{\boldx_n\}$ в $\RR^K$ и любую точку 
+    $\boldx \in \RR^K$. Говорят, что $\{\boldx_n\}$ \navy{сходится} к $\boldx$ и 
+    записывается
+    \navy{$\boldx_n \to \boldx$}, если для любых $\epsilon > 0$, существует $N
+    \in \NN$, такое что $\|\boldx_n - \boldx\| < \epsilon$ при $n \geq N$
     
     \vspace{.7em}
-    Equivalently, the real-valued sequence $z_n := \|\boldx_n - \boldx\|$
-    converges to zero in $\RR$ as $n \to \infty$
+    Эквивалентно, последовательность действительных чисел $z_n := \|\boldx_n - \boldx\|$
+    сходится к нулю ы $\RR$ при $n \to \infty$
 
 \end{frame}
 
@@ -2319,14 +2320,14 @@
     
     \vspace{2em}
     \Fact (3.3.11)
-    The following results hold:
+    Имеют место следующие результаты:
     %
     \begin{enumerate}
-        \item если $\boldx_n \to \boldx$ и $\boldy_n \to \boldy$, then $\boldx_n +
+        \item если $\boldx_n \to \boldx$ и $\boldy_n \to \boldy$, то $\boldx_n +
             \boldy_n \to \boldx +  \boldy$.
-        \item если $\boldx_n \to \boldx$ и $\alpha \in \RR$, then $\alpha \boldx_n 
+        \item если $\boldx_n \to \boldx$ и $\alpha \in \RR$, то $\alpha \boldx_n 
             \to \alpha \boldx$.
-        \item $\boldx_n \to \boldx$ если и only если $\bolda^\T \boldx_n \to
+        \item $\boldx_n \to \boldx$ тогда и только тогда, когда $\bolda^\T \boldx_n \to
             \bolda^\T \boldx$ для всех $\bolda \in \RR^K$.
     \end{enumerate}
 
@@ -2336,10 +2337,10 @@
 \begin{frame}
 
     \vspace{2em}
-    We want to extend notion of convergence to matrices
+    Мы хотим распространить понятие сходимости на матрицы
     
     \vspace{.7em}
-    The \navy{matrix norm} of $N \times K$ matrix $\boldA$:
+    \navy{Норма матрицы} $\boldA$ размера $N \times K$:
     %
     \begin{equation}
     \label{eq:mn}
@@ -2351,11 +2352,9 @@
     \end{equation}
 
     \vspace{.7em}
-    The value of the matrix norm is not easy to solve for in
-    general
+    Значение нормы матрицы в общем случае найти непросто
     
-    However, the matrix
-    norm behaves like the vector norm
+    Однако, матричная норма ведет себя как векторная норма
     
 \end{frame}
 
@@ -2363,13 +2362,12 @@
 
     \vspace{2em}
     \Fact (3.3.12)
-    для любых conformable matrices $\boldA$ и $\boldB$, the matrix norm 
-    satisfies
+    Для любых согласующихся матриц $\boldA$ и $\boldB$, матричная норма удовлетворяет
     %
     \begin{enumerate}
-        \item $\| \boldA \| \geq 0$ и $\| \boldA \| = 0$ если и only если all entries of
-            $\boldA$ are zero,
-        \item $\| \alpha \boldA \| = |\alpha| \| \boldA \|$ для любых scalar
+        \item $\| \boldA \| \geq 0$ и $\| \boldA \| = 0$ тогда и только тогда, когда 
+        все записи $\boldA$ нулевые,
+        \item $\| \alpha \boldA \| = |\alpha| \| \boldA \|$ для любых скаляров
             $\alpha$,
         \item $\| \boldA + \boldB \| \leq \| \boldA \| + \| \boldB \|$, и
         \item $\| \boldA \boldB \| \leq \| \boldA \| \| \boldB \|$.
@@ -2382,33 +2380,32 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:mnbd}}
-    для любых $J \times K$ matrix $\boldA$ with elements $a_{jk}$, we have
+    Для любых матриц $\boldA$ размера $J \times K$ с элементами $a_{jk}$, выходит
     %
     \begin{equation*}
         \| \boldA \| \leq \sqrt{JK} \max_{jk} |a_{jk}|
     \end{equation*}
     
     \vspace{1em}
-    если every element of
-    $\boldA$ is close to zero then $\| \boldA \|$ is also close to zero
+    если каждый элекмент
+    $\boldA$ близок к нулю, то $\| \boldA \|$ тоже близка к нулю
 
 \end{frame}
 
-\begin{frame}\frametitle{Neumann Series}
+\begin{frame}\frametitle{Ряд Неймана}
 
     \vspace{2em}
-    Later on, we study dynamic systems of the form
+    В дальнейшем мы изучаем динамические системы вида
     %
         $$\boldx_{t+1} = \boldA \boldx_t + \boldb$$
     %
     
     \vspace{.7em}
-    Does there exist a ``stationary" vector
-  $\boldx \in \RR^N$, in the sense that $\boldx_t = \boldx$ implies $\boldx_{t+1} =
-  \boldx$?
+    Существует ли ``стационарный`` вектор
+  	$\boldx \in \RR^N$ в том смысле, что $\boldx_t = \boldx$ значит, что 
+  	$\boldx_{t+1} = \boldx$?
   
-    We seek an $\boldx \in \RR^N$ that solves the
-    system of equations
+    Мы ищем $\boldx \in \RR^N$, являющийся решением системы уравнений
     %
     \begin{equation}
         \label{eq:lpfde}
@@ -2422,10 +2419,10 @@
 \begin{frame}
     
     \vspace{2em}
-    Рассмотрим the scalar case $x = a x + b$
+    Рассмотрим случай со скалярами $x = a x + b$
     
     \vspace{.7em}
-    если $|a| < 1$, then there is a unique solution
+    Если $|a| < 1$, то существует единственное решение
     %
     \begin{equation*}
         \bar x 
@@ -2434,12 +2431,12 @@
     \end{equation*}
  
     \vspace{.7em}
-    The Neumann series Lemma helps generalise to $\mathbb{R}^{N}$
+    Лемма о рядах Неймана помогает обобщить это до $\mathbb{R}^{N}$
     
     \vspace{1em}
     \Thm{\eqref{ET-t:nms}}
-    если $\boldA$ is square и $\| \boldA^j \| < 1$
-    for some $j \in \NN$, then $\boldI - \boldA$ is invertible, и
+    Если матрица $\boldA$ квадратная и $\| \boldA^j \| < 1$
+    для некоторых $j \in \NN$, то $\boldI - \boldA$ обратима, и
     %
     \begin{equation*}
         \label{eq:nmse}
@@ -2451,8 +2448,8 @@
 \begin{frame}
 
     \vspace{.7em}
-    When the condition of the Neumann series lemma holds, \eqref{eq:lpfde}
-    has the unique solution
+    Когда выполняется условие леммы о рядах Неймана, \eqref{eq:lpfde}
+    имеет единственное решение
     %
     \begin{equation*}
         \bar \boldx 
@@ -2460,18 +2457,16 @@
         = \sum_{i=0}^{\infty} \boldA^i  \boldb 
     \end{equation*}
     
-    To test the condition, we use the  \navy{spectral radius} of
-    $\boldA$:
+    Чтобы проверить это решение, используем \navy{спектральный радиус} $\boldA$:
     %
     \begin{equation*}
         \label{eq:srmn}
         \rho(\boldA) := \max \setntn{ |\lambda| }
-        { \lambda \text{ is an eigenvalue of } \boldA}
+        { \lambda \text{ является собственным значением } \boldA}
     \end{equation*}
     
     \vspace{1em}
-    $|\lambda|$ is the \navy{modulus} of the possibly complex number
-    $\lambda$
+    $|\lambda|$ --- это \navy{модуль} возможно комплексного числа $\lambda$
     
 
 \end{frame}
@@ -2480,16 +2475,16 @@
 
     \vspace{2em}
     \Fact
-    если $\rho(\boldA) < 1$, then $\| \boldA^j \| < 1$ for some $j \in \NN$
+    Если $\rho(\boldA) < 1$, то $\| \boldA^j \| < 1$ для некоторых $j \in \NN$
     
     \vspace{.7em}
-    Why is $\rho(\boldA) < 1$ is sufficient?
+    Почему достаточно $\rho(\boldA) < 1$?
     
-    We need
-    $\sum_{i=0}^t \boldA^i (\boldI - \boldA)$ to close be $\boldI$ for
-    large $t$
+    Нам нужно
+    $\sum_{i=0}^t \boldA^i (\boldI - \boldA)$ было близко к $\boldI$ для
+    больших $t$
     
-    We have:
+    Получается:
     \begin{equation*}
         \sum_{i=0}^t \boldA^i (\boldI - \boldA)
         =
@@ -2503,16 +2498,16 @@
 \begin{frame}
     
     \vspace{2em}
-    Simplеслиy to the case where $\boldA$ is diagonalizable:
+    Упростим до случая, где $\boldA$ диагонализируется:
     %
         $$\boldA = \boldP \boldLambda \boldP^{-1}$$
     %
-    where $\boldLambda$ is a diagonal
-    matrix containing the eigenvalues $\lambda_1, \ldots, \lambda_N$ of $\boldA$
-    on its principal diagonal
+    где $\boldLambda$ --- диагональная матрица,
+    содержащая собственные значения $\lambda_1, \ldots, \lambda_N$ матрицы $\boldA$
+    на главной диагонали. 
 
     \vspace{.7em}
-    Now, use fact~\ref{ET-fa:powsm},
+    Теперь используем факт~\ref{ET-fa:powsm},
     %
     \begin{equation*}
         \boldA^t
@@ -2528,8 +2523,8 @@
         \boldP^{-1}
     \end{equation*}
     %
-    если $\rho(\boldA) < 1$, then $|\lambda_n| < 1$ для всех $n$, и hence
-    $\lambda_n^t \to 0$ as $t \to \infty$. It follows that $\boldA^t \to
+    Если $\rho(\boldA) < 1$, то $|\lambda_n| < 1$ для всех $n$, и значит
+    $\lambda_n^t \to 0$ при $t \to \infty$. Из этого следует, что $\boldA^t \to
     \boldzero$ 
     
 \end{frame}
