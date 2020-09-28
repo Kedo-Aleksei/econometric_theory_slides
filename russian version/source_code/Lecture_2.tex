@@ -5,12 +5,14 @@
 
 
 
-\title{A Primer in Econometric Theory}
+\title{Учебник по Эконометрике}
 
 \subtitle
-{Lecture 2: Linear Algebra and Matrices}
+{Лекция 2: Линейная Алгебра и Матрицы}
 
-\author{John Stachurski \\ \tiny Lectures by Akshay Shanker}
+\author{Джон Стачурски \\ \vspace{0.5em} 
+	\scriptsize Лекции: Акшай Шенкер \\ \vspace{0.1em} 
+	\scriptsize Перевел: Алексей Кедо}
 
 
 
@@ -21,14 +23,14 @@
   \titlepage
 \end{frame}
 
-\section{Matrices and Linear Equations}
+\section{Матрицы и Линейные уравнения}
 
 \begin{frame}
     
     \vspace{2em}
-    \frametitle{Matrices}
+    \frametitle{Матрицы}
 
-    Typical \navy{$N \times K$ matrix}: 
+    Обычная \navy{$N \times K$ матрица}: 
     
     \begin{equation*}
         \boldA = 
@@ -44,7 +46,7 @@
     %
     
     \vspace{.7em}
-    Symbol $a_{nk}$ stands for element in the $n$-th row of the $k$-th column
+    Символ $a_{nk}$ означает элемент, стоящий в $n$-ой строке $k$-ого столбца
 
 \end{frame}
 
@@ -52,25 +54,26 @@
 \begin{frame}
     
     \vspace{2em}
-    $N \times K$ matrix also called a 
+    $N \times K$ матрица также называется 
     %
     \begin{itemize}
-        \item \navy{row vector} if $N = 1$
-        \item \navy{column vector} if $K = 1$
+        \item \navy{вектором строки}, если $N = 1$
+        \item \navy{вектором столбца}, если $K = 1$
     \end{itemize}
     
     \vspace{.7em}
-    If $N = K$, then $\boldA$ is called \navy{square}
+    Если $N = K$, то матрицу $\boldA$ называют \navy{квадратной}
     
-    If $\boldA$ is square and $a_{nk} = a_{kn}$ for every $k$ and $n$, then $\boldA$ is called \navy{symmetric}   
+    Если $\boldA$ квадратная и $a_{nk} = a_{kn}$ для любых $k$ и $n$, то $\boldA$
+    называют \navy{симметричной}   
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Often  elements of a matrix $\boldA$ represent coefficients in a system of linear
-    equations
+    Часто элементы матрицы $\boldA$ представляют собой коэффициенты 
+    в системе линейных уравнений
     %
     \begin{equation*}
         \label{eq:sleq}
@@ -86,22 +89,23 @@
 \begin{frame}
 
     \vspace{2em}
-    For a matrix $\boldA$, the notation:
+    Для матрицы $\boldA$ применяются обозначения:
     \begin{itemize}
-        \item $\row_n \boldA$ refers to the
-    $n$th row of $\boldA$
-        \item $\col_k \boldA$ to refers to the $k$th column of $\boldA$
+        \item $\row_n \boldA$ означает
+    $n$-ую строку $\boldA$
+        \item $\col_k \boldA$ означает $k$-ый столбец $\boldA$
     \end{itemize} 
     
     \vspace{.7em}
-    The symbols $\boldzero$ and $\boldone$ represent matrices with all elements equal to zero and one respectively
+    Символы $\boldzero$ и $\boldone$ представляют собой матрицы, 
+    все элементы которых равны нулю и единице соответственно
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    For square $\boldA$, elements $a_{nn}$ called the \navy{principal diagonal}:
+    Для квадратной матрицы $\boldA$, элементы $a_{nn}$ называют \navy{главной диагональю}:
     %
     \begin{equation*}
         \left(
@@ -115,7 +119,7 @@
     \end{equation*}
     %
 
-    \navy{Identity matrix}:
+    \navy{Единичная матрица}:
     %
     \begin{equation*}
         \boldI := 
@@ -129,25 +133,25 @@
         \right)
     \end{equation*}
     %
-    Note  $\col_n \boldI = \bolde_n$, the $n$th canonical basis vector in $\RR^N$
+    Заметим, что $\col_n \boldI = \bolde_n$ --- $n$-ый канонический базис $\RR^N$
     
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Algebraic Operations for Matrices}
+    \frametitle{Алгебраические операции над матрицами}
 
     \vspace{2em}
-    Operations for matrices:
+    Операции над матрицами:
     
     \begin{itemize}
-        \item Scalar multiplication 
-        \item Addition
-        \item Matrix multiplication
+        \item Умножение на скаляр 
+        \item Сложение
+        \item Умножение матриц
     \end{itemize}
     
     \vspace{.7em}
-    Scalar multiplication is element by element, as with vectors:
+    Умножение на скаляр выполняется поэлементно, как с векторами:
     %
     \begin{equation*}
         \gamma 
@@ -176,7 +180,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Addition also element by element:
+    Сложение тоже выполняется поэлементно:
     %
     \begin{multline*}
         \left(
@@ -209,19 +213,19 @@
     \end{multline*}
     %
 
-    Note  matrices must be same dimension
+    Заметим, что матрицы должны быть одинакового размера
 
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    Multiplication of matrices:  
+    Умножение матриц:  
     
     \vspace{.7em}
-    Product $\boldA \boldB$: 
-    $i,j$-th element is inner product of $i$-th row of $\boldA$ and 
-    $j$-th column of $\boldB$  
+    Произведение $\boldA \boldB$: 
+    $i,j$-ый элемент --- скалярное умножение $i$-ой строки $\boldA$ и 
+    $j$-ого столбца $\boldB$  
     
     \begin{equation*}
     c_{ij} = \inner{\row_i \boldA,\,  \col_j  \boldB} = \sum_{k=1}^K a_{ik} b_{kj}
@@ -234,7 +238,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Picture for $i=j=1$:
+    Для $i=j=1$:
     %
     \small\begin{equation*}
         \left(
@@ -265,7 +269,7 @@
     \end{equation*}
     
     \vspace{1em}
-    In this picture, 
+    Здесь 
     %
     \begin{equation*}
         c_{11} = \inner{\row_1(\boldA) , \col_1 (\boldB)} = \sum_{k=1}^K a_{1k} b_{k1}
@@ -276,25 +280,25 @@
 \begin{frame}
     
     \vspace{2em}
-    Suppose $\boldA$ is $N \times K$ and $\boldB$ is $J \times M$
+    Предположим, что размер $\boldA$ --- $N \times K$, $\boldB$ --- $J \times M$
     
     \begin{itemize}
-        \item $\boldA \boldB$ defined only if $K = J$
-        \item Resulting matrix $\boldA \boldB$ is $N \times M$
+        \item $\boldA \boldB$ определена, только если $K = J$
+        \item Размер $\boldA \boldB$ --- $N \times M$
     \end{itemize}
     
     \vspace{.7em}
-    The rule to remember:
+    Запомните правило:
     %
     \begin{equation*}
-        \text{product of } N \times K \text{ and } K \times M
-        \text{ is }  N \times M
+        \text{Произведение } N \times K \text{ и } K \times M
+        \text{ равно }  N \times M
     \end{equation*}
     %
 
-    Multiplication is not commutative: $\boldA \boldB \not= \boldB \boldA$ 
+    Умножение не коммутативно: $\boldA \boldB \not= \boldB \boldA$ 
     
-    Note $\boldB \boldA$ is not well-defined unless $N = M$ also holds 
+    Заметим, что произведение $\boldB \boldA$ определено, только если $N = M$ соблюдается 
 
 \end{frame}
 
@@ -303,18 +307,19 @@
     
     \vspace{2em}
     \Fact{\eqref{ET-fa:bmari}}
-        For conformable matrices $\boldA$, $\boldB$, $\boldC$ and scalar $\alpha$, we have
+        Для согласованных матриц $\boldA$, $\boldB$, $\boldC$ и скаляра $\alpha$, верно
         %
         \begin{enumerate}
             \item $\boldA (\boldB \boldC) = (\boldA \boldB) \boldC$,
             \item $\boldA (\boldB + \boldC) = \boldA \boldB + \boldA \boldC$,
             \item $(\boldA + \boldB) \boldC = \boldA \boldC + \boldB \boldC$,
-            \item $\boldA \alpha \boldB = \alpha \boldA \boldB$, and
-            \item $\boldA \boldI = \boldA$ and $\boldI \boldA = \boldA$, where
-                $\boldI$ is the identity matrix.
+            \item $\boldA \alpha \boldB = \alpha \boldA \boldB$, и
+            \item $\boldA \boldI = \boldA$ и $\boldI \boldA = \boldA$, где
+                $\boldI$ --- единичная матрица.
         \end{enumerate}
     
-    Here, ``conformable'' means operation is defined given matrix dimensions
+    Здесь ``согласованость'' значит, что операция определена 
+    при заданных размерностях матриц
 
 \end{frame}
 
@@ -322,23 +327,23 @@
 \begin{frame}
 
     \vspace{2em}
-    The \navy{$k$th power} of a square matrix $\boldA$ is defined as
+    \navy{$k$-ая мощность} квадратной матрицы $\boldA$ определяется как
     %    
     \begin{equation*}
         \boldA^k := \underbrace{\boldA \cdots \boldA}_{k \text{ terms}} 
     \end{equation*}
     
     \vspace{.7em}
-    If $\boldB$ is such that $\boldB^2 = \boldA$, then $\boldB$
-    is called the \navy{square root} of $\boldA$ and written $\sqrt{\boldA}$
+    Если матрица $\boldB$ такая, что $\boldB^2 = \boldA$, то $\boldB$
+    называется \navy{квадратным корнем} матрицы $\boldA$ и записывается как $\sqrt{\boldA}$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Given $N \times K$ matrix $\boldA$ and $K \times 1$ column
-    vector $\boldx$, the product $\boldA \boldx$ is:
+    Возьмем матрицу $\boldA$ размерности $N \times K$ и $K \times 1$ вектор
+    столбца $\boldx$, перемножение $\boldA \boldx$:
     %
     \begin{align*}
         \boldA \boldx
@@ -394,39 +399,38 @@
 %
 \end{frame}
 
-\begin{frame}\frametitle{Matrices as Maps}
+\begin{frame}\frametitle{Матрицы как отображения}
 
     \vspace{2em}
-    We can think of an $N\times K$ matrix $\boldA$ as a map from
-    $\mathbb{R}^{K}$ to $\mathbb{R}^{N}$:
+    Можно размышлять о матрице $\boldA$ размерна $N\times K$ как об отображении из 	
+    $\mathbb{R}^{K}$ в $\mathbb{R}^{N}$:
     \[
         \boldx \mapsto \boldA\boldx 
     \]
     
-    Such a map is linear
+    Такое отображение линейно
     
     \vspace{.7em}
-    How about examples of linear functions that don't involve matrices? 
+    Как насчет примеров линейных функций, не использующих матрицы? 
     
-    ...actually, there are none! 
+    ...на самом деле, таких не существует! 
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{.7em}
-    The set of linear functions from $\RR^K$ to
-    $\RR^N$ and the set of $N \times K$ matrices are in one-to-one correspondence:
+    Множеству линейных функций из $\RR^K$ в
+    $\RR^N$ инъективно соответствует множество матриц $N \times K$:
     
     \vspace{.7em}
     \Thm{\eqref{ET-t:lmaeq}}
-    Let $T$ be a function from $\RR^K$ to $\RR^N$. The following are
-    equivalent:
+    Пусть $T$ является функцией из $\RR^K$ в $\RR^N$. Следующее эквивалентно:
     %
     \begin{enumerate}
-        \item $T$ is linear.
-        \item There exists an $N \times K$ matrix $\boldA$ such that $T\boldx
-            = \boldA \boldx$ for all $\boldx \in \RR^K$.
+        \item $T$ линейна.
+        \item Существует матрица $\boldA$ размера $N \times K$, такая что 
+        $T\boldx = \boldA \boldx$ для всех $\boldx \in \RR^K$.
     \end{enumerate}
     %
 \end{frame}
@@ -436,16 +440,17 @@
     \vspace{2em}
     \Prf (1. $\implies$ 2.)
     
-    Let $T \colon \RR^K \to \RR^N$ be linear
+    Пусть $T \colon \RR^K \to \RR^N$ линейна
     
-    We aim to construct an $N \times K$ matrix $\boldA$ such that
+    Мы собираемся построить матрицу $\boldA$ размерности $N \times K$, такую что
     %
     $$ T\boldx = \boldA \boldx, \qquad \forall \, \boldx \in \RR^K $$
     %
-    As usual, let
-    $\bolde_k$ be the $k$-th canonical basis vector in $\RR^K$
+    Как обычно, пусть
+    $\bolde_k$ --- $k$-ый канонический базисный вектор в $\RR^K$
     
-    Define a matrix $\boldA$ by $\col_k(\boldA) = T\bolde_k$. Pick any $\boldx = (x_1, \ldots, x_K) \in \RR^K$. By linearity we have,
+    Определим матрицу $\boldA$ как $\col_k(\boldA) = T\bolde_k$. Возьмем любой 
+    $\boldx = (x_1, \ldots, x_K) \in \RR^K$. По линейности, получается
     %
     \begin{equation*}
         T\boldx 
@@ -462,17 +467,17 @@
     \vspace{2em}
     \Prf (2 $\implies$ 1)
     %
-    Fix $N \times K$ matrix $\boldA$ and let $T$ be defined by
+    Возьмем матрицу $\boldA$ размера $N \times K$ и пусть $T$ определяется
     \begin{equation*}
         T \colon \RR^K \to \RR^N, 
         \qquad
         T\boldx = \boldA \boldx
     \end{equation*}
 
-    Pick any $\boldx$, $\boldy$ in $\RR^K$, and any scalars $\alpha$ and $\beta$
+    Возьмем любые $\boldx$, $\boldy$ в $\RR^K$, и любые скаляры $\alpha$ и $\beta$
      
     \vspace{.7em} 
-    The rules of matrix arithmetic tell us that
+    Правила матричной арифметики говорят нам, что
     %
     \begin{equation*}
         T(\alpha \boldx + \beta \boldy) 
@@ -486,37 +491,38 @@
 \begin{frame}
     
     \vspace{2em}
-    Consider solving a system of linear equations such as
+    Рассмотрим возможность решения системы линейных уравнений, например, 
     $\boldA \boldx = \boldb$
     
     \vspace{.7em}
-    Existence: can we find an $\boldx$ that satisfies this equation, for any
-    given $\boldb$?  
+    Существование: можем ли мы найти $\boldx$, удовлетворяющий уравнению при любых
+    заданных $\boldb$?  
     \begin{itemize}
-        \item is the corresponding linear map $T\boldx = \boldA \boldx$ an onto function? 
-        \item equivalently, is $\range T$ equal to all of $\RR^N$?
+        \item является ли линейное отображение $T\boldx = \boldA \boldx$ сюръекцией? 
+        \item эквивалентно, равен ли $\range T$ всему $\RR^N$?
     \end{itemize}
     
 \end{frame}
 
 
-\begin{frame}\frametitle{Column Space}
+\begin{frame}\frametitle{Пространство столбцов}
 
     \vspace{2em}
-    The range of $T$ is all vectors of the form
-    $T\boldx = \boldA \boldx$ where $\boldx$ varies over $\RR^K$
+    Диапазон $T$ --- все вектора вида
+    $T\boldx = \boldA \boldx$, где $\boldx$ варьируется в $\RR^K$
     
-    For $\boldx \in \RR^K$, we have
+    Для $\boldx \in \RR^K$ получается
     \[\boldA \boldx = \sum_{k=1}^K x_k \col_k \boldA\]
     
     \vspace{.7em}
-    Thus, $\range T$ equals the \navy{column space} of $\boldA$ -- the span of the columns of $\boldA$
+    Таким образом, $\range T$ равен \navy{пространству столбцов} $\boldA$ --- 
+    линейная оболочка столбцов $\boldA$
     \begin{equation*}
     \label{eq:secolsp}
     \colspace \boldA := \Span \{ \col_1 \boldA, \ldots, \col_K \boldA \}
     \end{equation*}
     %
-    In summary, 
+    В итоге, 
     \begin{equation*}
         \colspace \boldA = \range T = \setntn{\boldA \boldx}{ \boldx \in \RR^K}
     \end{equation*}
@@ -525,28 +531,28 @@
 
 
 \begin{frame}
-    \frametitle{Rank}
+    \frametitle{Ранг}
 
     \vspace{2em}
-    Equivalent questions
+    Эквивалентные вопросы
     %
     \begin{itemize}
-        \item How large is the range of the linear map $T \boldx = \boldA \boldx$?
-        \item How large is the column space of $\boldA$?
+        \item Насколько велик диапазон линейного отображения $T \boldx = \boldA \boldx$?
+        \item Насколько велико пространство столбцов $\boldA$?
     \end{itemize}
 
     \vspace{1em}
 
-    The obvious measure of size for a linear subspace is its dimension
+    Очевидной мерой размера линейного подпространства является его размерность
     
-    The dimension of $\colspace \boldA$ is known as the \navy{rank} of $\boldA$  
+    Размерность $\colspace \boldA$ известна как \navy{ранг} $\boldA$  
     %
     \begin{equation*}
         \rank \boldA := \dim \colspace \boldA
     \end{equation*}
     %
 
-    Because $\colspace \boldA$ is the span of $K$ vectors, we have
+    Так как $\colspace \boldA$ --- линейная оболочка $K$ векторов, получается
     %
     \begin{equation*}
         \rank \boldA = \dimension \colspace \boldA \leq K
@@ -559,41 +565,42 @@
 \begin{frame}
     
     \vspace{2em}
-    $\boldA$ has \navy{full column rank} if 
+    $\boldA$ имеет \navy{полный ранг системы столбцов}, если 
     %
     \begin{equation*}
-        \rank \boldA = \text{ number of columns of } \boldA
+        \rank \boldA = \text{ количество столбцов } \boldA
     \end{equation*}
 
     \vspace{.7em}
-    \Fact{\eqref{ET-fa:frie}} For any matrix $\boldA$,  the following statements are equivalent:
+    \Fact{\eqref{ET-fa:frie}} Для любой матрицы $\boldA$, следующие утверждения 
+    эквивалентны:
     %
     \begin{enumerate}
-        \item $\boldA$ is of full column rank
+        \item $\boldA$ является полным рангом системы столбцов
             \vspace{0.3em} 
-        \item The columns of $\boldA$ are linearly independent
+        \item Столбцы $\boldA$ линейно независимы
             \vspace{0.3em} 
-        \item If $\boldA \boldx = \boldzero$, then $\boldx = \boldzero$
+        \item Если $\boldA \boldx = \boldzero$, то $\boldx = \boldzero$
     \end{enumerate}
     %
 
 \end{frame}
 
-\begin{frame}\frametitle{Square Matrices and Invertability}
+\begin{frame}\frametitle{Квадратные матрицы и обратимость}
 
     \vspace{2em}
-    Consider the case where $\boldA$ is $N \times N$ 
+    Рассмотрим случай с матрицей $\boldA$ размера $N \times N$ 
    
    \vspace{.7em}
-    We seek conditions on $\boldA$ under which, for every $\boldb \in \RR^N$, there
-    exists exactly one $\boldx \in \RR^N$ such that $\boldA \boldx = \boldb$
+    Мы ищем условия, при которых для каждого $\boldb \in \RR^N$,
+    существует только один $\boldx \in \RR^N$, такой что $\boldA \boldx = \boldb$
     
     \vspace{.7em}
-    Let $T$ be the linear map $T \boldx = \boldA \boldx$
+    Пусть $T$ является линейным отображением $T \boldx = \boldA \boldx$
     \begin{itemize}
-        \item When
-        does each point $\boldb \in \RR^N$ have one and only one preimage under $T$?
-        \item Equivalenty, when is $T$ a bijection?
+        \item Когда каждая точка $\boldb \in \RR^N$ 
+        имеет только один прообраз в $T$?
+        \item Эквивалентно, когда $T$ --- биекция?
     \end{itemize}
     
 \end{frame}
@@ -601,53 +608,52 @@
 \begin{frame}
     
     \vspace{2em}
-    Recall linear bijections are called nonsingular functions
+    Напомним, линейные биекции называются несингулярными функциями.
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:exinv}}
-        For $N \times N$ matrix $\boldA$, the following are equivalent:
+        Для матрицы $\boldA$ размера $N \times N$ следующее эквивалентно:
         %
         \begin{enumerate}
-            \item The columns of $\boldA$ are linearly independent.
-            \item The columns of $\boldA$ form a basis of $\RR^N$.
+            \item Столбцы $\boldA$ линейно независимы.
+            \item Столбцы $\boldA$ формируют базис $\RR^N$.
             \item $\rank \boldA = N$.
             \item $\colspace \boldA = \RR^N$.
             \item $\boldA \boldx = \boldA \boldy \; \implies \; \boldx = \boldy$.
             \item $\boldA \boldx = \boldzero \; \implies \; \boldx = \boldzero$.
-            \item For each $\boldb \in \RR^N$, the equation $\boldA \boldx = \boldb$
-                has a solution.
-            \item For each $\boldb \in \RR^N$, the equation $\boldA \boldx = \boldb$
-                has a unique solution.
+            \item Для каждого $\boldb \in \RR^N$, уравнение $\boldA \boldx = \boldb$
+                имеется решение.
+            \item Для каждого $\boldb \in \RR^N$, уравнение $\boldA \boldx = \boldb$
+                имеет единственное решение.
         \end{enumerate}
 
 \end{frame}
-
+  
 
 \begin{frame}
 
     \vspace{2em}
-    If any of the equivalent conditions in
-    fact~\ref{ET-fa:exinv} are true we will call not just the map $T$ but also the
-    underlying matrix $\boldA$ \navy{nonsingular}
+    Если любое из эквивалентных условий
+    факта~\ref{ET-fa:exinv} верное, мы назовем \navy{несингулярной} не только 
+    отображение $T$, но и основную матрицу $\boldA$ 
     
     \vspace{.7em}
-    If any one---and hence all---of
-    these conditions fail, then $\boldA$ is called \navy{singular}
+    Если хоть одно --- и, следовательно, все --- из этих условий не выполняются, то $\boldA$ называется \navy{сингулярной}
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    Any bijection has an inverse (see \S\ref{ET-ss:functions} in ET)
+    Любая биекция имеет обратную функцию (смотрите \S\ref{ET-ss:functions} в ET)
     
     \vspace{.7em}
-    Any nonsingular map $T$ has a nonsingular inverse $T^{-1}$ (
-    fact~\ref{ET-fa:nsins} on page~\pageref{ET-fa:nsins})
+    Любое несингулярное отображение $T$ имеет несингулярное обратное $T^{-1}$ 
+    (факт~\ref{ET-fa:nsins} на странице~\pageref{ET-fa:nsins})
     
     \begin{itemize}
-        \item where $T$ is generated by a matrix $\boldA$, the inverse $T^{-1}$ is also
-        associated with a matrix, called the inverse of $\boldA$ 
+        \item если $T$ создано матрицей $\boldA$, обратное $T^{-1}$ также связано 
+        с матрицей, называемой обратной $\boldA$ 
     \end{itemize}
 
 \end{frame}
@@ -656,15 +662,16 @@
 
     \vspace{2em}    
     \Thm{\eqref{ET-t:nonsigmat}}
-        For nonsingular $\boldA$ the following statements are true:
+        Для несингулярной $\boldA$ следующие утверждения верны:
         %
         \begin{enumerate}
-            \item There exists a square matrix $\boldB$ such that $\boldA
-                \boldB = \boldB \boldA = \boldI$, where $\boldI$ is the
-                identity matrix.  The matrix $\boldB$ is called the \navy{inverse}
-                of $\boldA$, and written as $\boldA^{-1}$.
-            \item For each $\boldb \in \RR^N$, the unique solution to $\boldA \boldx =
-                \boldb$ is given by 
+            \item Существует квадратная матрица $\boldB$, такая что $\boldA
+                \boldB = \boldB \boldA = \boldI$, где $\boldI$ ---
+                единичная матрица. Матрица $\boldB$ называется \navy{обратной}
+                $\boldA$, и записывается как $\boldA^{-1}$.
+            \item Для каждого $\boldb \in \RR^N$, единственное
+            решение задачи $\boldA \boldx =
+                \boldb$ записывается как 
                     %
                     \begin{equation*}
                         \label{eq:sofox}
@@ -679,25 +686,25 @@
     
     \vspace{2em}
     \Eg
-    Consider the $N$ good linear demand system
+    Расстмотрим линейный спрос для $N$ товаров
     %
     \begin{equation*}
         q_n = \sum_{k=1}^N a_{nk} p_k + b_n,
         \quad n = 1, \ldots, N
     \end{equation*}
     %
-    where $q_n$ and $p_n$ are quantity and price of the $n$th good
+    где $q_n$ и $p_n$ --- количество и цена $n$-ого товара
     
     \vspace{.7em}
-    We want to compute the inverse demand function which gives prices in terms of quantities
+    Мы хотим вычислить обратную функцию спроса, 
+    которая показывает зависимость цены от количества
     
     \vspace{.7em}
-    Write the system
-    in matrix form as $\boldq = \boldA \boldp + \boldb$
+    Записшем систему в матричной форме: $\boldq = \boldA \boldp + \boldb$
     
-    If the columns of $\boldA$ are linearly independent, then 
-    we can invert the system-- a unique solution
-    exists for each fixed $\boldq$ and $\boldb$:
+    Если столбцы $\boldA$ линейно независимы, то 
+    система обратима --- единственное решение существует для
+    любых фиксированных $\boldq$ и $\boldb$:
     %
     \[\boldp = \boldA^{-1} (\boldq - \boldb)\]
     
@@ -706,22 +713,23 @@
 \begin{frame}
 
     \vspace{.7em}    
-    For $N\times N$ matrices $\boldA$ and $\boldB$, if
+    Для матриц $\boldA$ и $\boldB$ размера $N\times N$, если
     
     \begin{itemize}
-        \item $\boldB$ is a
-        \navy{left inverse}, that is, $\boldB \boldA = \boldI$ 
-        \item  or $\boldB$ is a\navy{right inverse}, that is, $\boldA \boldB = \boldI$ 
+        \item $\boldB$ является
+        \navy{левой обратной}, в том смысле, что $\boldB \boldA = \boldI$ 
+        \item  или $\boldB$ является \navy{правой обратной}, в том смысле, 
+        что $\boldA \boldB = \boldI$ 
     \end{itemize}
 
     \vspace{.7em}    
-    Then $\boldA$ is invertible and $\boldB$ is the inverse of $\boldA$
+    Тогда $\boldA$ обратима и $\boldB$ является обратной матрицей $\boldA$
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:lrinv}}
-    Let $\boldA$ and $\boldB$ be $N \times N$ square matrices.
-    If $\boldB$ is either a left or a right inverse of $\boldA$,
-    then $\boldA$ is nonsingular and $\boldB$ is its inverse.
+    Пусть $\boldA$ и $\boldB$ --- квадратные матрицы размера $N \times N$.
+    Если $\boldB$ является левой или правой обратной матрицы $\boldA$,
+    то $\boldA$ несингулярна и $\boldB$ --- ее обратная матрица.
  
 
 \end{frame}
@@ -730,33 +738,33 @@
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:bpiv}}
-    If $\boldA$ and $\boldB$ are nonsingular and $\alpha \not= 0$, then
+    Если $\boldA$ и $\boldB$ несингулярны и $\alpha \not= 0$, то
     %
     \begin{enumerate}
         \item $(\boldA^{-1})^{-1} = \boldA$,
-        \item $(\alpha \boldA)^{-1} = \alpha^{-1} \boldA^{-1}$, and 
+        \item $(\alpha \boldA)^{-1} = \alpha^{-1} \boldA^{-1}$, и 
         \item $(\boldA \boldB)^{-1} = \boldB^{-1} \boldA^{-1}$
     \end{enumerate}
     
 \end{frame}
 
-\begin{frame}\frametitle{Determinants}
+\begin{frame}\frametitle{Определитель}
 
     \vspace{.7em}
-    Determinant is a unique number for each square matrix $\boldA$
+    Определитель --- уникальное число для любой квадратной матрицы $\boldA$
     
-    Let $S(N)$ be
-    the set of all bijections from $\{1, \ldots, N\}$ to itself
+    Пусть $S(N)$ является множеством
+    всех биекций из $\{1, \ldots, N\}$ в саму себя
     
     \vspace{.7em}
-    For $\pi \in S(N)$, define the \navy{signature} of $\pi$ 
+    Для $\pi \in S(N)$ определим \navy{функцию знака} $\pi$ 
     %
     \begin{equation*}
         \sgn(\pi) := \prod_{m < n} \frac{\pi(m) - \pi(n)}{m - n}
     \end{equation*}
     
     \vspace{1em}
-    The \navy{determinant} of $N \times N$ matrix $\boldA$ is
+    \navy{Определитель} матрицы $\boldA$ размера $N \times N$ --- это
     
     \begin{equation*}
         \det \boldA 
@@ -770,21 +778,21 @@
     \vspace{.7em}
     \Fact
     \eqref{ET-fa:detfacts}
-    If $\boldI$ is the $N \times N$ identity, $\boldA$ and $\boldB$ are $N
-    \times N$ matrices and $\alpha \in \RR$, then
+    Если $\boldI$ --- единичная матрица размера $N \times N$, 
+    $\boldA$ и $\boldB$ являются марицами размера $N \times N$ и 
+    $\alpha \in \RR$, то
     %
     \begin{enumerate}
         \item $\det \boldI = 1$,
-        \item $\boldA$ is nonsingular if and only if $\det \boldA
+        \item $\boldA$ несингулярна тогда и только тогда, когда $\det \boldA
             \not= 0$,
-        \item $\det(\boldA\boldB) = \det(\boldA)
-            \det(\boldB)$,
-        \item $\det(\alpha \boldA) = \alpha^N \det(\boldA)$, and
+        \item $\det(\boldA\boldB) = \det(\boldA) \det(\boldB)$,
+        \item $\det(\alpha \boldA) = \alpha^N \det(\boldA)$, и
         \item $\det(\boldA^{-1}) = (\det(\boldA))^{-1}$.
     \end{enumerate}
     
     \vspace{.7em}
-    In the $2 \times 2$ case one can show that the determinant satisfies
+    В случае матрицы размера $2 \times 2$ можно показать, что
     %
     \begin{equation*}
         \label{eq:det22}
@@ -804,30 +812,30 @@
 \begin{frame}
 
     \vspace{2em}
-    \Prf (Fact \ref{ET-fa:lrinv})
+    \Prf (Факт \ref{ET-fa:lrinv})
     
-    Fix square matrix $\boldA$ and suppose a right
-    inverse $\boldB$ exists: \[\boldA \boldB = \boldI\]
+    Возьмем кважратную матрицу $\boldA$ и предположим, что
+    правая обратная матрица $\boldB$ существует: \[\boldA \boldB = \boldI\]
     
-    Then both $\boldA$ and $\boldB$ are nonsingular,  since using the rules
-    in fact~\ref{ET-fa:detfacts}: \[\det(\boldA) \det(\boldB) = 1\]
+    Тогда обе матрицы $\boldA$ и $\boldB$ несингулярны, так как по правилам
+    факта~\ref{ET-fa:detfacts}: \[\det(\boldA) \det(\boldB) = 1\]
     
-    Both $\det \boldA$ and $\det \boldB$ are nonzero and hence both
-    matrices are nonsingular. Next, $\boldA \boldB = \boldI$, hence 
+    Оба определителя $\det \boldA$ и $\det \boldB$ ненулевые и, следовательно, обе
+    матрицы несингулярные. Далее, $\boldA \boldB = \boldI$, значит 
     %
     \[\boldB \boldA \boldB = \boldB\]
     %
-    Post-multiplying by $\boldB^{-1}$ gives $\boldB \boldA = \boldI$
+    Умножим на $\boldB^{-1}$, получается $\boldB \boldA = \boldI$
     
 \end{frame}
 
-\section{Properties of Matrices}
+\section{Свойства Матриц}
 
-\begin{frame}\frametitle{Diagonal and Triangular Matrices}
+\begin{frame}\frametitle{Диагональные и треугольные матрицы}
     
     \vspace{2em}
-    A square matrix is called \navy{lower triangular} if every element strictly above the
-    principle diagonal is zero
+    Квадратная матрица назвается \navy{нижней треугольной}, если каждый элемент 
+    строго выше главной диагонали равен нулю
     
     \vspace{.7em}
     \Eg
@@ -849,8 +857,8 @@
 \begin{frame}
 
     \vspace{2em}
-    A square matrix is called \navy{upper triangular} if every element
-    strictly below the principle diagonal is zero
+    Квадратная матрица назвается \navy{верхней треугольной}, если каждый элемент 
+    строго ниже главной диагонали равен нулю
 
     \vspace{.7em}
     \Eg
@@ -867,18 +875,19 @@
     \end{equation*}
     
     \vspace{.7em}
-    A square matrix is called \navy{triangular} if it is either upper or lower triangular
+    Квадратная матрица назвается \navy{треугольной}, если она верхняя или 
+    нижняя треугольная
 
     \vspace{.7em}
     \Fact\eqref{ET-fa:dtmat}
-    If $\boldA = (a_{mn})$ is triangular, then $\det \boldA = \prod_{n=1}^N a_{nn}$.
+    Если $\boldA = (a_{mn})$ треугольная, то $\det \boldA = \prod_{n=1}^N a_{nn}$.
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Associated linear equations also simple to solve 
+    Связанные линейные уравнения просто решить 
 
   \vspace{0.7em}
 
@@ -909,7 +918,7 @@
         \right)
     \end{equation*}
     
-    becomes
+    становится
 
     \begin{equation*}
         \begin{array}{c}
@@ -920,9 +929,9 @@
     \end{equation*}
     %
 
-    Top equation involves only $x_1$, so can solve for it directly
+    Верхнее уравнение включает только $x_1$, так что его можно решить напрямую
 
-    Plug that value into second equation, solve out for $x_2$, etc.
+    Подставьте это значение во второе уравнение и решите для $x_2$ и т.д.
 
 \end{frame}
 
@@ -930,11 +939,11 @@
 \begin{frame}
 
     \vspace{2em}
-    Consider a square $N \times N$ matrix $\boldA$
+    Рассмотрим квадратную матрицу $\boldA$ размера $N \times N$ 
 
     \vspace{1em}
 
-    The $N$ elements of the form $a_{nn}$ are called the \navy{principal diagonal}
+    $N$ элементов $a_{nn}$ называются \navy{главной диагональю}
 
     \vspace{1em}
     \begin{equation*}
@@ -955,8 +964,8 @@
 \begin{frame}
     
     \vspace{2em}
-    A square matrix $\boldD$ is called \navy{diagonal} if all entries off the
-    principal diagonal are zero
+    Квадратная матрица $\boldD$ называется \navy{диагональной}, если все значения вне
+    главной диагонали равны нулю
 
     \begin{equation*}
         \boldD = 
@@ -972,7 +981,7 @@
 
     \vspace{1em}
 
-    Often written as
+    Часто записывается как
     
     \begin{equation*}
         \boldD = \diag(d_1, \ldots, d_N) 
@@ -985,7 +994,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Diagonal systems are very easy to solve
+    Диагональные системы очень легко решить
 
     \vspace{0.5em}
 
@@ -1010,7 +1019,7 @@
         \end{pmatrix}
     \end{equation*}
 
-    is equivalent to
+    эквивалентно
 
     \begin{equation*}
         \begin{array}{c}
@@ -1025,36 +1034,34 @@
 \begin{frame}
     
     \vspace{2em}
-    \Fact\eqref{ET-fa:powdm} If $\boldC = \diag(c_1, \ldots, c_N)$ and $\boldD = \diag(d_1, \ldots,
-    d_N)$, then
+    \Fact\eqref{ET-fa:powdm} Если $\boldC = \diag(c_1, \ldots, c_N)$ и 
+    $\boldD = \diag(d_1, \ldots, d_N)$, то
     %
     \begin{enumerate}
         \item $\boldC + \boldD = \diag(c_1 + d_1, \ldots, c_N + d_N)$
             \vspace{0.4em}
         \item $\boldC \boldD = \diag(c_1 d_1, \ldots, c_N d_N)$
             \vspace{0.4em}
-        \item $\boldD^k = \diag(d^k_1, \ldots, d^k_N)$ for any $k \in \NN$
+        \item $\boldD^k = \diag(d^k_1, \ldots, d^k_N)$ для любых $k \in \NN$
             \vspace{0.4em}
-        \item $d_n \geq 0$ for all $n$ $\implies$ $\boldD^{1/2}$ exists and equals
+        \item $d_n \geq 0$ для всех $n$ $\implies$ $\boldD^{1/2}$ существует и равняется
             %
             $$\diag(\sqrt{d_1}, \ldots, \sqrt{d_N})$$
             \vspace{-1.5em}
-        \item $d_n \not= 0$ for all $n$ $\implies$ $\boldD$ is nonsingular and 
+        \item $d_n \not= 0$ для всех $n$ $\implies$ $\boldD$ несингулярна и 
             %
             $$\boldD^{-1} = \diag(d_1^{-1}, \ldots, d_N^{-1})$$
     \end{enumerate}
     %
 
-    \vspace{1em}
-
-    Proofs: Check 1 and 2 directly. Parts 3-5 then follow from 1 and 2. 
+    Доказательства: Проверьте 1 и 2 напрямую. Части 3-5 следуют из 1 и 2. 
 
 \end{frame}
 
 
-\begin{frame}\frametitle{Trace, Transpose, Symmetry}
+\begin{frame}\frametitle{След, транспонирование, симметрия}
     
-    The \navy{trace} of a square matrix is defined by 
+    \navy{След} матрицы определяется как 
     %
     \vspace{0.5em}
     \begin{equation*}
@@ -1074,8 +1081,8 @@
 
     \vspace{0.5em}
 
-    \Fact{\eqref{ET-fa:lmpt}} If $\boldA$ and $\boldB$ are square matrices and
-    $\alpha, \beta \in \RR$, then 
+    \Fact{\eqref{ET-fa:lmpt}} Если $\boldA$ и $\boldB$ являются квадратными матрицами и
+    $\alpha, \beta \in \RR$, то 
     %
     \begin{equation*}
         \trace(\alpha \boldA + \beta \boldB) 
@@ -1084,8 +1091,8 @@
     %
 
     \vspace{0.5em}
-    If 
-    $\boldA$ is $N \times M$ and $\boldB$ is $M \times N$, then 
+    Если 
+    $\boldA$ размера $N \times M$ и $\boldB$ размера $M \times N$, то 
     $\trace(\boldA \boldB) = \trace(\boldB \boldA)$
 
 \end{frame}
@@ -1093,14 +1100,14 @@
 \begin{frame}
     
     \vspace{2em}
-    The \navy{transpose} of $N \times K$ matrix $\boldA$ is a $K
-    \times N$ matrix $\boldA^\T$ defined by 
+    \navy{Транспонирование} превращает матрицу $\boldA$ размера $N \times K$ в 
+    матрицу $\boldA^\T$ размера $K \times N$, определяемую как
     $$\col_n(\boldA') = \row_n(\boldA)$$
 
-    \Eg If
+    \Eg Если
     %
     \begin{equation*}
-        \label{eq:aandb}
+        \label{eq:aиb}
         \boldA := 
         \left(
         \begin{array}{cc}
@@ -1109,7 +1116,7 @@
             30 & 60
         \end{array}
         \right)
-        \quad \text{then} \quad
+        \quad \text{, то} \quad
         \boldA' = 
         \left(
         \begin{array}{ccc}
@@ -1120,7 +1127,7 @@
     \end{equation*}
     %
 
-    If
+    Если
     %
     \begin{equation*}
         \boldB := 
@@ -1130,7 +1137,7 @@
             2 & 4 & 6 \\
         \end{array}
         \right)
-        \quad \text{then} \quad
+        \quad \text{, то} \quad
         \boldB' := 
         \left(
         \begin{array}{cc}
@@ -1147,14 +1154,14 @@
 \begin{frame}
 
     \vspace{2em}
-    A square matrix $\boldA$ is called \navy{symmetric} if $\boldA^\T = \boldA$
+    Квадратная матрица $\boldA$ называется \navy{симметричной}, если $\boldA^\T = \boldA$
     \begin{itemize}
-        \item equivalently, $a_{nk} = a_{kn}$ for every $k$ and $n$
+        \item эквивалентно, $a_{nk} = a_{kn}$ для всех $k$ и $n$
     \end{itemize}
     
     \vspace{.7em}
-    The matricies $\boldA^\T
-    \boldA$ and $\boldA \boldA^\T$ are always well-defined and symmetric
+    Матрицы $\boldA^\T \boldA$ и $\boldA \boldA^\T$ всегда корректно определены 
+    и симметричны
     
 \end{frame}
 
@@ -1162,13 +1169,13 @@
     
     \vspace{2em}
     \Fact{\eqref{ET-fa:owtra}}
-    For conformable matrices $\boldA$ and $\boldB$, transposition satisfies
+    Для согласующихся матриц $\boldA$ и $\boldB$ транспонирование удовлетворяет
     %
     \begin{enumerate}
         \item $(\boldA^\T)^\T = \boldA$,
         \item $(\boldA \boldB)^\T = \boldB^\T \boldA^\T$,
-        \item $(\boldA + \boldB)^\T = \boldA^\T +  \boldB^\T$, and
-        \item $(c \boldA)^\T = c \boldA^\T$ for any constant $c$.
+        \item $(\boldA + \boldB)^\T = \boldA^\T +  \boldB^\T$, и
+        \item $(c \boldA)^\T = c \boldA^\T$ для любых постоянных $c$.
     \end{enumerate}
 
 \end{frame}
@@ -1177,21 +1184,21 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:owtra2}}
-        For each square matrix $\boldA$, we have 
+        Для любой квадратной матрицы $\boldA$, верно 
         %
         \begin{enumerate}
-            \item $\trace(\boldA) = \trace(\boldA^\T)$ and
+            \item $\trace(\boldA) = \trace(\boldA^\T)$ и
             \item $\det(\boldA^\T) = \det(\boldA)$.
-            \item If $\boldA$ is nonsingular, then so is $\boldA^\T$, and
-                its inverse is $(\boldA^\T)^{-1}= (\boldA^{-1})^\T$.
+            \item Если $\boldA$ несингулярна, то $\boldA^\T$ тоже несингулярна, и
+                $(\boldA^\T)^{-1}= (\boldA^{-1})^\T$.
         \end{enumerate}
         
     \vspace{.7em}
-    If $\bolda$ and $\boldb$ are $N \times 1$ vectors, then the matrix
-    product $\bolda^\T \boldb = \boldb^\T \bolda$ is equal to $\sum_{n=1}^N a_n b_n$,
+    Если $\bolda$ и $\boldb$ --- векторы размера $N \times 1$, умножение матриц 
+    $\bolda^\T \boldb = \boldb^\T \bolda$ равняется $\sum_{n=1}^N a_n b_n$,
     
     \begin{itemize}
-        \item same as the inner product $\inner{\bolda, \boldb}$
+        \item так же, как скалярное произведение $\inner{\bolda, \boldb}$
     \end{itemize}
 
 \end{frame}
@@ -1199,41 +1206,41 @@
 
 \begin{frame}
 
-    \frametitle{Eigenvalues and Eigenvectors}
+    \frametitle{Собственные значения и собственные векторы}
 
     \vspace{2em}
-    Let $\boldA$ be $N \times N$  
+    Возьмем матрицу $\boldA$ размера $N \times N$  
     
-    In general $\boldA$ maps $\boldx$ to some arbitrary new location $\boldA \boldx$
+    Обычно $\boldA$ отображает $\boldx$ в какое-то произвольное новое место $\boldA \boldx$
 
-    But sometimes $\boldx$ will only be \underline{scaled}:
+    Но иногда $\boldx$ будет только \underline{масштабироваться}:
     %
     \begin{equation}
         \label{eq:eiei}
         \boldA \boldx = \lambda \boldx
-        \quad \text{for some scalar $\lambda$}
+        \quad \text{для некоторого скаляра $\lambda$}
     \end{equation}
     
     \vspace{.7em}
-    If \eqref{eq:eiei} holds and $\boldx$ is nonzero, then 
+    Если \eqref{eq:eiei} выполняется и $\boldx$ is ненулевой, то 
     %
     \begin{enumerate}
-        \item $\boldx$ is called an \navy{eigenvector} of $\boldA$
-            and $\lambda$ is called an \navy{eigenvalue}
+        \item $\boldx$ называется \navy{собственным вектором} $\boldA$
+            и $\lambda$ называется \navy{собственным значением}
             \vspace{0.3em}
-        \item $(\boldx, \lambda)$ is called an \navy{eigenpair}
+        \item $(\boldx, \lambda)$ называется \navy{собственной парой}
     \end{enumerate}
 
-    Clearly $(\boldx, \lambda)$ is an eigenpair of $\boldA$ $\implies$
-    $(\alpha \boldx, \lambda)$ is an eigenpair 
-    of $\boldA$ for any nonzero $\alpha$
+    Ясно, что $(\boldx, \lambda)$ --- собственная пара $\boldA$ $\implies$
+    $(\alpha \boldx, \lambda)$ --- собственная пара
+    $\boldA$ для любых ненулевых $\alpha$
 
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    \Eg Let
+    \Eg Пусть
     %
     $$
     \boldA :=
@@ -1243,11 +1250,11 @@
     \end{pmatrix}
     $$
 
-    Then
+    Тогда
     
     $$
     \lambda = 2 
-    \quad \text{ and } \quad
+    \quad \text{ и } \quad
     \boldx
     =
     \begin{pmatrix}
@@ -1256,7 +1263,7 @@
     \end{pmatrix}
     $$
 
-    form an eigenpair because $\boldx \not= \boldzero$ and
+    формируют собственную пару, потому что $\boldx \not= \boldzero$ и
 
     $$
     \boldA \boldx =
@@ -1287,7 +1294,7 @@
 \begin{frame}
     
     \vspace{2em}
-    \Eg Consider the matrix 
+    \Eg Рассмотрим матрицу 
     %
     \begin{equation*}
         \boldR := 
@@ -1300,19 +1307,19 @@
     \end{equation*}
     %
 
-    Induces counter-clockwise rotation on any point by $90^{\circ}$
+    Вызывает вращение против часовой стрелки в любой точке на $90^{\circ}$
 
-    Hence no point $\boldx$ is scaled
+    Значит ни одна точка $\boldx$ не масштабируется
     
-    Hence there exists \underline{no} pair $\lambda \in \RR$ and $\boldx \not=
-    \boldzero$
-    such that
+    Значит \underline{не} существует пары 
+    $\lambda \in \RR$ и $\boldx \not= \boldzero$
+    , такой что
     %
     $$\boldR \boldx = \lambda \boldx$$  
     %
     
     \begin{itemize}
-        \item In other words, no \underline{real-valued} eigenpairs exist
+        \item Другими словами, не существует \underline{вещественных} собственных пар
     \end{itemize}
 
 
@@ -1324,7 +1331,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.4}{\includegraphics{rotation_1.pdf}}
-        \caption{The matrix $\boldR$ rotates points by $90^{\circ}$}
+        \caption{Матрица $\boldR$ поворачивает точки на $90^{\circ}$}
        \end{center}
     \end{figure}
 
@@ -1337,7 +1344,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.4}{\includegraphics{rotation_2.pdf}}
-        \caption{The matrix $\boldR$ rotates points by $90^{\circ}$}
+        \caption{Матрица $\boldR$ поворачивает точки на $90^{\circ}$}
        \end{center}
     \end{figure}
 
@@ -1346,8 +1353,8 @@
 \begin{frame}
     
     \vspace{2em}
-    But $\boldR \boldx = \lambda \boldx$ can hold \underline{if} we allow
-    complex values
+    Но $\boldR \boldx = \lambda \boldx$ может выполняться, \underline{если} мы 
+    допускаем комплексные числа
 
     \vspace{1em}
 
@@ -1378,13 +1385,13 @@
     \end{equation*}
 
     \vspace{.7em}
-    That is,
+    То есть
     %
     \begin{equation*}
         \boldR \boldx = \lambda \boldx
-        \quad \text{for} \quad
+        \quad \text{для} \quad
         \lambda := i
-        \quad \text{and} \quad
+        \quad \text{и} \quad
         \boldx := 
         \begin{pmatrix}
             1 \\
@@ -1393,32 +1400,32 @@
     \end{equation*}
 
 
-    Hence $(\boldx, \lambda)$ is an eigenpair provided 
-    we admit complex values 
+    Тогда $(\boldx, \lambda)$ является собственной парой при условии, 
+    что мы допускаем комплексные числа 
 
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    \Fact{\eqref{ET-fa:chei}} For any square matrix $\boldA$ 
+    \Fact{\eqref{ET-fa:chei}} для любой квадратной матрицы $\boldA$ 
     %
     \begin{equation*}
-        \lambda \text{ is an eigenvalue of } \boldA \; \iff \;
+        \lambda \text{ является собственным значением } \boldA \; \iff \;
         \det(\boldA - \lambda \boldI) = 0
     \end{equation*}
     %
 
     \vspace{1em}
 
-    \Prf  Let $\boldA$ by $N \times N$ and let $\boldI$ be the $N \times N$
-    identity
+    \Prf  Пусть $\boldA$ --- матрица размера $N \times N$ и $\boldI$ --- единичная 
+    матрица размера $N \times N$
 
-    We have
+    Получается
     %
     \begin{align*}
         \det(\boldA - \lambda \boldI) = 0
-        & \iff \boldA - \lambda \boldI \text{ is singular}
+        & \iff \boldA - \lambda \boldI \text{ сингулярно}
         \\
         & \iff \exists \, \boldx \not= \boldzero \st
             (\boldA - \lambda \boldI) \boldx = \boldzero
@@ -1427,7 +1434,7 @@
         \boldA \boldx = \lambda \boldx
         \\
         & \iff \lambda 
-        \text{ is an eigenvalue of } \boldA
+        \text{ является собственным значением } \boldA
     \end{align*}
 
 \end{frame}
@@ -1435,7 +1442,7 @@
 \begin{frame}
     
     \vspace{2em}
-    \Eg In the $2 \times 2$ case,
+    \Eg В случае матрицы $2 \times 2$,
     %
     \begin{equation*}
         \boldA =
@@ -1463,14 +1470,13 @@
     & = \lambda^2 - (a + d) \lambda + (ad - bc)
     \end{align*}
     
-    Hence the eigenvalues of $\boldA$ are given by the two roots of 
+    Значит собственные значения $\boldA$ являются двумя корнями уравнения 
     %
     \begin{equation*}
         \lambda^2 - (a + d) \lambda + (ad - bc) = 0
     \end{equation*}
     
-    \vspace{.7em}
-    Equivalently,
+    Эквивалентно,
     %
     \begin{equation*}
         \lambda^2 - \trace(\boldA) \lambda + \det(\boldA) = 0
@@ -1481,30 +1487,29 @@
 
 \begin{frame}
 
-    \frametitle{Existence of Eigenvalues}
+    \frametitle{Существование собственных значений}
 
     \vspace{2em}
-    Fix $N \times N$ matrix $\boldA$ 
+    Возьмем матрицу $\boldA$ размера $N \times N$ 
 
     \vspace{0.5em}
     
-    \Fact There exist complex numbers $\lambda_1, \ldots, \lambda_N$ such that
+    \Fact Существуют комплексные числа $\lambda_1, \ldots, \lambda_N$, такие что
     %
     \begin{equation*}
         \det(\boldA - \lambda \boldI) = \prod_{n=1}^N (\lambda_n - \lambda)
     \end{equation*}
     %
 
-    Each such $\lambda_i$  is an eigenvalue of $\boldA$ because
+    Каждое такое $\lambda_i$ является собственным значением $\boldA$, потому что
     %
     \begin{equation*}
         \det(\boldA - \lambda_i \boldI) 
         = \prod_{n=1}^N (\lambda_n - \lambda_i) 
         = 0
     \end{equation*}
-    %
-    
-    Important: not all eigenvalues are necessarily distinct --- there can be repeats
+    %  
+    Важно: не все собственные значения обязательно различны --- могут быть повторы
 
 \end{frame}
 
@@ -1513,8 +1518,8 @@
      \vspace{2em}
     \Fact{\eqref{ET-fa:eiprop}} 
     %
-    Given $N \times N$ matrix $\boldA$ with eigenvalues $\lambda_1, \ldots, \lambda_N$
-    we have
+    Возьмем матрицу $\boldA$ размера $N \times N$ с собственными значениями 
+    $\lambda_1, \ldots, \lambda_N$. Получается
     %
     \begin{enumerate}
             \vspace{-0.6em}
@@ -1522,37 +1527,34 @@
             \vspace{0.4em}
         \item $\trace(\boldA) = \sum_{n=1}^N \lambda_n$
             \vspace{0.4em}
-        \item If $\boldA$ is symmetric, then $\lambda_n \in \RR$ for all $n$
+        \item если $\boldA$ симметрична, то $\lambda_n \in \RR$ для всех $n$
             \vspace{0.4em}
-        \item If $\boldA$ is nonsingular, then $\text{eigenvalues of } \boldA^{-1}
+        \item если $\boldA$ несингулярна, то $\text{eigenvalues of } \boldA^{-1}
                 = 1/\lambda_1, \ldots, 1/\lambda_N$
             \vspace{0.4em}
-        \item If $\boldA = \diag(d_1, \ldots, d_N)$, then $\lambda_n = d_n$ for all $n$
+        \item если $\boldA = \diag(d_1, \ldots, d_N)$, то $\lambda_n = d_n$ для всех $n$
     \end{enumerate}
 
     \vspace{0.8em}
     %
-    Hence $\boldA$ is nonsingular $\iff$ all eigenvalues are nonzero 
+    Значит матрица $\boldA$ несингулярна $\iff$ все ее собственные значения ненулевые
     
 \end{frame}
 
 
-\begin{frame}\frametitle{Quadratic Forms}
+\begin{frame}\frametitle{Квадратичные формы}
 
      \vspace{2em}
-    Fix $N \times N$ matrix $\boldA$
+    Возьмем матрицу $\boldA$ размера $N \times N$ 
     
-    The \navy{quadratic
-    function} or \navy{quadratic form} on $\RR^N$ associated with $\boldA$ is the
-    map $Q$ defined by
+    \navy{Квадратичная функция} или \navy{квадратичная форма} в $\RR^N$, связанная с матрицей $\boldA$, --- это отображение $Q$, определяемое как
     %
     \begin{equation*}
         Q(\boldx) := \boldx^\T \boldA \boldx = \sum_{j=1}^N \sum_{i=1}^N a_{ij} x_i x_j
     \end{equation*}
     
     \vspace{.7em}
-    \Eg Let $N = 2$ and let $\boldA$ be the identity
-    matrix $\boldI$.  In this case, 
+    \Eg Пусть $N = 2$ и $\boldA$ --- единичная матрица $\boldI$. Тогда
     %
     \begin{equation*}
         Q(\boldx) = \| \boldx \|^2 = x_1^2 + x_2^2
@@ -1566,7 +1568,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={7.5em 2em 0 0em}, clip]{qform_pd.pdf}}
-    \caption{\label{f:qform_pd} Quadratic function $Q(\boldx) = x_1^2 + x_2^2$ }
+    \caption{\label{f:qform_pd} Квадратичная функция $Q(\boldx) = x_1^2 + x_2^2$ }
    \end{center}
     \end{figure}
 
@@ -1575,34 +1577,32 @@
 \begin{frame}
 
     \vspace{2em}
-    Notice:
+    Внимание:
     \begin{itemize}
-        \item The graph for $Q(\boldx) = \| \boldx \|^2 = x_1^2 + x_2^2$ lies everywhere above zero
+        \item График для $Q(\boldx) = \| \boldx \|^2 = x_1^2 + x_2^2$ лежит всюду выше нуля
     \end{itemize}
     
     \vspace{.7em}
-    Matrix $\boldA$ with Quadratic form with the above property $Q(\boldx) \geq 0$  is called \emph{positive definite}
+    Матрица $\boldA$ с квадратичной формой с указанным выше свойством $Q(\boldx) \geq 0$  называется \emph{положительно определенной}
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    More generally, an $N \times N$ symmetric matrix $\boldA$ is called
+    В более общем смысле, симметричная матрица $\boldA$ размера $N \times N$ называется
     %
     \begin{itemize}
-        \item \navy{nonnegative definite} if $\boldx^\T \boldA \boldx \geq 0$
-            for all $\boldx \in \RR^N$, 
-        \item \navy{positive definite} if $\boldx^\T \boldA \boldx > 0$ for all $\boldx
-            \in \RR^N$ with $\boldx \not= \boldzero$,
-        \item \navy{nonpositive definite} if $\boldx^\T \boldA \boldx \leq 0$
-            for all $\boldx \in \RR^N$, and
-        \item \navy{negative definite} if $\boldx^\T \boldA \boldx < 0$ for all $\boldx
-            \in \RR^N$ with $\boldx \not= \boldzero$.
+        \item \navy{неотрицательно определенной}, если $\boldx^\T \boldA \boldx \geq 0$
+            для всех $\boldx \in \RR^N$, 
+        \item \navy{положительно определенной}, если $\boldx^\T \boldA \boldx > 0$ для всех $\boldx \in \RR^N$ with $\boldx \not= \boldzero$,
+        \item \navy{неположительно определенной}, если $\boldx^\T \boldA \boldx \leq 0$
+            для всех $\boldx \in \RR^N$, и
+        \item \navy{отрицательно определенной}, если $\boldx^\T \boldA \boldx < 0$ для всех $\boldx \in \RR^N$ with $\boldx \not= \boldzero$.
     \end{itemize}
     
     \vspace{.7em}
-    If $\boldA$ fits none of these categories, then $\boldA$ is called \navy{indefinite}
+    Если $\boldA$ не подходит ни к одной из этих категорий, то $\boldA$ называется \navy{неопределенной}
     
 \end{frame}
 
@@ -1612,7 +1612,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={5em 2em 0 2em}, clip]{qform_nd.pdf}}
-    \caption{\label{f:qform_nd} Quadratic function $Q(\boldx) = -x_1^2 - x_2^2$ }
+    \caption{\label{f:qform_nd} Квадратичная функция $Q(\boldx) = -x_1^2 - x_2^2$ }
    \end{center}
     \end{figure}
     
@@ -1624,7 +1624,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.4}{\includegraphics[trim={5em 2em 2em 2em}, clip]{qform_indef.pdf}}
-    \caption{\label{f:qform_indef} Quadratic function $Q(\boldx) = x_1^2/2 +
+    \caption{\label{f:qform_indef} Квадратичная функция $Q(\boldx) = x_1^2/2 +
         8 x_1 x_2 + x_2^2/2$ }
    \end{center}
     \end{figure}
@@ -1634,17 +1634,18 @@
 \begin{frame}  
 
    \vspace{2em}
-   When the matrix $\boldA$ is diagonal: 
+    Когда матрица $\boldA$ диагональная: 
     %   
     \begin{equation*}
         \boldA = \diag(d_1, \ldots, d_N)
-        \quad \text{implies} \quad
+        \quad \text{подразумевает} \quad
         Q(\boldx) = d_1 x_1^2 + \cdots + d_N x_N^2  
     \end{equation*}
     
     
     \vspace{.7em}
-    A diagonal matrix is positive definite if and only if all diagonal elements are positive 
+    Диагольная матрица положительно определена, тогда и только тогда, когда 
+    все диагональные элементы положительны
     
 \end{frame}
 
@@ -1652,52 +1653,52 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:eigdef}}
-    Let $\boldA$ be any symmetric matrix.  $\boldA$ is 
+    Пусть $\boldA$ --- некоторая симметричная матрица. Матрица $\boldA$ 
     %
     \begin{enumerate}
-        \item positive definite if and only if its eigenvalues are all positive,
-        \item negative definite if and only if its eigenvalues are all negative,
+        \item положительна определена тогда и только тогда, когда все ее собственные значения положительны
+        \item отрицательно определена тогда и только тогда, когда все ее собственные значения отрицательны
     \end{enumerate}
     %
-    ...and similarly for nonpositive and nonnegative definite
+    ...аналогично для неположительно и неотрицательно определенных
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:ipde}}
-        If $\boldA$ is positive definite, then $\boldA$ is nonsingular, with $\det \boldA > 0$
+        Если $\boldA$ положительно определена, то $\boldA$ несингулярна, $\det \boldA > 0$
 
 \end{frame}
 
 \begin{frame}
 
      \vspace{2em}
-    A necessary (but not sufficient) condition for each kind of definiteness:
+    Необходимое (но не достаточное) условие для каждого вида определенности:
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:ipde0}}
-        If $\boldA$ is positive definite, then
-        each element $a_{nn}$ on the principal diagonal is positive, and the same
-        for nonnegative, nonpositive and negative.
+        Если $\boldA$ положительна определена, то
+        каждый элемент $a_{nn}$ на главной диагонали положительный, то же самое для
+        неотрицательной, неположительной и отрицательной.
         
 \end{frame}
 
-\section{Projection and Decomposition}
+\section{Проекция и разложение}
 
-\begin{frame}\frametitle{Projection Matrices}
+\begin{frame}\frametitle{Матрицы проекции}
 
      \vspace{2em}
-    Recall given any subspace of $\mathbb{R}^{N}$, $S$, the corresponding
-    projection $\boldP = \proj S$ is a linear map from $\RR^N$ to $\RR^N$
+    Напомним, что для любого подпространства $\mathbb{R}^{N}$, $S$, соответствующая 
+    проекция $\boldP = \proj S$ является линейным отображением из $\RR^N$ в $\RR^N$
 
     \vspace{.7em}
-    Recall Theorem~\ref{ET-t:lmaeq}: there exists an $N \times N$ matrix $\hat \boldP$ such that $\boldP \boldx =
-    \hat \boldP \boldx$ for all $\boldx \in \RR^N$
+    Вспомним теорему~\ref{ET-t:lmaeq}: существует матрица $\hat \boldP$ размера 
+    $N \times N$, такая что $\boldP \boldx =
+    \hat \boldP \boldx$ для всех $\boldx \in \RR^N$
     %
     \begin{itemize}
-        \item from now on $\boldP$ will also represent
-    the corresponding matrix
+        \item с этого момента $\boldP$ также будет означать соответствующую матрицу
     \end{itemize} 
     
-    What does this matrix look like?
+    Как выглядит эта матрица?
     
 \end{frame}
 
@@ -1705,22 +1706,22 @@
 
      \vspace{.7em}
     \Thm {\eqref{ET-t:projon}}
-    Let $S$ be a subspace of $\RR^N$.  If $\boldP = \proj S$, then
+    Пусть $S$ --- подпространство в $\RR^N$. Если $\boldP = \proj S$, то
     %
     \begin{equation}
         \label{eq:projb}
         \boldP = \boldB (\boldB^\T\boldB)^{-1} \boldB^\T  
     \end{equation}
     %
-    for every matrix $\boldB$ such that the columns of $\boldB$ form a basis
-    of $S$ 
+    для каждой матрицы $\boldB$, такой что столбцы $\boldB$ формируют базис $S$ 
     
     \vspace{.7em}
-    See exercise~\ref{ET-ex:projon} for proof
+    Смотрите упражнение~\ref{ET-ex:projon} для доказательства
     
     \begin{itemize}
-        \item  The matrix $\boldM = \boldI -
-                \boldP$ denotes the residual projection (see page~\pageref{ET-eq:ann0})
+        \item  Матрица $\boldM = \boldI -
+                \boldP$ обозначает остаточную проекцию (смотрите 
+                страницу~\pageref{ET-eq:ann0})
     \end{itemize}
     
 \end{frame}
@@ -1729,14 +1730,14 @@
     
     \vspace{2em}
     \Eg
-    Recall example~\ref{ET-eg:pvones} on page~\pageref{ET-eg:pvones}
+    Вспомним пример~\ref{ET-eg:pvones} на странице~\pageref{ET-eg:pvones}
     
-    We found the projection of $\boldy \in \RR^N$ onto $\Span\{\boldone\}$ is
+    Мы выяснили, что проекция $\boldy \in \RR^N$ на $\Span\{\boldone\}$ --- это
     $\bar y \boldone$
     
-    Same result using Theorem~\eqref{ET-t:projon}:
+    Тот же результат с помощью теоремы~\eqref{ET-t:projon}:
     \begin{itemize}
-        \item Since $\boldone$ is a basis for $\Span\{\boldone\}$:
+        \item Так как $\boldone$ является базисом $\Span\{\boldone\}$:
             %
             \begin{equation*}
                 \label{eq:pcz}
@@ -1747,8 +1748,8 @@
                 = \frac{1}{N} \boldone \boldone^\T  
             \end{equation*}
         %
-        \item Thus, $\boldP \boldy = \bar y \boldone$, as expected
-        \item Corresponding residual projection is
+        \item Значит, $\boldP \boldy = \bar y \boldone$, как и ожидалось
+        \item Соответствующая остаточная проекция
         %
         \begin{equation*}
             \label{eq:pczm}
@@ -1763,35 +1764,37 @@
 
      \vspace{2em}
     \Fact{\eqref{ET-fa:anox}} 
-    In the setting of theorem~\ref{ET-t:projon}, we have 
+    По постановке теоремы~\ref{ET-t:projon}, получается 
     %
     \begin{enumerate}
         \item $\boldM \boldB = \boldzero$
         \item $\boldP \boldB = \boldB$
     \end{enumerate}
     
-    Proof is an exercise (ex. \ref{ET-ex:anox} in ET)
+    Докажите в качестве упражнения (упр. \ref{ET-ex:anox} в ET)
     
     \vspace{1em}
-    Easy to see $\boldM_c$ in the previous example maps
-    $\boldone$ to $\boldzero$
+    Легко заметить, что $\boldM_c$ в предыдущем примере отображает
+    $\boldone$ в $\boldzero$
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    A square matrix $\boldA$ is \navy{idempotent} if $\boldA \boldA = \boldA$ 
+    Квадратная матрица $\boldA$ является \navy{иденпотентной}, 
+    если $\boldA \boldA = \boldA$ 
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:pmsi}}
-        Both $\boldP$ and $\boldM$ are symmetric and idempotent
+        И $\boldP$, и $\boldM$ симметричны и иденпотентны
     
-    (Exercise: check by direct calculation)
+    (Упражнение: проверьте прямыми вычислениями)
     
     \vspace{.7em}
-    Intuition: projecting
-    onto a subspace twice is the same as projecting once -- recall fact~\ref{ET-fa:opt3} on page~\pageref{ET-fa:opt3}
+    Интуиция: проецирование
+    на подпространство дважды --- это то же самое, что проецировать один раз -- вспомните 
+    факт~\ref{ET-fa:opt3} на странице~\pageref{ET-fa:opt3}
     
 \end{frame}
 
@@ -1799,24 +1802,23 @@
     
     \vspace{2em}
     \Fact{\eqref{ET-fa:trop}}
-    Let $S$ be a linear subspace of $\RR^N$. If $\boldP = \proj S$ and 
-    $\boldM$ is the residual projection, then 
+    Пусть $S$ является линейным подпространством в $\RR^N$. Если $\boldP = \proj S$ и 
+    $\boldM$ --- остаточная проекция, то
     %
     \begin{enumerate}
-        \item $\rank \boldP  = \trace \boldP  = \dim S$ and
+        \item $\rank \boldP  = \trace \boldP  = \dim S$ и
         \item $\rank \boldM  = \trace \boldM  = N - \dim S$
     \end{enumerate}
   
   
     \Prf
     \begin{itemize}
-        \item The rank of a linear
-            map is the dimension of its range.  When $\boldP = \proj S$, the range of
-            $\boldP$ is exactly $S$
-        \item To show that $\trace \boldP = \dim S$ also holds, use
-                fact~\ref{ET-fa:idtrra}--  $\trace\boldP
+        \item Ранг линейного отображения --- это размерность его диапазона.  Когда $\boldP = \proj S$, Диапазон
+            $\boldP$ равняется $S$
+        \item Чтобы показать, что $\trace \boldP = \dim S$ также соблюдается, используем 
+        факт~\ref{ET-fa:idtrra}--  $\trace\boldP
                 = \dim S$, 
-        \item It follows that $\trace\boldM = N - \dim S$, because
+        \item Это следует из того, что $\trace\boldM = N - \dim S$, потому что
             %
             \begin{equation*}
                 \trace\boldM 
@@ -1830,21 +1832,20 @@
 \end{frame}
 
 
-\begin{frame}\frametitle{Overdetermined Systems of Equations}
+\begin{frame}\frametitle{Переопределенные системы уравнений}
     
     \vspace{2em}
-    Consider systems of
-    equations of the form $\boldA \boldx = \boldb$ when:
+    Рассмотрим систему уравнений в виде $\boldA \boldx = \boldb$, когда:
     \begin{itemize}
-        \item The matrix $\boldA$ is
-        $N \times K$ and has full column rank
-        \item The vector $\boldx$ is $K\times1$
-        \item The vector $\boldb$ is $N\times 1$ 
+        \item Матрица $\boldA$ размера
+        $N \times K$ имеет полный ранг столбцов
+        \item Вектор $\boldx$ имеет размер $K\times1$
+        \item Вектор $\boldb$ имеет размер $N\times 1$ 
         \item $K\leq N$
     \end{itemize} 
     
     \vspace{1em}
-    Taking $\boldA$ and $\boldb$ as given, we seek $\boldx \in \RR^K$ such that
+    Принимая как данность $\boldA$ и $\boldb$, мы ищем $\boldx \in \RR^K$, такой что
     $\boldA \boldx = \boldb$
 
 \end{frame}
@@ -1852,53 +1853,54 @@
 \begin{frame}
 
      \vspace{2em}
-    If $K = N$, then system has precisely one solution
+    Если $K = N$, то система имеет ровно одно решение
     
     \vspace{1em}
-    When $N > K$, the system of equations said to be \navy{overdetermined}:
+    Когда $N > K$, система уравнений считается \navy{переопределенной}:
     %
     \begin{itemize}
-        \item number of equations $>$ number of unknowns
-        \item number of constraints $>$ degrees of freedom
+        \item количество уравнений $>$ количества неизвестных
+        \item количество ограничений $>$ количества степеней свободы
     \end{itemize}
     
-    May not be able find a $\boldb$ that satisfies all $N$ equations  
+    Возможно, не удастся найти $\boldb$, который удовлетворяет всем $N$ уравнениям
     
 \end{frame}
 
 \begin{frame}
 
      \vspace{2em}
-    Recall  the linear map $T \colon
-    \RR^K \to \RR^N$ corresponding to $\boldA$ is $T\boldx = \boldA \boldx$
+    Вспомним линейное отображение $T \colon
+    \RR^K \to \RR^N$, где $T\boldx = \boldA \boldx$
     
     \vspace{1em}
-    The following statements are equivalent:
+    Следующие утверждения эквивалентны:
     %
     \begin{enumerate}
-        \item there exists an $\boldx \in \RR^K$ with $\boldA \boldx = \boldb$
-        \item the vector $\boldb \in \colspace \boldA$
-        \item the vector $\boldb \in \range T$
+        \item существует $\boldx \in \RR^K$, такой что $\boldA \boldx = \boldb$
+        \item вектор $\boldb \in \colspace \boldA$
+        \item вектор $\boldb \in \range T$
     \end{enumerate}
     
      \vspace{.7em}
-    Theorem~\ref{ET-t:lfoc} on page~\pageref{ET-t:lfoc}: when $K <
-    N$, the function $T$ cannot be onto -- possible $\boldb$ lies 
-    outside the range of $T$
+    Теорема~\ref{ET-t:lfoc} на странице~\pageref{ET-t:lfoc}: когда $K <
+    N$, функция $T$ не может быть сюръекцией -- возможные $\boldb$ находятся
+    вне диапазона $T$
     
 \end{frame}
 
 \begin{frame}
 
      \vspace{2em}
-    When $K < N$, the scenario $\boldb \in
-    \colspace \boldA$ is ``very rare" because:
+    Когда $K < N$, случай с $\boldb \in
+    \colspace \boldA$ является ``очень редким``, потму что:
     %
     \begin{itemize}
-        \item the point $\boldb$ is an arbitrary point in $\RR^N$
-        \item the space $ \colspace \boldA$ has dimension $K$
-        \item $K$-dimensional subspaces of $\RR^N$ have 
-        ``Lebesgue measure zero'' -- the ``chance'' of $\boldb$ happening to lie in this subspace is tiny  
+        \item точка $\boldb$ является произвольной точкой в $\RR^N$
+        \item пространство $ \colspace \boldA$ имеет размерность $K$
+        \item подпространста $\RR^N$ с размерностями $K$ имеют
+        ``нулевую меру Лебега'' -- ``шанс'' того, что $\boldb$ лежит в 
+        этом подпространстве, крошечный
     \end{itemize}
     
 \end{frame}
@@ -1906,18 +1908,17 @@
 \begin{frame}
 
      \vspace{2em}
-    Standard approach: admit an exact solution may not
-    exist
+    Стандартный подход: признать, что точного решения может не существовать
     
     \vspace{1em}
-    Focus on finding $\boldx \in \RR^K$ to make $\boldA
-    \boldx$ as close to $\boldb$ as possible
+    Следует сосредоточиться на поиске $\boldx \in \RR^K$, чтобы $\boldA
+    \boldx$ оказалось настолько близко к $\boldb$, насколько возможно
     \begin{itemize}
-        \item close in terms of ordinary Euclidean norm
+        \item близки по обычной Евклидовой норме
     \end{itemize}
     
     \vspace{1em}
-    The minimization problem, called the \navy{least squares problem}
+    Задача минимизации называется \navy{методом наименьших квадратов}
     %
     \begin{equation}
         \label{eq:mxls}
@@ -1930,13 +1931,14 @@
 \begin{frame}
 
      \vspace{2em}
-    Assuming $\boldA$ is $N \times K$ with $K \leq N$ and $\boldb$ is $N \times 1$, 
-    we can use  the orthogonal projection theorem to solve \eqref{eq:mxls}
+    При условии, что $\boldA$ размера $N \times K$ с $K \leq N$ и 
+    $\boldb$ размера $N \times 1$, 
+    мы можем использовать теорему ортогональной проекции для решения \eqref{eq:mxls}
     
     \vspace{.7em}
     \Thm{\eqref{ET-t:lssol}}
-        If $\boldA$ has full column rank, then \eqref{eq:mxls} has the unique
-        solution
+        Если $\boldA$ имеет полный ранг столбцов, то \eqref{eq:mxls} имеет 
+        единственное решение
         %
         \begin{equation}
             \label{eq:dlse}
@@ -1950,11 +1952,11 @@
     \vspace{2em}
     \Prf 
     
-    Let:
+    Пусть:
     %
     \begin{itemize}
-        \item $\boldA$ and $\boldb$ be as in the statement of the theorem
-        \item $\hboldx$ be as in \eqref{eq:dlse} and
+        \item $\boldA$ и $\boldb$ be as in the statement of the theorem
+        \item $\hboldx$ be as in \eqref{eq:dlse} и
         \item $S := \colspace \boldA$
     \end{itemize}
     %
@@ -1975,7 +1977,7 @@
     \begin{equation}
         \label{eq:sfy}
         \| \boldb - \boldA\hboldx \| < \| \boldb - \boldy\|
-        \quad \text{for all } \boldy \in S, \; \boldy \not= \boldA \hboldx
+        \quad \text{для всех } \boldy \in S, \; \boldy \not= \boldA \hboldx
     \end{equation}
 
 \end{frame}
@@ -1983,11 +1985,11 @@
 \begin{frame}
     
     \vspace{2em}
-    \Prf (cont.) Pick any $\boldx \in \RR^K$ such that $\boldx \not= \hboldx$
+    \Prf (cont.) Pick any $\boldx \in \RR^K$ , такая что $\boldx \not= \hboldx$
     
     We have $\boldA \boldx \in S$
     
-    In addition, since $\boldx \not= \hboldx$, and since $\boldA$ has full column
+    In addition, since $\boldx \not= \hboldx$, и since $\boldA$ has full column
     rank, it must be that $\boldA \boldx \not= \boldA \hboldx$
     (ex.~\ref{ET-ex:ui})
     
@@ -1996,7 +1998,7 @@
     %
     \begin{equation*}
         \| \boldb - \boldA\hboldx \| < \| \boldb - \boldA \boldx\|
-        \quad \text{for all } \boldx \in \RR^K, \; \boldx \not= \hboldx
+        \quad \text{для всех } \boldx \in \RR^K, \; \boldx \not= \hboldx
     \end{equation*}
     %
     In other words, $\hboldx$ is the unique solution to \eqref{eq:mxls}
@@ -2007,10 +2009,10 @@
 
     \vspace{2em}
     In  \eqref{eq:dlse}, the matrix $(\boldA^\T\boldA)^{-1} \boldA^\T$ 
-    is called the \navy{pseudoinverse} of $\boldA$ 
+    называется the \navy{pseudoinverse} of $\boldA$ 
     
     \vspace{1em}
-    If $K =
+    если $K =
     N$, then the
     least squares solution $\hboldx$ in \eqref{eq:dlse} reduces to:
     %
@@ -2023,12 +2025,12 @@
 \begin{frame}
 
      \vspace{2em}
-    What happens if the columns of $\boldA$ are not
+    What happens если the columns of $\boldA$ are not
     linearly independent? 
     
     \begin{itemize}
         \item   the set $\colspace \boldA$ is still a linear
-        subspace and the orthogonal projection theorem still gives us a closest
+        subspace и the orthogonal projection theorem still gives us a closest
         point $\boldP \boldb$ to $\boldb$ in $\colspace \boldA$
         \item   since $\boldP
         \boldb \in \colspace \boldA$, there still exists a vector $\hboldx$ such
@@ -2042,19 +2044,19 @@
 \end{frame}
 
 
-\section{Diagonalisation and Spectral Theory} 
+\section{Diagonalisation и Spectral Theory} 
 
 \begin{frame}\frametitle{QR Decomposition}
 
      \vspace{2em}
     The \navy{QR decomposition} of a given matrix $\boldA$ is a product of the form $\boldQ \boldR$
     \begin{itemize}
-        \item first matrix has orthonormal columns and 
+        \item first matrix has orthonormal columns и 
         \item the second is upper triangular
     \end{itemize}
     
     \vspace{1em}
-    Applications include least squares problems and the computation of eigenvalues
+    Applications include least squares problems и the computation of eigenvalues
     
 \end{frame}
 
@@ -2062,11 +2064,11 @@
 
      \vspace{2em}
     \Thm{\eqref{ET-t:qr}}
-    If $\boldA$ is an $N \times K$ matrix with full column rank, then there exists a
+    если $\boldA$ is an $N \times K$ matrix with full column rank, then there exists a
     factorization $\boldA = \boldQ \boldR$ where
     %
     \begin{enumerate}
-        \item $\boldR$ is $K \times K$, upper triangular and nonsingular, and 
+        \item $\boldR$ is $K \times K$, upper triangular и nonsingular, и 
         \item $\boldQ$ is $N \times K$, with orthonormal columns
     \end{enumerate}
     %
@@ -2090,16 +2092,16 @@
     
 \end{frame}
 
-\begin{frame}\frametitle{Diagonalisation and Spectral Theory}
+\begin{frame}\frametitle{Diagonalisation и Spectral Theory}
 
      \vspace{2em}
-    If $f \colon A \to A$ and $g \colon B \to B$, then
+    если $f \colon A \to A$ и $g \colon B \to B$, then
     $g$ is said to be \navy{topologically conjugate} to $f$ whenever there exists
-    a continuous bijection $\tau \colon B \to A$ such that $$f = \tau \circ g \circ
+    a continuous bijection $\tau \colon B \to A$ , такая что $$f = \tau \circ g \circ
     \tau^{-1}$$
     
     \vspace{.7em}
-    Can be beneficial if $g$ is somehow simpler
+    Can be beneficial если $g$ is somehow simpler
     than $f$
     
 \end{frame}
@@ -2107,7 +2109,7 @@
 \begin{frame}
 
     \vspace{2em}
-    A square matrix $\boldA$ is said to be \navy{similar} to another matrix $\boldB$ if there exists an invertible matrix $\boldP$ such that $\boldA = \boldP \boldB \boldP^{-1}$
+    A square matrix $\boldA$ is said to be \navy{similar} to another matrix $\boldB$ если there exists an invertible matrix $\boldP$ , такая что $\boldA = \boldP \boldB \boldP^{-1}$
 
     \begin{figure}
    \begin{center}
@@ -2121,11 +2123,11 @@
 \begin{frame}
    
     \vspace{2em}
-    If $\boldA$ is similar to a diagonal matrix, then $\boldA$ is
+    если $\boldA$ is similar to a diagonal matrix, then $\boldA$ is
     called \navy{diagonalizable}
     
     \vspace{.7em}
-    We are interested in similarity to simple matrices, and diagonal matrices are the simplest kind 
+    We are interested in similarity to simple matrices, и diagonal matrices are the simplest kind 
     
 \end{frame}
 
@@ -2133,16 +2135,16 @@
 
      \vspace{2em}
     \Fact{\eqref{ET-fa:powsm}}
-        If $\boldA$ is similar to $\boldB$, then $\boldA^t$ is similar to
-        $\boldB^t$ for all $t \in \NN$
+        если $\boldA$ is similar to $\boldB$, then $\boldA^t$ is similar to
+        $\boldB^t$ для всех $t \in \NN$
     
     \vspace{.7em}
     \Eg
     We want to calculate $\boldA^t$ for some given $t \in \NN$ 
     
-    If $\boldA = \boldP \boldLambda \boldP^{-1}$ for some
+    если $\boldA = \boldP \boldLambda \boldP^{-1}$ for some
     $\boldLambda = \diag(\lambda_1, \ldots, \lambda_N)$, then by
-    fact~\ref{ET-fa:powsm} and fact~\ref{ET-fa:powdm}, we
+    fact~\ref{ET-fa:powsm} и fact~\ref{ET-fa:powdm}, we
     have
     %
         $$\boldA^t = \boldP \diag(\lambda_1^t, \ldots, \lambda_N^t)
@@ -2150,11 +2152,11 @@
     
 \end{frame}
 
-\begin{frame}\frametitle{Diagonalization and Eigenvalues}
+\begin{frame}\frametitle{Diagonalization и Eigenvalues}
 
     \vspace{.7em}
     \Fact{\eqref{ET-fa:diagee}}
-    If $\boldA = \boldP \boldLambda \boldP^{-1}$ for some $\boldLambda =
+    если $\boldA = \boldP \boldLambda \boldP^{-1}$ for some $\boldLambda =
         \diag(\lambda_1, \ldots, \lambda_N)$, then $(\col_n \boldP,
             \lambda_n)$ is an eigenpair of $\boldA$ for each $n$
             
@@ -2183,7 +2185,7 @@
     
     \vspace{.7em}
     \Fact (3.3.7)
-    An $N \times N$ matrix $\boldA$ is diagonalizable if and only if
+    An $N \times N$ matrix $\boldA$ is diagonalizable если и only если
     it has $N$ linearly independent eigenvectors
 
 \end{frame}
@@ -2192,18 +2194,18 @@
 \begin{frame}
 
      \vspace{2em}
-    In some cases, we can get an even simpler matrix decomposition if 
+    In some cases, we can get an even simpler matrix decomposition если 
     the matrix $\boldP$ has orthogonal columns 
 
     These kinds of matrices are called \navy{orthogonal matrices}
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:orthmat}}
-    If $\boldQ$ and $\boldP$ are $N \times N$ orthogonal matrices, then
+    если $\boldQ$ и $\boldP$ are $N \times N$ orthogonal matrices, then
     %
     \begin{enumerate}
-        \item $\boldQ^\T$ is orthogonal and $\boldQ^{-1} = \boldQ^\T$,
-        \item $\boldQ \boldP$ is orthogonal, and
+        \item $\boldQ^\T$ is orthogonal и $\boldQ^{-1} = \boldQ^\T$,
+        \item $\boldQ \boldP$ is orthogonal, и
         \item $\det \boldQ \in \{-1, 1\}$.
     \end{enumerate}
     
@@ -2212,16 +2214,16 @@
 \begin{frame}
 
     \vspace{2em}
-    If $\boldA = \boldQ \boldLambda \boldQ^{-1}$ and $\boldQ$ has orthonormal columns,
+    если $\boldA = \boldQ \boldLambda \boldQ^{-1}$ и $\boldQ$ has orthonormal columns,
     then $$\boldA = \boldQ \boldLambda \boldQ^\T$$
     
     Clearly, $\boldA$ must be symmetric. Next theorem shows symmetry of $\boldA$ is also sufficient
     
     \vspace{.7em}
     \Thm{\eqref{ET-t:dismat}}
-    If $\boldA$ is symmetric, then $\boldA$ can be
+    если $\boldA$ is symmetric, then $\boldA$ can be
     diagonalized as $\boldA = \boldQ \boldLambda \boldQ^\T$, where 
-    $\boldQ$ is an orthogonal matrix and $\boldLambda$ is the 
+    $\boldQ$ is an orthogonal matrix и $\boldLambda$ is the 
     diagonal matrix formed from the eigenvalues of $\boldA$
     
 \end{frame}
@@ -2232,7 +2234,7 @@
 
     Above theorem was a version of the \navy{spectral decomposition theorem}
 
-    $\boldQ \boldLambda \boldQ^\T$ is called the \navy{symmetric eigenvalue
+    $\boldQ \boldLambda \boldQ^\T$ называется the \navy{symmetric eigenvalue
     decomposition} of $\boldA$\ -- action of $\boldA$ on an
     $N \times 1$ vector $\boldx$:
     %
@@ -2240,7 +2242,7 @@
         \boldA\boldx = \sum_{n=1}^N \lambda_n (\boldu_n^\T \boldx) \boldu_n
     \end{equation*}
     %
-    where $\lambda_n$ is the $n$th eigenvalue of $\boldA$ and $\boldu_n = \col_n \boldQ$
+    where $\lambda_n$ is the $n$th eigenvalue of $\boldA$ и $\boldu_n = \col_n \boldQ$
     
     \vspace{.7em}
     Compare with $\boldx = \sum_{n=1}^N (\boldu_n^\T \boldx) \boldu_n$
@@ -2251,17 +2253,17 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:sqrtsnd}}
-    If $\boldA$ is nonnegative definite, then $\sqrt{\boldA}$
-    exists and equals $\boldQ \sqrt{\boldLambda} \boldQ^\T$.
+    если $\boldA$ is nonnegative definite, then $\sqrt{\boldA}$
+    exists и equals $\boldQ \sqrt{\boldLambda} \boldQ^\T$.
     The matrix $\sqrt{\boldLambda}$ is given by $\diag(\sqrt{\lambda_1},
     \ldots, \sqrt{\lambda_N})$
     
     \vspace{.7em}
     \Fact{\eqref{ET-fa:cholesky}}
-    If $\boldA$ is positive definite, then there exists a nonsingular, upper
-    triangular matrix $\boldR$ such that $\boldA = \boldR^\T \boldR$
+    если $\boldA$ is positive definite, then there exists a nonsingular, upper
+    triangular matrix $\boldR$ , такая что $\boldA = \boldR^\T \boldR$
     
-    This decomposition is called the \navy{Cholesky decomposition}
+    This decomposition называется the \navy{Cholesky decomposition}
 
 \end{frame}
 
@@ -2282,7 +2284,7 @@
     %
         $$\sqrt{ \boldLambda} \boldQ^\T = \tilde \boldQ \boldR$$
     %
-    where $\boldR$ is nonsingular and upper triangular, and $\tilde \boldQ$ has
+    where $\boldR$ is nonsingular и upper triangular, и $\tilde \boldQ$ has
     orthonormal columns
     
     \vspace{.7em}
@@ -2301,11 +2303,11 @@
 \begin{frame}
 
     \vspace{2em}
-    \frametitle{Norms and Continuity}
+    \frametitle{Norms и Continuity}
     
-    Given vector sequence $\{\boldx_n\}$ in $\RR^K$ and any point $\boldx \in \RR^K$, we say that $\{\boldx_n\}$ \navy{converges} to $\boldx$ and write
-    \navy{$\boldx_n \to \boldx$} if, for any $\epsilon > 0$, there exists an $N
-    \in \NN$ such that $\|\boldx_n - \boldx\| < \epsilon$ whenever $n \geq N$
+    Given vector sequence $\{\boldx_n\}$ in $\RR^K$ и any point $\boldx \in \RR^K$, we say that $\{\boldx_n\}$ \navy{converges} to $\boldx$ и write
+    \navy{$\boldx_n \to \boldx$} если, для любых $\epsilon > 0$, there exists an $N
+    \in \NN$ , такая что $\|\boldx_n - \boldx\| < \epsilon$ whenever $n \geq N$
     
     \vspace{.7em}
     Equivalently, the real-valued sequence $z_n := \|\boldx_n - \boldx\|$
@@ -2320,12 +2322,12 @@
     The following results hold:
     %
     \begin{enumerate}
-        \item If $\boldx_n \to \boldx$ and $\boldy_n \to \boldy$, then $\boldx_n +
+        \item если $\boldx_n \to \boldx$ и $\boldy_n \to \boldy$, then $\boldx_n +
             \boldy_n \to \boldx +  \boldy$.
-        \item If $\boldx_n \to \boldx$ and $\alpha \in \RR$, then $\alpha \boldx_n 
+        \item если $\boldx_n \to \boldx$ и $\alpha \in \RR$, then $\alpha \boldx_n 
             \to \alpha \boldx$.
-        \item $\boldx_n \to \boldx$ if and only if $\bolda^\T \boldx_n \to
-            \bolda^\T \boldx$ for all $\bolda \in \RR^K$.
+        \item $\boldx_n \to \boldx$ если и only если $\bolda^\T \boldx_n \to
+            \bolda^\T \boldx$ для всех $\bolda \in \RR^K$.
     \end{enumerate}
 
 
@@ -2361,15 +2363,15 @@
 
     \vspace{2em}
     \Fact (3.3.12)
-    For any conformable matrices $\boldA$ and $\boldB$, the matrix norm 
+    для любых conformable matrices $\boldA$ и $\boldB$, the matrix norm 
     satisfies
     %
     \begin{enumerate}
-        \item $\| \boldA \| \geq 0$ and $\| \boldA \| = 0$ if and only if all entries of
+        \item $\| \boldA \| \geq 0$ и $\| \boldA \| = 0$ если и only если all entries of
             $\boldA$ are zero,
-        \item $\| \alpha \boldA \| = |\alpha| \| \boldA \|$ for any scalar
+        \item $\| \alpha \boldA \| = |\alpha| \| \boldA \|$ для любых scalar
             $\alpha$,
-        \item $\| \boldA + \boldB \| \leq \| \boldA \| + \| \boldB \|$, and
+        \item $\| \boldA + \boldB \| \leq \| \boldA \| + \| \boldB \|$, и
         \item $\| \boldA \boldB \| \leq \| \boldA \| \| \boldB \|$.
     \end{enumerate}
     
@@ -2380,14 +2382,14 @@
 
     \vspace{2em}
     \Fact{\eqref{ET-fa:mnbd}}
-    For any $J \times K$ matrix $\boldA$ with elements $a_{jk}$, we have
+    для любых $J \times K$ matrix $\boldA$ with elements $a_{jk}$, we have
     %
     \begin{equation*}
         \| \boldA \| \leq \sqrt{JK} \max_{jk} |a_{jk}|
     \end{equation*}
     
     \vspace{1em}
-    If every element of
+    если every element of
     $\boldA$ is close to zero then $\| \boldA \|$ is also close to zero
 
 \end{frame}
@@ -2411,7 +2413,7 @@
     \begin{equation}
         \label{eq:lpfde}
         \boldx = \boldA \boldx + \boldb 
-        \qquad (\boldA \text{ is } N \times N \text{ and } \boldb \text{ is } N
+        \qquad (\boldA \text{ is } N \times N \text{ и } \boldb \text{ is } N
         \times 1)
     \end{equation}
     
@@ -2420,10 +2422,10 @@
 \begin{frame}
     
     \vspace{2em}
-    Consider the scalar case $x = a x + b$
+    Рассмотрим the scalar case $x = a x + b$
     
     \vspace{.7em}
-    If $|a| < 1$, then there is a unique solution
+    если $|a| < 1$, then there is a unique solution
     %
     \begin{equation*}
         \bar x 
@@ -2436,8 +2438,8 @@
     
     \vspace{1em}
     \Thm{\eqref{ET-t:nms}}
-    If $\boldA$ is square and $\| \boldA^j \| < 1$
-    for some $j \in \NN$, then $\boldI - \boldA$ is invertible, and
+    если $\boldA$ is square и $\| \boldA^j \| < 1$
+    for some $j \in \NN$, then $\boldI - \boldA$ is invertible, и
     %
     \begin{equation*}
         \label{eq:nmse}
@@ -2478,7 +2480,7 @@
 
     \vspace{2em}
     \Fact
-    If $\rho(\boldA) < 1$, then $\| \boldA^j \| < 1$ for some $j \in \NN$
+    если $\rho(\boldA) < 1$, then $\| \boldA^j \| < 1$ for some $j \in \NN$
     
     \vspace{.7em}
     Why is $\rho(\boldA) < 1$ is sufficient?
@@ -2501,7 +2503,7 @@
 \begin{frame}
     
     \vspace{2em}
-    Simplify to the case where $\boldA$ is diagonalizable:
+    Simplеслиy to the case where $\boldA$ is diagonalizable:
     %
         $$\boldA = \boldP \boldLambda \boldP^{-1}$$
     %
@@ -2526,7 +2528,7 @@
         \boldP^{-1}
     \end{equation*}
     %
-    If $\rho(\boldA) < 1$, then $|\lambda_n| < 1$ for all $n$, and hence
+    если $\rho(\boldA) < 1$, then $|\lambda_n| < 1$ для всех $n$, и hence
     $\lambda_n^t \to 0$ as $t \to \infty$. It follows that $\boldA^t \to
     \boldzero$ 
     
