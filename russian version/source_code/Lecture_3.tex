@@ -5,14 +5,14 @@
 
 
 
-\title{A Primer in Econometric Theory}
+\title{Учебник по Эконометрике}
 
 \subtitle
-{Lecture 3: Foundations of Probability}
+{Лекция 3: Основы теории вероятностей}
 
-\author{John Stachurski \\ \tiny Lectures by Akshay Shanker}
-
-
+\author{Джон Стачурски \\ \vspace{.5em} 
+	\scriptsize Лекции: Акшай Шенкер \\ \vspace{.1em} 
+	\scriptsize Перевел: Алексей Кедо}
 
 
 \begin{document}
@@ -21,41 +21,40 @@
   \titlepage
 \end{frame}
 
-\section{Probabilistic Models}
+\section{Вероятностные модели}
 
 \begin{frame}
 
     \vspace{2em}
-    Probability fundamental to statistics and econometrics, but technically demanding:
+    Вероятность фундаментальна для статистики и эконометрики, но технически сложна:
     
     \begin{itemize}
-        \item set of events we want to assign probabilities to can be very large 
-        \item we need ways to manage the complexity 
+        \item множество событий, которым мы хотим присвоить вероятности, может быть очень большим 
+        \item нам нужны способы справиться со сложностью 
     \end{itemize}
     
     \vspace{1em}
-    Before we begin:
+    Прежде чем мы начнем:
     \begin{itemize}
-        \item a set $S$ is countable if it is finite or can be represented as sequence 
-        \item otherwise, a set $S$ is uncountable
+        \item множество $S$ исчеслимо, если оно конечно или может быть представлено 
+        как последовательность 
+        \item в противном случае, множество $S$ неисчеслимо
     \end{itemize}
 
 \end{frame}
 
-\begin{frame}\frametitle{Sample Spaces and Events}
+\begin{frame}\frametitle{Пространство элементарных событий}
 
     \vspace{2em}
-    \navy{Sample space} can be thought of as a ``list" of
-    all possible outcomes in a given random experiment:
+    \navy{Пространство элементарных событий} можно представить себе как ''список'' всех возможных результатов в данном случайном эксперименте:     
     \begin{itemize}
-        \item sample space usually denoted by $\Omega$
-        \item sample space can be any non-empty set
-        \item typical element of $\Omega$ is denoted $\omega$
+        \item пространство элементарных событий обычно обозначается как $\Omega$
+        \item пространством элементарных событий может быть только непустое множество
+        \item типичный элемент $\Omega$ обозначается как $\omega$
    \end{itemize}
    
     \vspace{1em}
-    A realization of uncertainty will lead to the selection of
-    a particular $\omega\in \Omega$
+    Реализация неопределенности приведет к выбору конкретной $\omega\in \Omega$
     
 \end{frame}
 
@@ -64,37 +63,33 @@
 
     \vspace{2em}
     \Eg
-    In a random experiment that involves rolling a die once, the set of
-    possible outcomes is naturally represented by $\Omega := \{1,\ldots, 6\}$
+    В случайном эксперименте, заключающемся в бросании кости один раз, множество возможных результатов представлено как $\Omega := \{1,\ldots, 6\}$
     
     \vspace{1em}
     \Eg
     \label{eg:dart}
-    Burton Malkiel's blindfolded monkey throws darts at a
-    dartboard of radius $1$
+    Обезьяна Бертона Малкиела с завязанными глазами метает дротики в мишень радиусом $1$
     
-    Impose ordinary
-    Cartesian coordinates with origin at the centre of the board
+    Введем обычные декартовы координаты с началом в центре мишени
     
-    Let $(h,
-    v)$ be a typical location measured on the horizontal and vertical
-    coordinates respectively
+    Пусть $(h, v)$ --- типичные координаты, измеренные по горизонтали и вертикали соответственно
     
-    A natural sample space is $\Omega :=
-    \setntn{(h, v) \in \RR^2}{\| (h, v) \| \leq 1}$ -- also called
-    the \navy{unit disk} in $\RR^2$
+    Естественное пространство элементарных событий --- это $\Omega :=
+    \setntn{(h, v) \in \RR^2}{\| (h, v) \| \leq 1}$ -- также называется
+    \navy{единичным кругом} в $\RR^2$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Informally, an \navy{event} is a subset of $\Omega$ (we will address some caveats soon)
+    Неформально, \navy{событие} --- это подмножество $\Omega$ 
+    (мы скоро рассмотрим некоторые предостережения)
     
     \vspace{1em}
-    An event $A$
-    occurs whenever the individual $\omega \in \Omega$ selected in the random
-    experiment happens to lie in $A$
+    Событие $A$
+    происходит всякий раз, когда отдельный $\omega \in \Omega$ , выбранный в 
+    случайном эксперименте, оказывается в $A$
     
 \end{frame}
 
@@ -105,88 +100,89 @@
     \begin{figure}
    \begin{center}
     \scalebox{.32}{\input{figs_code/event_occurs.pdf_t}}
-    \caption{\label{f:eao} Outcomes and events}
+    \caption{\label{f:eao} Результаты и события}
    \end{center}
     \end{figure}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Probabilities and events}
+    \frametitle{Вероятности и события}
     
     \vspace{2em}
-    Can we assign probabilities to each $\omega\in \Omega$?
+    Можем ли мы присвоить вероятности каждому $\omega\in \Omega$?
     
-    Consider dart throwing model where $\Omega$ is $\mathbb{R}$:
+    Рассмотрим модель метания дротика, где $\Omega$ is $\mathbb{R}$:
     \begin{itemize}
-        \item for $A\subset \Omega$, probability dart lands in $A$ is 
-                proportional to the area of $A$
-        \item the probability of a point $\omega \in \Omega$ will be less 
-                than any area $A$ containing $\omega$
-        \item for any $\epsilon>0$, we can find an $A$, containing $\omega$, 
-                with area smaller than $\epsilon$
+        \item для $A\subset \Omega$, вероятность того, что дротик попадет в $A$  
+                пропорционален площади $A$
+        \item вероятность точки $\omega \in \Omega$ будет меньше 
+                любой области $A$, содержащей $\omega$
+        \item для любых $\epsilon>0$, мы можем найти $A$, содержащее $\omega$, 
+                с площадью меньше $\epsilon$
     \end{itemize}
     
-    The probability of hitting $\omega$ is smaller than $\epsilon$ for 
-    any $\epsilon >0$, thus the probability of hitting $\omega$ must be zero!
+    вероятность попадания в $\omega$ меньше $\epsilon$ для 
+    любых $\epsilon > 0$, значит вероятность попадания в $\omega$ должна быть равна нулю!
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    The upshot: when sample space is uncountable, assign probabilities to events (subsets of $\Omega$), 
-    not to each $\omega\in \Omega$
+    Итог: когда пространство элементарных событий исчеслимо, присваивать вероятности  событиям (подмножествам $\Omega$), 
+    не каждому $\omega\in \Omega$
     
-    But can we assign probabilities to \emph{every} subset of $\Omega$? 
+    Но можем ли мы присваивать вероятности \emph{каждому} попространству $\Omega$? 
     
-    In the dart model:
+    В модели дротика:
     \begin{equation*}
         \PP(A) = \frac{\lambda(A)}{\pi} 
     \end{equation*}
     
-    where $\lambda(A)\colon = \text{area of the set A}$
+   где $\lambda(A)\colon = \text{площадь множества A}$
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Defining area of $A$, for all $A\subset \Omega$, problematic:
+    Определение площади $A$ для всех $A\subset \Omega$ проблематично:
     
     \begin{itemize}
-        \item the space $\Omega$, our dart-board unit disk in $\mathbb{R}^{2}$, 
-        contains many subsets which exhibit strange phenomena
-        \item Banach-Tarski paradox 
+        \item пространство $\Omega$, наш круг для дартс в $\mathbb{R}^{2}$, 
+        содержит много подмножеств, что производит странные явления
+        \item Парадокс Банаха — Тарского 
     \end{itemize}
 
-    Solution: do not take the set of events to be all the subsets of $\Omega$
+    Решение: не принимайте множество событий за все подмножества $\Omega$
     
-    Take the set of events to be certain ``well-behaved" subsets of $\Omega$, denoted by $\mathscr{F}$
+    Возьмите множество событий как определенные ''хорошие'' подмножества $\Omega$, 
+    обозначенные $\mathscr{F}$
 
-    Assign probabilities only to subsets of $\Omega$ in $\mathscr{F}$
+    Присваивайте вероятности только подмножествам $\Omega$ в $\mathscr{F}$
 
 \end{frame}
 
-\begin{frame}\frametitle{Sigma-algebra}
+\begin{frame}\frametitle{Сигма-алгебра}
 
     \vspace{2em}
-    How can we ensure $\mathscr{F}$ is large enough? In a sensible probability model, 
-    we ideally want:
+    Как мы можем гарантировать, что $\mathscr{F}$ достаточно большой? 
+    В разумной вероятностной модели мы в идеале хотим:
     \begin{itemize}
-        \item the event ``not A" to belong to $\mathscr{F}$ if $A\in \mathscr{F}$
-        \item the event ``A or B" to belong to $\mathscr{F}$ if $A\in \mathscr{F}$ 
-                and $A\in \mathscr{F}$
+        \item  событие ''не A'' принадлежит $\mathscr{F}$, если $A\in \mathscr{F}$
+        \item  событие ''A или B'' принадлежит $\mathscr{F}$, если $A\in \mathscr{F}$ 
+                и $A\in \mathscr{F}$
     \end{itemize}
     
     \vspace{1em}
-    Formally, $\fF$ is a
-    \navy{$\sigma$-algebra} on $\Omega$ if
+    Формально, $\fF$ --- это
+    \navy{$\sigma$-алгебра} множества $\Omega$, если
     %
     \begin{enumerate}
         \item $A \in \fF \implies A^c \in \fF$,
-        \item $A_1, A_2, \ldots \in \fF \implies \cup_{n=1}^{\infty} A_n \in \fF$,
-            and
+        \item $A_1, A_2, \ldots \in \fF \implies \cup_{n=1}^{\infty} A_n \in \fF$
+            и
         \item $\Omega \in \fF$
     \end{enumerate}
     
@@ -195,48 +191,48 @@
 \begin{frame}
 
     \vspace{2em}
-    1. - 3. imply that $\emptyset \in \fF$ if $\fF$ is a $\sigma$-algebra
+    1. - 3. подразумевают, что $\emptyset \in \fF$, если $\fF$ --- $\sigma$-алгебра
     
-    The event $\emptyset$ is called the \navy{impossible event} 
+     Событие $\emptyset$ называется \navy{невозможным событием} 
     
-    The event $\Omega$ is called the \navy{certain event}
+     Событие $\Omega$ называется \navy{достоверным событием}
     
     \vspace{1em}
-    \Eg The set $\{\Omega, \emptyset\}$ is a $\sigma$ - algebra called 
-    the \navy{trivial $\sigma$-algebra}
+    \Eg Множество $\{\Omega, \emptyset\}$ --- $\sigma$ - алгебра, называемая 
+    \navy{тривиальной $\sigma$-алгеброй}
     
 \end{frame}
 
-\begin{frame}\frametitle{The Borel $\sigma$ -algebra}
+\begin{frame}\frametitle{Борелевская $\sigma$ -алгебра}
     
     \vspace{2em}
-    The $\sigma$-algebra of events varies from problem to problem
+    $\sigma$-алгебра событий меняется от задачи к задаче
     
-    In $\mathbb{R}^{N}$, we use the Borel sets, denoted by $\bB(\RR^N)$ 
+    В $\mathbb{R}^{N}$ мы используем Борелевские множества, обозначенные $\bB(\RR^N)$ 
     \begin{itemize}
-        \item the smallest $\sigma$-algebra that contains all the rectangles in $\mathbb{R}^{N}$ 
+        \item наименьшая $\sigma$-алгебра, содержащая все прямоугольники в $\mathbb{R}^{N}$ 
     \end{itemize}
     
-    Why  Borel $\sigma$-algebra?
+    Почему Борелевская $\sigma$-алгебра?
     \begin{itemize}
-        \item excludes ``strange" sets 
-        \item includes day-to-day useful sets (including planes and
-        hyperplanes, circles, spheres, polygons, finite sets, and sequences of points)
+        \item исключает ''странные'' множества 
+        \item включает повседневные полезные множества (включая плоскости и гиперплоскости, 
+        круги, сферы, многоугольники, конечные множества и последовательности точек)
     \end{itemize}
     
 \end{frame}
 
-\begin{frame}\frametitle{Probabilities}
+\begin{frame}\frametitle{Вероятности}
 
     \vspace{2em}
-    For given event $B\in \fF$, the symbol
-    $\PP(B)$ represents ``the probability that event $B$
-    occurs."
+    Для данного события $B\in \fF$, символ
+    $\PP(B)$ показывает ''вероятность, что событие $B$
+    случится''
     %
     \begin{quote}
-        $\PP(B)$ represents the probability that
-        when uncertainty is resolved and some $\omega \in \Omega$ is selected by
-        ``nature,'' the statement $\omega \in B$ is true
+        $\PP(B)$ показывает вероятность, что
+        когда неопределенность решена и некоторые $\omega \in \Omega$ выбраны
+        ''естественно'', то утверждение $\omega \in B$ является верным
     \end{quote}
     
 \end{frame}
@@ -244,40 +240,39 @@
 \begin{frame}
 
     \vspace{2em}
-    We need to place restrictions to make probabilities well-behaved
+    Нам нужно установить ограничения, чтобы сделать вероятности правильными
     
-    For example, we want to rule out $\PP(B) = -93$ for some $B$
+    Например, мы хотим исключить $\PP(B) = -93$ для некоторых $B$
     
     \vspace{1em}
-    Let $\Omega$ be a nonempty set and let $\fF$ be a $\sigma$-algebra 
-    of subsets of $\Omega$.  A \navy{probability} $\PP$ on $(\Omega, \fF)$
-    is a function from $\fF$ to $[0,1]$ that satisfies
+    Пусть $\Omega$ --- непустое множество и $\fF$ --- $\sigma$-алгебра 
+    подпространств $\Omega$. \navy{Вероятность} $\PP$ на $(\Omega, \fF)$
+    --- функция из $\fF$ в $[0,1]$, которая удовлетворяет
     %
     \begin{enumerate}
         \label{enum:prob}
-      \item $\PP(\Omega) = 1$ and
-      \item $\PP(\cup_{n=1}^{\infty} A_n) = \sum_{n=1}^{\infty} \PP(A_n)$ for any
-          disjoint sequence of sets $A_1, A_2, \ldots \in \fF$
+      \item $\PP(\Omega) = 1$ и
+      \item $\PP(\cup_{n=1}^{\infty} A_n) = \sum_{n=1}^{\infty} \PP(A_n)$ для любой 
+      непересекающейся последовательности множеств $A_1, A_2, \ldots \in \fF$
     \end{enumerate}
      
-     $\PP$ is also called a \navy{probability measure}; 
-     the triple $(\Omega, \fF, \PP)$ is called a \navy{probability space}
+     $\PP$ также называется \navy{вероятностной мерой}; 
+     втроем $(\Omega, \fF, \PP)$ называются \navy{вероятностным пространством}
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    Axiom 1.: we require $\PP(\Omega) = 1$
-    because, by construction, every possible $\omega$ lies in the set $\Omega$.
+    Аксиома 1.: мы требуем $\PP(\Omega) = 1$,
+    так как, по построению, любая возможная $\omega$ лежит в множестве $\Omega$.
 
-    Axiom 2. is called \navy{countable additivity}
+    Аксиома 2. называется \navy{счетной аддитивностью}
     
-    Disjointness
-    in the statement of axiom (ii) is pairwise: any distinct pair $A_i, A_j$ share
-    no points in common
+    В формулировке аксиомы (ii) несовместность попарна: любая различная пара 
+     $A_i, A_j$ не имеет общих точек
     
-    Countable additivity implies finite \navy{additivity}:
+    Счетная аддитивность подразумевает конечную \navy{аддитивность}:
     %
     \begin{equation}
         \label{eq:add}
@@ -285,7 +280,7 @@
         = \PP (A_1) + \cdots + \PP (A_k)
     \end{equation}
     %
-    whenever $A_1, \ldots, A_k$ are disjoint
+    всякий раз, когда $A_1, \ldots, A_k$ несовместные
     
 \end{frame}
 
@@ -295,7 +290,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.23}{\input{figs_code/additivity.pdf_t}}
-        \caption{\label{f:additivity} Each of the $N$ dots occurs with probability $1/N$}
+        \caption{\label{f:additivity} Каждая из $N$ точек случается с вероятностью $1/N$}
        \end{center}
     \end{figure}
     %
@@ -310,35 +305,35 @@
 
     \vspace{2em}
     \Eg
-    Let $\Omega := \{1,\ldots, 6\}$
-    represent the six different faces of a die, as in example~\ref{ET-eg:ram00}
+    Пусть $\Omega := \{1,\ldots, 6\}$
+    представляют шесть разных граней кубика, как в примере~\ref{ET-eg:ram00}
     
     
-    Since $\Omega$ is finite, take $\fF$ to be the set of all
-    subsets of $\Omega$
+    Так как $\Omega$ конечна, пусть $\fF$ --- множество всех
+    подмножеств $\Omega$
     
-    Define a probability $\PP \colon \fF \to [0,1]$
+    Определим вероятность $\PP \colon \fF \to [0,1]$
     %
     \begin{equation}
         \label{eq:defpd}
         \PP(A) := \frac{|A|}{6}
-        \quad \text{where } \, 
-        |A| := \text{ number of elements in set $A$}
+        \quad \text{, где } \, 
+        |A| := \text{ количество элементов в множестве $A$}
     \end{equation}
     %
-    Easy to see $0 \leq \PP(A) \leq 1$ for
-    any $A \in \fF$, and that $\PP(\Omega) = 1$
+    Легко заметить, что $0 \leq \PP(A) \leq 1$ для
+    любых $A \in \fF$ и что $\PP(\Omega) = 1$
 
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    \Eg (cont.)
-    Regarding additivity,
-    suppose $A$ and $B$ are two disjoint subsets of $\{1,\ldots, 6\}$
+    \Eg (прод.)
+    Касательно аддитивности,
+    предположим, что $A$ и $B$ --- два несовместных подмножества $\{1,\ldots, 6\}$
     
-    Then $|A \cup B| = |A| + |B|$, hence
+    Тогда $|A \cup B| = |A| + |B|$, значит
     %
     \begin{equation*}
         \PP(A \cup B) 
@@ -349,38 +344,37 @@
     \end{equation*}
 
 
-    This proves additivity for pairs of sets.  An analogous argument confirms
-    additivity for any finite collection
+    Это доказывает аддитивность для пар множеств. Аналогичный аргумент подтверждает аддитивность для любого конечного набора
     
-    Finite additivity is in this case equivalent to countable additivity,
-    since the total number of distinct events is finite
+    Конечная аддитивность в этом случае эквивалентна счетной аддитивности, поскольку 
+    общее количество различных событий конечно.
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    \begin{example}
-        A memory chip is made up of billions of tiny switches/bits
+    \Eg
+    
+        Чип памяти состоит из миллиардов переключателей/битов
 
         \begin{itemize}
-            \item Switches can be off or on (zero or 1)
+            \item Переключатели могут быть выключены или включены (0 или 1)
         \end{itemize}
         
-        Random number generator accesses $N$ bits, switching each one on or
-        off
+        Генератор случайных чисел обращается к $N$ битам, включая или выключая каждый из них
 
-        We take 
-        %
+        Получается 
+        
         \begin{itemize}
-            \item $\Omega := \setntn{ (b_1,\ldots, b_N) } { \text{where } b_n
-                \text{ is 0 or 1 for each } n}$
+            \item $\Omega := \setntn{ (b_1,\ldots, b_N) } { \text{где } b_n \text{ 
+            		равняется 0 или 1 для каждого } n}$
             \item $\PP(A) := 2^{-N} (\# A)$
         \end{itemize}
         
-        Exercise: Show that $\PP$ is a probability
+        Упражнение: Покажите, что $\PP$ --- вероятность
         
-    \end{example}
+    
 
 \end{frame}
 
@@ -388,59 +382,57 @@
 \begin{frame}
 
     \vspace{2em}
-    \Eg     Consider again the dartboard model, where
-    $\Omega$ is the unit disk in $\RR^2$
+    \Eg     Рассмотрим снова модель мишени, где
+    $\Omega$ --- это единичный круг в $\RR^2$
     
-    For the event space, we take $\fF$ to be
-    the set of Borel subsets of $\RR^2$ that lie inside $\Omega$
+    Для пространства событий, возьмем $\fF$ как
+    множество Борелевских подмножеств в $\RR^2$, лежащее в $\Omega$
     
-    For $\PP$ we
-    follow the ``uniform" probability assignment given
+    Для $\PP$ мы следуем "равномерному" распределению вероятностей, заданному
     
-    That is, $\PP(B) = \lambda(B) / \pi$ for every $B \in \fF$
+    То есть, $\PP(B) = \lambda(B) / \pi$ для каждого $B \in \fF$
     
-    The
-    function $\lambda$ that assigns area to Borel sets is known to be
-    countably additive, in that $\lambda(\cup_n A_n) = \sum_{n=1}^\infty
-    \lambda(A_n)$ whenever these sets are disjoint 
+    Функция $\lambda$, которая назначает область для Борелевских множеств, известна как 
+    счетно-аддитивная, то есть $\lambda(\cup_n A_n) = \sum_{n=1}^\infty
+    \lambda(A_n)$ при условии, что эти множества несовместные 
     
-    Evidently $\PP(\Omega) = 1$
+    Очевидно, $\PP(\Omega) = 1$
 
 \end{frame}
 
-\begin{frame}\frametitle{Lebesgue Measure}
+\begin{frame}\frametitle{Мера Лебега}
 
         \vspace{2em}
-    The function $\lambda$ mapping Borel sets to
-    their ``area" is formally known as the \navy{Lebesgue measure}
+    Функция $\lambda$, отображающая Борелевские множества на
+    свою ''территорию'', формально известна как \navy{Мера Лебега}
     
-    \S\ref{ET-ss:measure} in ET provides a brief introduction to this concept
+    \S\ref{ET-ss:measure} в ET дает краткое введение в эту концепцию
     
 \end{frame}
 
-\begin{frame}\frametitle{Properties of Probability Measure}
+\begin{frame}\frametitle{Свойства вероятностной меры}
     
     \vspace{2em}
     \Fact\eqref{ET-fa:bpro}
-    Let $(\Omega, \fF, \PP)$ be a probability space,  and let $A, B \in \fF$\
+    Пусть $(\Omega, \fF, \PP)$ --- вероятностное пространство и $A, B \in \fF$\
     
-    If $A \subset B$, then
+    Если $A \subset B$, то
     %
     \begin{enumerate}
         \item $\PP(B \setminus A) = \PP(B) - \PP(A)$,
-        \item $\PP(A) \leq \PP(B)$ (\navy{monotonicity})
-        \item $\PP(A^c) = 1 - \PP(A)$, and
+        \item $\PP(A) \leq \PP(B)$ (\navy{монотонность})
+        \item $\PP(A^c) = 1 - \PP(A)$, и
         \item $\PP(\emptyset) = 0$.
     \end{enumerate}
      
     \Prf
-    When $A \subset B$, we have $B = (B \setminus A) \cup A$ and hence
+    Когда $A \subset B$, имеется $B = (B \setminus A) \cup A$, значит
     %
     \begin{equation*}
         \PP(B) = \PP(B \setminus A) + \PP(A)
     \end{equation*}
     %
-    All results follow (why?)
+    Все результаты следуют из этого (почему?)
     
 \end{frame}
     
@@ -448,15 +440,15 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:bpro2}
-	If $A$ and $B$ are any (not necessarily disjoint) events, then
+	Если $A$ и $B$ --- какие-нибудь (не обязательно несовместные) события, то
     %
     \begin{equation*}
         \PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B)       
     \end{equation*}
     %
-    Proof as exercise \ref{ET-ex:bpro2} in ET
+    Докажите в качестве упражнения \ref{ET-ex:bpro2} в ET
 
-    Fact implies \navy{subadditivity}: for any $A, B \in \fF$, we have 
+    Факт подразумевает, что \navy{полуаддитивность}: для любых $A, B \in \fF$, имеется
     %
     \begin{equation*}
         \PP(A \cup B) \leq \PP(A) + \PP(B)
@@ -464,27 +456,27 @@
     
 \end{frame}
 
-\begin{frame}\frametitle{Conditional Probability and Independence}
+\begin{frame}\frametitle{Условная вероятность и независимость}
 
     \vspace{2em}
-    \navy{Conditional probability of $A$ given $B$} is 
+    \navy{Условная вероятность $A$ при данном $B$}:
     %
     \begin{equation}
       \label{eq:efcp}
       \PP(A \,|\, B) := \frac{\PP(A \cap B)}{\PP(B)}
     \end{equation}
     %
-    Probability of $A$, given information that $B$ has occurred
+    Вероятность $A$, при данной информации, что $B$ случилось
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Events $A$ and $B$ called \navy{independent} if $\PP(A \cap B) = \PP(A) \PP(B)$
+     События $A$ и $B$ называются \navy{независимыми}, если $\PP(A \cap B) = \PP(A) \PP(B)$
     
     \begin{itemize}
-        \item If $A$ and $B$ independent, then 
+        \item Если $A$ и $B$ независимы, то 
             %
             \begin{equation*}
                 \PP(A \,|\, B) 
@@ -502,49 +494,49 @@
 
     \vspace{2em}
     \Eg
-        Experiment: roll a dice twice  
+        Эксперимент: бросим кубик дважды  
         %
         \begin{equation*}
             \Omega := \setntn{(i, j)}{ i, j \in \{1,\ldots,6\}}
-            \quad \text{and} \quad
+            \quad \text{и} \quad
             \PP(E) := \# E / 36
         \end{equation*}
         %
-        Now consider the events 
+        Теперь рассмотрим события 
         %
         \begin{equation*}
-            A := \setntn{(i, j) \in \Omega}{i \text{ is even}}
-            \quad \text{and} \quad
-            B := \setntn{(i, j) \in \Omega}{j \text{ is even}}
+            A := \setntn{(i, j) \in \Omega}{i \text{ четное}}
+            \quad \text{и} \quad
+            B := \setntn{(i, j) \in \Omega}{j \text{ четное}}
         \end{equation*}
         %
-        In this case we have
+        В этом случае мы имеем
         %
         \begin{equation*}
-            A \cap B = \setntn{(i, j) \in \Omega}{i \text{ and } j  \text{ are even}}
+            A \cap B = \setntn{(i, j) \in \Omega}{i \text{ и } j  \text{ четные}}
         \end{equation*}
         %
-        Exercise: Verify that $\PP(A \cap B) = \PP(A) \PP(B)$
+        Упражнение: убедитесь, что $\PP(A \cap B) = \PP(A) \PP(B)$
 
-        Hence, $A$ and $B$ are independent under the probability $\PP$
+        Следовательно, $A$ и $B$ независимы с вероятностью $\PP$
         
 \end{frame}
 
-\begin{frame}\frametitle{Law of Total Probability}
+\begin{frame}\frametitle{Закон полной вероятности}
 
     \vspace{2em}
-    The \navy{Law of total probability} states:
+    \navy{Закон полной вероятности} утверждает, что:
     
     \Fact\eqref{ET-fa:ltp}
-    If $A \in \fF$ and $B_1,\ldots, B_M$ is a partition of $\Omega$ with
-    $\PP(B_m) > 0$ for all $m$, then
+    Если $A \in \fF$ и $B_1,\ldots, B_M$ --- части $\Omega$ с
+    $\PP(B_m) > 0$ для всех $m$, то
     %
     \begin{equation*}
       \PP(A) = \sum_{m=1}^M \PP(A \, | \, B_m) \cdot \PP(B_m)
     \end{equation*}
     %
     \Prf
-        Given $A \in \fF$ and partition $B_1,\ldots, B_M$:
+        Возьмем $A \in \fF$ и части $B_1,\ldots, B_M$:
         %
         \begin{multline*}
             \PP(A) = \PP[A \cap (\cup_{m=1}^M B_m) ]
@@ -555,52 +547,50 @@
         %
 \end{frame}
 
-\begin{frame}\frametitle{Bayes' Law}
+\begin{frame}\frametitle{Теорема Байеса}
     
     \vspace{2em}
-    \navy{Bayes law}: for any events $A$ and $B$ with positive
-    probability, we have
+    \navy{Теорема Байеса}: для любых событий $A$ и $B$ с положительной вероятностью, выполняется
     %
     \begin{equation}
         \label{eq:bt}
         \PP(A \given B) = \frac{\PP(B \given A) \PP(A)}{\PP(B)}
     \end{equation}
     \Prf 
-    From the definition of conditional probability:
+    Из определения условной вероятности:
     %
     $$
         \PP(A \given B)=\frac{\PP(A \cap B)}{\PP(B)}
-        \quad \text{and} \quad
+        \quad \text{и} \quad
         \PP(B \given A) = \frac{\PP(A \cap B)}{\PP(A)}
     $$
-    Hence
+    Следовательно
         $\PP(A \cap B) = \PP(A \given B)\, \PP(B) = \PP(B \given A)\, \PP(A)$
     
-    Rearranging yields \eqref{eq:bt}
+    Перегруппировка уравнения \eqref{eq:bt}
     
 \end{frame}
 
 \begin{frame}
 
-    \vspace{2em}
+    \vspace{1em}
     \Eg
-    Banks use automated systems to detect fraudulent or illegal
-    transactions
+    Банки используют автоматизированные системы для обнаружения мошеннических или 
+    незаконных транзакций
     
-    Consider test that responds to each transaction with $P$
-    or $N$:
+    Рассмотрим тест, который отвечает на каждую транзакцию с $P$
+    или $N$:
     \begin{itemize}
-        \item $P$ means ``positive" (transaction flagged as fraudulent)
-        \item $N$ means ``negative" (transaction flagged as normal)
+        \item $P$ значит ''положительно'' (транзакция отмечена как мошенническая)
+        \item $N$ значит ''отрицательно'' (транзакция отмечена как нормальная)
     \end{itemize}
     
-    Let $F$ mean fraudulent, suppose
+    Пусть $F$ значит мошенническая, предположим
     %
     \begin{itemize}
-        \item $\PP( P \given F) = 0.99$ (the test flags 99\% of fraudulent
-            transactions),
-        \item $\PP( P \given F^c ) = 0.01$ (rate of false positives), and
-        \item $\PP( F ) = 0.001$  (prevalence of fraud)
+        \item $\PP( P \given F) = 0.99$ (тест отмечает 99\% мошеннических транзакций),
+        \item $\PP( P \given F^c ) = 0.01$ (процент ложных срабатываний), и
+        \item $\PP( F ) = 0.001$  (распространенность мошенничества)
     \end{itemize}
     %
 \end{frame}
@@ -608,18 +598,18 @@
 \begin{frame}
 
     \vspace{2em}
-    What is the probability of fraud given a positive test?
+    Какова вероятность мошенничества при положительном тесте?
     
-    Note Bayes' law
+    Обратите внимание на закон Байеса
     %
     $$
         \PP(F \,|\, P) = \frac{\PP(P \given F)\PP(F)}{\PP(P)}
     $$
-    and note the law of total probability 
+    и обратите внимание на закон полной вероятности 
         $$
         \PP(P) = \PP(P \given F) \PP(F) + \PP(P \given F^c) \PP(F^c)
         $$
-    Hence
+    Следовательно
     %
     $$
         \PP(F \,|\, P) 
@@ -630,25 +620,25 @@
     
 \end{frame}
 
-\section{Random Variables}
+\section{Случайные переменные}
 
 \begin{frame}
 
     \vspace{2em}
-    \frametitle{Random variables}
+    \frametitle{Случайные переменные}
 
-    Informally: A ``value that changes randomly'' 
+    Неформально: ''значение, которое изменяется случайным образом'' 
     
-    Formally: A \navy{random variable} $x$ is a function from $\Omega$ into $\RR$
+    Формально: \navy{случайная переменная} $x$ --- функция из $\Omega$ в $\RR$
     
-    Interpretation: random variables convert outcomes in sample space into
-    numerical outcomes
+    Интерпретация: случайные величины преобразуют исходы в пространстве 
+    элементарных событий в числовые исходы.
 
-    General idea: 
+    Главная идея: 
     %
     \begin{itemize}
-        \item``nature''  picks out $\omega$ in $\Omega$ 
-        \item random variable reports outcome as $x(\omega) \in \RR$
+        \item ''природа'' выбирает $\omega$ в $\Omega$ 
+        \item случайная переменная сообщает результат как $x(\omega) \in \RR$
     \end{itemize}    
     
 \end{frame}
@@ -657,23 +647,23 @@
 
     \vspace{2em}
     \Eg
-        Suppose $\Omega$ is set of infinite binary sequences
+        Предположим, что $\Omega$ --- множество бесконечных двоичных последовательностей
         %
         \begin{equation*}
             \Omega := \setntn{(b_1, b_2, \ldots)}
-                {b_n \in \{0, 1\} \text{ for each } n}
+                {b_n \in \{0, 1\} \text{ для каждого } n}
         \end{equation*}
         %
-        We can create different random variables mapping $\Omega \to \RR$:
+        Мы можем создавать различные отображения случайных переменных $\Omega \to \RR$:
         %
         \begin{itemize}
-            \item number of ``flips'' till first ``heads'':
+            \item количество ''подбрасываний'' до первого ''орла'':
                 %
                 \begin{equation*}
                     x(\omega) = x(b_1, b_2, \ldots) = \min \setntn{n}{b_n = 1}
                 \end{equation*}
                 %
-            \item number of ``heads'' in first 10 ``flips'':
+            \item количество ''орлов'' в первых 10 ''подбрасываниях'':
                 %
                 \begin{equation*}
                     x(\omega) = x(b_1, b_2, \ldots) = \sum_{n=1}^{10} b_n 
@@ -688,14 +678,14 @@
 
     \vspace{2em}
     \begin{itemize}
-        \item number of flips until the first heads:
+        \item количество подбрасываний до первого орла:
         %
         \begin{equation*}
             x(\omega) = x(b_1, b_2, \ldots) = \min \setntn{n \in \NN}{b_n = 1}
         \end{equation*}
         
-        \item \navy{Binary or Bernoulli random variable} telling us whether 
-        any heads occur in the first 10 flips:
+        \item \navy{Двоичная случайная величина или случайная величина Бернулли} говорит нам, возникают ли 
+        какие-либо орлы в первые 10 подбрасываний:
         %
         \begin{equation}
             \label{eq:egbin}
@@ -709,43 +699,42 @@
 \end{frame}
 
 
-\begin{frame}\frametitle{Bernoulli Random Variable}
+\begin{frame}\frametitle{Случайная величина Бернулли}
 
     \vspace{2em}
-    \navy{Bernoulli} or \navy{binaary random variable} RVs $x$ take on values in $\{0,1\}$ 
+    \navy{Бернулли} или \navy{двоичная случайная величина} с.в. $x$ принимает значения $\{0,1\}$ 
     
-    We now a consider generic way to create a Bernoulli RV
+    Теперь мы рассмотрим общий способ создания с.в. Бернулли
     
-    Let $Q$ be a statement, such as ``$a$ is greater than 3'' 
+    Пусть $Q$ --- утверждение, например, ''$a$ больше 3'' 
 
-    Definition: $\1\{Q\}$ equals one if $Q$ true, zero otherwise
+    Определение: $\1\{Q\}$ равняется единице, если $Q$ верно, в ином случае нулю.
     %
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Define 
+    Определим 
     \begin{equation*}
         x(\omega) = \1\{\omega \in A\}
         \;\;
-        \text{ where } A \in \fF
+        \text{, где } A \in \fF
     \end{equation*}
     %
     %
-    The RV indicates whether or not event $C$ occurs  
+    С.в. показывает, случается ли событие $C$
     
-    A common variation on
-    the notation: for arbitrary $A \in \fF$:
+    Распространенный вариант обозначений: для произвольного $A \in \fF$:
     %
     \begin{equation*}
         \1_A(\omega) 
         := \1\{\omega \in A\} 
         := 
         \begin{cases}
-            1 & \text{if } \omega \in A
+            1 & \text{, если } \omega \in A
             \\
-            0 & \text{otherwise}
+            0 & \text{, иначе}
         \end{cases}
     \end{equation*}
     
@@ -755,30 +744,29 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:cbif}
-    If $A_1, \ldots, A_N$ are subsets of $\Omega$, then
+    Если $A_1, \ldots, A_N$ --- подмножества $\Omega$, то
     %
     \begin{enumerate}
-        \item $\1_{\cap_{n=1}^N A_n} = \prod_{n=1}^N \1_{A_n}$ and
+        \item $\1_{\cap_{n=1}^N A_n} = \prod_{n=1}^N \1_{A_n}$ и
         \item $\1_{\cup_{n=1}^N A_n } = \sum_{n=1}^N \1_{A_n}$
-            whenever the sets are disjoint
+            всякий раз, когда множества несовместные
     \end{enumerate}
     %
-    See
-    exercise~\ref{ET-ex:cbif} for proof 
+    Смотрите упражнение~\ref{ET-ex:cbif} для доказательства 
     
-    Here, equality means evaluated at any $\omega \in \Omega$
+    Здесь равенство означает оценку при любом $\omega \in \Omega$
     
 \end{frame}
 
-\begin{frame}\frametitle{Notational Conventions}
+\begin{frame}\frametitle{Условные обозначения}
 
-    \vspace{2em}
-    Common notational convention with RVs:
+    \vspace{1em}
+    Общие условные обозначения для с.в.:
     %
-    \begin{equation*}
-        \{ x \text{ has some property} \} :=
-        \setntn{\omega \in \Omega}{x(\omega) \text{ has some property}}
-    \end{equation*}
+    \begin{multline*}
+        \{ x \text{ обладает некоторым свойством} \} := \\
+        \setntn{\omega \in \Omega}{x(\omega) \text{ обладает некоторым свойством}}
+    \end{multline*}
     %
 
     \Eg 
@@ -799,14 +787,14 @@
 \begin{frame}
 
     \vspace{2em}
-    \Eg Given random variable $x$ and $a \leq b$, we claim
+    \Eg Возьмем случайную величину $x$ и $a \leq b$, мы утверждаем, что
     %
     \begin{equation*}
         \label{eq:exno}
         \PP\{x \leq a\} \leq \PP\{x \leq b\}
     \end{equation*}
     %
-    This holds because
+    Это выполняется, так как
     %
     \begin{multline*}
             \{x \leq a\} 
@@ -815,48 +803,46 @@
             := \{x \leq b\}
     \end{multline*}
     %
-    Now apply monotonicity: $A \subset B \implies \PP(A) \leq \PP(B)$
+    Теперь применим монотонность: $A \subset B \implies \PP(A) \leq \PP(B)$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Equalities, inequalities and arithmetic operations should be
-    interpreted \emph{pointwise}:
+    Равенства, неравенства и арифметические операции следует интерпретировать \emph{точечно}:
         %
     \begin{itemize}
-        \item $x \leq y \; \iff \; x(\omega) \leq y(\omega)$ for all $\omega \in
+        \item $x \leq y \; \iff \; x(\omega) \leq y(\omega)$ для всех $\omega \in
         \Omega$,
-        \item $x = y \; \iff \; x(\omega) = y(\omega)$ for all $\omega \in
-        \Omega$, and
+        \item $x = y \; \iff \; x(\omega) = y(\omega)$ для всех $\omega \in
+        \Omega$, и
         \item $z = \alpha x + \beta y \; \iff \; z(\omega) = \alpha x(\omega) +
-            \beta y(\omega)$ for all $\omega \in \Omega$
+            \beta y(\omega)$ для всех $\omega \in \Omega$
     \end{itemize}
 
 \end{frame}
 
-\begin{frame}\frametitle{Random Variables are Measurable Functions}
+\begin{frame}\frametitle{Случайные переменные --- измеримые функции}
 
     \vspace{2em}
-    Let $(\Omega, \fF, \PP)$ be any probability space
+    Пусть $(\Omega, \fF, \PP)$ --- некоторое вероятностное пространство
     
-    Let $B$ be
-    any subset of $\RR$
+    Пусть $B$ --- некоторое подпространство $\RR$
     
-    Consider the probability
+    Рассмотрим вероятность
     %
     \begin{equation*}
         \PP\{x \in B\}
         := \PP\setntn{\omega \in \Omega}{x(\omega) \in B}
     \end{equation*}
     %
-    Where $x$ is some function from $\Omega$ to $\RR$
+   	где $x$ --- некоторая функция из $\Omega$ в $\RR$
     
-    No way of being sure $\setntn{\omega \in \Omega}{x(\omega) \in B}$ is an element of
-    $\fF$
+    Нет возможности быть уверенным, что $\setntn{\omega \in \Omega}{x(\omega) \in B}$ 
+    является элементом $\fF$
     \begin{itemize}
-        \item $\PP\{x \in B\}$ may not be defined
+        \item $\PP\{x \in B\}$ может быть не определена
     \end{itemize}
     
 \end{frame}
@@ -864,64 +850,64 @@
 \begin{frame}
 
     \vspace{2em}
-    We need to place restrictions:
+    Мы должны ввести ограничения:
     \begin{itemize}
-        \item For $B$, we naturally
-    restrict attention to $\bB(\RR)$, the Borel subsets of $\RR$
-        \item For $x$, we require $\{x \in B\} \in \fF$ whenever $B$ is a Borel set
+        \item для $B$ мы естественно ограничиваем внимание до $\bB(\RR)$, Борелевское 
+        подмножество $\RR$
+        \item для $x$ мы требуем $\{x \in B\} \in \fF$ всюду, где $B$ --- Борелевская множество
     \end{itemize}
     
-    Formal definition of a random variable:
+    Формальное определение случайной величины:
     
-    A \navy{random variable} on $(\Omega, \fF)$ is a function
-    $x \colon \Omega \to \RR$ satisfying 
+    \navy{Случайная величина} в $(\Omega, \fF)$ --- функция
+    $x \colon \Omega \to \RR$, удовлетворяющая   
     %
     \begin{equation}
         \label{eq:dorv}
         \setntn{\omega \in \Omega}{x(\omega) \in B} \in \fF
-        \quad \text{for all } B \in \bB(\RR)
+        \quad \text{для всех } B \in \bB(\RR)
     \end{equation}
     %
-    These kinds of functions are also  called $\fF$-measurable functions
+    Эти виды функций также называются $\fF$-измеримыми функциями
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Pre-image notation: $x^{-1}(B)$ is all $\omega \in \Omega$ such that $x(\omega)
+    Обозначение прообраза: $x^{-1}(B)$ --- это все $\omega \in \Omega$, такие что $x(\omega)
     \in B$
     
-    Rewrite \eqref{eq:dorv} as 
+    Перепишем \eqref{eq:dorv} как
     %
     \begin{equation*}
-        x^{-1}(B) \in \fF \quad \text{for all } B \in \bB(\RR)
+        x^{-1}(B) \in \fF \quad \text{для всех } B \in \bB(\RR)
     \end{equation*}
     
-    Thus $x$ ``pulls back" Borel sets to events
+    Таким образом, $x$ ''откатывает'' Борелевские множества до событий
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Measurable Transformations}
+    \frametitle{Измеримые преобразования}
     
     \vspace{2em}
-    We want to discuss some transformation of $x$
+    Мы хотим обсудить некоторые преобразования $x$
     
-    For example, $y := e^x$.
-    Is $y$ also a random variable? 
+    Например, $y := e^x$.
+    $y$ тоже случайная величина? 
     
-    Yes, provided transformation satisfies  Borel
-    measurability
+    Да, при условии, что преобразование удовлетворяет Борелевской
+    измеримости
     
     \vspace{.7em}
-    Formally, $f \colon \RR \to \RR$ is called 
-    \navy{Borel measurable}, or \navy{$\bB$-measurable}, if
+    Формально, $f \colon \RR \to \RR$ называется 
+    \navy{Борелевски измеримой} или \navy{$\bB$-измеримой}, если
     %
     \begin{equation}
         \label{eq:bm}
         f^{-1}(B) \in \bB(\RR)
-        \quad \text{for all } B \in \bB(\RR)
+        \quad \text{для всех } B \in \bB(\RR)
     \end{equation}
     
 \end{frame}
@@ -929,50 +915,50 @@
 \begin{frame}
 
     \vspace{2em}
-    Class of $\bB$-measurable functions is vast: any continuous function,
-    any increasing function, etc., etc.
+    Класс $\bB$-измеримых функций огромен: любая непрерывная функция,
+    любая возрастающая функция и т.д.
     
     \vspace{1em}
-    Suppose $f$ is $\bB$-measurable and that $x$
-    is a random variable
+    Предположим, что $f$ $\bB$-измерима и $x$
+    --- случайная величина
     
-    We have $\{y \in B\} \in \fF$ for all $B \in \bB(\RR)$ because
+    Мы имеем $\{y \in B\} \in \fF$ для всех $B \in \bB(\RR)$, так как
     %
     \begin{equation}
         \label{eq:byim}
         \{y \in B\} = \{f(x) \in B\} = \{x \in f^{-1}(B)\}
     \end{equation}
     
-    Thus $y =f(x)$ is a random variable
+    Таким образом, $y =f(x)$ --- случайная величина
     
 \end{frame}
     
-\section{Expectations}
+\section{Ожидания}
 
 
 \begin{frame}
 
-    \frametitle{Expectations}
+    \frametitle{Ожидания}
     
     \vspace{2em}
-    We want to define expectations for an arbitrary RV $x$
+    Мы хотим определить ожидания для произвольной с.в. $x$
 
-    Roughly speaking, $\EE[x] :=$ the ``sum'' of all possible values of $x$,
-    weighted by their probabilities.  
+    Грубо говоря, $\EE[x] :=$ ''сумма'' всех возможных значений $x$,
+    взвешенных по их вероятностям.  
 
-    ``Sum'' in quotes because may be over an infinite number of possibilities
+    ''Сумма'' в кавычках, потому что может быть бесконечное число слагаемых
     
-    We take a modern, formal and rigorous approach to defining expectations
+    Мы используем современный, формальный и строгий подход к определению ожиданий
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    For finite random variables, given probability space $(\Omega, \fF, \PP)$ 
-    and random variable $x$ 
-    taking only finitely many distinct values $s_1, \ldots, s_J$,
-    the \navy{expectation} of $x$ is defined as
+    Для конечных случайных величин дано вероятностное пространство $(\Omega, \fF, \PP)$ 
+    и случайная величина $x$, 
+    принимающая только конечное количество различных значений $s_1, \ldots, s_J$,
+    \navy{ожидание} $x$ определяется как
     %
     \begin{equation}
         \label{eq:expec}
@@ -985,10 +971,10 @@
 
     \vspace{2em}
     \Eg
-    Let's apply this definition to the simplest possible case, which is a
-    random variable $x$ satisfying $x(\omega) = \alpha$ for all $\omega \in
-    \Omega$, where $\alpha$ is some constant scalar value.  In this case the
-    sum in \eqref{eq:expec} has only one term, and 
+    Давайте применим это определение к простейшему возможному случаю, в котором
+    случайная величина $x$ удовлетворяет $x(\omega) = \alpha$ для всех $\omega \in
+    \Omega$, где $\alpha$ --- некоторое постоянное скалярное значение. В этом случае
+    сумма в \eqref{eq:expec} имеет только одно слагаемое и 
     %
     \begin{equation*}
         \EE x
@@ -1004,8 +990,8 @@
 
     \vspace{2em}
     \Eg
-    To evaluate the expectation of a binary random variable $x$,
-    we apply \eqref{eq:expec} to obtain
+    Чтобы оценить ожидание двоичной случайной величины $x$,
+    мы применим \eqref{eq:expec}, получаем
     %
     \begin{equation*}
         \label{eq:expbin}
@@ -1018,17 +1004,17 @@
 
     \vspace{2em}
     \Eg
-    Consider $N$ flips of a fair coin
+    Рассмотрим $N$ подбрасываний честной монеты
     
-    The sample space is $\Omega := \{0, 1\}^N$, the
-    events are $\fF :=$  all subsets of $\Omega$, and $\PP(A) := 2^{-N} |A|$ for
-    all $A \in \fF$
+    Пространство элементарных событий --- это $\Omega := \{0, 1\}^N$, 
+    события такие, что $\fF :=$  все подмножества $\Omega$, и $\PP(A) := 2^{-N} |A|$ для
+    всех $A \in \fF$
     
-    Let 
+    Пусть 
         $x(\omega) = x(b_1, \ldots, b_N) = \sum_{n=1}^N b_n$
         
     
-    Observe first that $0
+    Прежде всего заметьте, что $0
     \leq x \leq N$
     
 \end{frame}
@@ -1036,8 +1022,8 @@
 \begin{frame}
     
     \vspace{2em}
-    By the definition of $\PP$, for any $k$ we have
-    $\PP\{x = k\} = 2^{-N} |A_k|$, where
+    По определению $\PP$, для любого $k$ мы имеем
+    $\PP\{x = k\} = 2^{-N} |A_k|$, где
     %
     \begin{equation*}
          A_k :=
@@ -1049,12 +1035,12 @@
            \right\}
     \end{equation*}
     %
-    From combinatorics, $|A_k| =
-    \binom{N}{k}$, where the right-hand side is the so-called \navy{binomial
-    coefficient} for $N,k$, which satisfies
-    $\sum_{k=0}^N k \binom{N}{k} = N 2^{N-1}$ for all $N$
+    Из комбинаторики, $|A_k| =
+    \binom{N}{k}$, где правая сторона называется \navy{биномиальным
+    коэффициентом} для $N,k$, что удовлетворяет
+    $\sum_{k=0}^N k \binom{N}{k} = N 2^{N-1}$ для всех $N$
     
-    The expectation of $x$ is 
+    Ожидания $x$: 
     %
     \begin{equation*}
         \EE x 
@@ -1069,12 +1055,12 @@
 \begin{frame}
 
     \vspace{2em}
-    For general $x$, approximate arbitrary random variables with finite random variables 
+   Для обычного $x$, приблизительная произвольная случайная величина с конечными случайными величинами:
     
     \begin{figure}
    \begin{center}
        \scalebox{0.8}{\input{figs_code/tikzfigs/finite_rv_approx.tex}}
-    \caption{\label{f:finite_rv_approx} Finite approximation to a general random variable}
+    \caption{\label{f:finite_rv_approx} Конечное приближение к общей случайной величине}
    \end{center}
     \end{figure}
     
@@ -1084,13 +1070,13 @@
 \begin{frame}
     
     \vspace{2em}
-    We can improve approximation without limit-- let $x_n$ take a larger 
-    and larger number of distinct values
+    Мы можем улучшать приближение без ограничений -- Пусть $x_n$ принимает большее и 
+    большее количество различных значений
     
-    Process gives sequence of \emph{finite} random variables $x_n$
-    converging to $x$
+    Процесс дает последовательность \emph{конечных} случайных величин $x_n$,
+    сходящихся к $x$
     
-    Define the expectation of $x$ as
+    Определим ожидания $x$ как
     %
     \begin{equation*}
         \label{eq:extar}
@@ -1102,64 +1088,64 @@
 \begin{frame}
     
     \vspace{2em}
-    $\EE x$ is also referred to as
-    the \navy{Lebesgue integral} of $x$ with respect to $\PP$, with the
-    alternative notation
+    $\EE x$ также упоминается как
+    \navy{Интеграл Лебега} с.в. $x$ относительно $\PP$, с альтернативными обозначениями
         $\EE x = \int x(\omega) \PP(\diff \omega)$
     \index{Lebesgue integral}
     
     \vspace{1em}
-    Does a sequence of approximating random variables exist? 
-    Yes, See page 94 in ET and \cite{dudley2002real}, proposition~4.1.5
+    Существует ли последовательность аппроксимации случайной величины? 
+    Да, смотрите страницу 94 в ET и \cite{dudley2002real}, утверждение~4.1.5
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    If $x$ takes on negative values, then write $x = x^{+} - x^{-1}$
+    Если $x$ принимает отрицательные значения, то пишут $x = x^{+} - x^{-}$
     
-    Where $x^{+}\colon = \max\{x,0\}$ and $x^{-} = \min\{x,0\}$
+   где $x^{+}\colon = \max\{x,0\}$ и $x^{-} = \min\{x,0\}$
     
-    Define expectation as
+    Определим ожидания как
     \begin{equation*}
         \EE x \colon = \EE x^{+} - \EE x^{-}
     \end{equation*}
 
     \vspace{.7em}
-    Restrict
-    attention to \navy{integrable} random variables: all random
-    variables $x$ such that $\EE |x| < \infty$
+    Сфокусируемся на \navy{интегрируемых} случайных величинах: всех случайных 
+    величинах $x$, таких что $\EE |x| < \infty$
     \begin{itemize}
-        \item we have $x^+ \leq |x|$ and $x^-
+        \item мы имеем $x^+ \leq |x|$ и $x^-
             \leq |x|$
-        \item thus, $\EE x \colon = \EE x^{+} - \EE x^{-}$ well-defined (why?)
+        \item таким образом, $\EE x \colon = \EE x^{+} - \EE x^{-}$ хорошо определены 
+        (почему?)
     \end{itemize}
     
 \end{frame}
 
-\begin{frame}\frametitle{Properties of Expectation}
+\begin{frame}\frametitle{Свойства ожидания}
 
     \vspace{2em}
     \Fact\eqref{ET-fa:exprop}
-        Given any probability space $(\Omega, \fF, \PP)$, there exists a uniquely
-        defined function $\EE$ that maps each integrable random variable $x$
-        on $(\Omega, \fF, \PP)$ into a value
+        Возьмем любое вероятностное пространство $(\Omega, \fF, \PP)$, в нем существует 
+        однозначно определенная функция $\EE$, что отображает каждую интегрируемую 
+        случайную величину $x$
+        на $(\Omega, \fF, \PP)$ в качестве значения
         %
         \begin{equation}
             \label{eq:ealm}
             \EE x = \int x(\omega) \PP(\diff \omega)
         \end{equation}
         %
-        in $\RR$, called the \navy{expectation of $x$} under $\PP$.  The
-        function has the following properties:
+        в $\RR$, называемой \navy{математическим ожиданием $x$}.
+        Функция имеет следующие свойства:
         %
         \begin{enumerate}
-            \item $\EE \alpha = \alpha$ for all $\alpha \in \RR$
-            \item $\EE \1_A = \PP(A)$ for all $A \in \fF$
+            \item $\EE \alpha = \alpha$ для всех $\alpha \in \RR$
+            \item $\EE \1_A = \PP(A)$ для всех $A \in \fF$
             \item $x \leq y \implies \EE x \leq \EE y$
-            \item $\EE [ \alpha x + \beta y ] = \alpha \EE x + \beta \EE y$ for
-                all integrable $x, y$ and constants $\alpha, \beta$
+            \item $\EE [ \alpha x + \beta y ] = \alpha \EE x + \beta \EE y$ для
+                всех интегрируемых $x, y$ и констант $\alpha, \beta$
         \end{enumerate}
         
 \end{frame}
@@ -1167,14 +1153,14 @@
 \begin{frame}
 
     \vspace{2em}
-    To remind ourselves of the underlying probability measure $\PP$ we may
-      write $\mathbb{E}_{\PP} x$ instead of $\EE x$
+    Чтобы напомнить себе об основной вероятностной мере $\PP$, мы можем
+      написать $\mathbb{E}_{\PP} x$ вместо $\EE x$
      
     \vspace{.7em}
-    Note the expression $\EE \alpha$ understood as the expectation of a 
-     constant random variable equal to $\alpha$
+    Обратите внимание на выражение $\EE \alpha$ понимаемое как ожидание постоянной 
+    случайной величины, равной $\alpha$
      \begin{itemize}
-         \item Follows from 4. by letting $x = \1_{\Omega}$ and $\beta = 0$
+         \item следует из 4. при $x = \1_{\Omega}$ и $\beta = 0$
      \end{itemize}
      
 \end{frame}
@@ -1182,29 +1168,30 @@
 \begin{frame}
 
     \vspace{2em}
-    Exercise: Check 3. for $x(\omega) := \1\{\omega \in A\}$ and 
+    Упражнение: проверьте 3. для $x(\omega) := \1\{\omega \in A\}$ и 
     $y(\omega) := \1\{\omega \in B\}$ 
 
-    Hint: What does $x \leq y$ imply about $A$ and $B$?
+    Подсказка: что означает $x \leq y$ относительно $A$ и $B$?
     
-    For further details and references of proofs of the above fact, see page 96 in ET
+    Для дальнейших подробности и ссылок на доказательства вышеуказанного факта, 
+    смотрите страницу 96 в ET
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    We now prove that if $x$ is a finite
-    random variable with range $\{s_j\}_{j=1}^J$ and $h$ is 
-    any $\bB$-measurable function,then
+    Мы сейчас докажем, что если $x$ --- конечная
+    случайная величина с диапазоном $\{s_j\}_{j=1}^J$ и $h$ --- 
+    любая $\bB$-измеримая функция, то
     %
     \begin{equation}
         \label{eq:exh0}
         \EE h(x) = \sum_{j=1}^J h(s_j) \PP\{x = s_j\}
     \end{equation}
     %
-    First observe that $\sum_{j=1}^J \1\{x = s_j\} = 1$, and hence we can
-    write $h(x)$ as 
+    Сначала заметьте, что $\sum_{j=1}^J \1\{x = s_j\} = 1$, и значит мы можем
+    записать $h(x)$ как 
     %
     \begin{equation*}
         h(x) 
@@ -1217,10 +1204,10 @@
 \begin{frame}
     
     \vspace{2em}
-    Using linearity of expectations:
+    Используем линейность ожиданий:
         $$\EE h(x) =  \sum_{j=1}^J h(s_j) \EE \1\{x = s_j\}$$
     
-    Applying part 2. of fact~\ref{ET-fa:exprop} leads to \eqref{eq:exh0}
+    Применение части 2. факта~\ref{ET-fa:exprop} приводит к \eqref{eq:exh0}
     
 \end{frame}
 
@@ -1228,9 +1215,9 @@
     
     \vspace{2em}
     
-    \navy{Chebyshev's inequality}:
+    \navy{Неравенство Чебышёва}:
     \Fact\eqref{ET-fa:chein}
-        For any nonnegative random variable $x$ and any $\delta > 0$, we have
+        Для любой неотрицательной случайной величины $x$ и любой $\delta > 0$, мы имеем
         %
         \begin{equation}
             \label{eq:chein0}
@@ -1238,7 +1225,7 @@
         \end{equation}
         %   
     
-    A common variation of Chebyshev's inequality is the bound
+    Распространенная разновидность неравенства Чебышева имеет вид
     %
     \begin{equation}
         \label{eq:chein}
@@ -1246,47 +1233,44 @@
     \end{equation}
     
     
-    See Exercise~\ref{ET-ex:chein} for proof
+    Смотрите упражнение~\ref{ET-ex:chein} для доказательства
     
 \end{frame}
 
 \begin{frame}
 
-    \frametitle{Moments and Co-Moments}
+    \frametitle{Моменты}
     
     \vspace{2em}
     
-    Let $x$ be a random variable and let $k \in \NN$. If $x^k$ is integrable, then 
+    Пусть $x$ --- случайная величина и $k \in \NN$. Если $x^k$ интегрируема, то 
     %
     \begin{itemize}
-        \item $\EE [x^k] $ is called the \navy{$k$th moment} of $x$
-        \item $\EE [ (x - \EE x)^k]$ is called the \navy{$k$th central moment} of
-            $x$
+        \item $\EE [x^k] $ называется \navy{$k$-ым моментом} $x$
+        \item $\EE [ (x - \EE x)^k]$ называется \navy{$k$-ым центральным моментом} $x$
     \end{itemize}
     %
-    If $\EE [ |x|^k ] = \infty$, then the $k$th moment is said not to exist. 
-    For
-    some random variables even the first moment does not exist
+    Если $\EE [ |x|^k ] = \infty$, то говорят, что $k$-ый момент не существует. 
+    Для некоторых случайных величин даже первый момент не существует
     
     \vspace{.7em}
-    For others, every
-    moment exists
+    В ином случае, каждый момент существует
     
     \Fact\eqref{ET-fa:ofinm}
-    If the $k$th moment of $x$ exists, then so does the $j$th for all $j \leq k$
+    Если $k$-ый момент $x$ существует, то также существует и $j$-ый для всех $j \leq k$
     
-    Proof: Exercise~\ref{ET-ex:ofinm}
+    Доказательство: Упражнение~\ref{ET-ex:ofinm}
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    The \navy{Cauchy--Schwarz inequality for random variables}:
+    \navy{Неравенство Коши — Буняковского для случайных величин}:
 
     \vspace{1em}
     \Fact\eqref{ET-fa:csrv}
-        If $x$ and $y$ are random variables with finite second moment, then
+        Если $x$ и $y$ --- случайные величины с конечным вторым моментом, то
         %
         \begin{equation}
             \label{eq:csrv}
@@ -1298,19 +1282,19 @@
 \begin{frame}
 
     \vspace{2em}
-    The second central moment of $x$ is called the \navy{variance} of $x$:
+    Вторым центральным моментом $x$ называется \navy{дисперсия} $x$:
     %
     \begin{equation*}
         \var x := \EE [ (x - \EE x)^2 ]
     \end{equation*}
     %
-    The \navy{standard deviation} of $x$:
+    \navy{Стандартное отклонение} $x$:
     %
     \begin{equation*}
         \sigma_x := \sqrt{\var x}
     \end{equation*}
     %
-    The \navy{covariance} of random variables $x$ and $y$:
+    \navy{Ковариация} случайной величины $x$ и $y$:
     %
     \begin{equation*}
         \cov[x, y] := \EE [ (x - \EE x)(y - \EE y) ]
@@ -1323,19 +1307,19 @@
     \vspace{2em}
     \Fact\eqref{ET-eq:efav}
     %
-    If $x$ and $y$ have finite second moments, then
+    Если $x$ и $y$ имеют конечные вторые моменты, то
     %
     \begin{enumerate}
-        \item $\var x$ and $\cov[x, y]$ are finite
-        \item $\var x = \EE [x^2] - [\EE x]^2$, and
+        \item $\var x$ и $\cov[x, y]$ конечны
+        \item $\var x = \EE [x^2] - [\EE x]^2$, и
         \item $\cov[x, y] = \EE [ xy] -\EE[x] \EE[y]$
     \end{enumerate}
 
-    Part 1. follows from 2.--3., the Cauchy--Schwarz inequality  and
-    fact~\ref{ET-fa:ofinm}
+    Часть 1. следует из 2.--3., неравенства Коши — Буняковского и
+    факта~\ref{ET-fa:ofinm}
     
-    Parts 2.--3. follow from linearity of $\EE$ and
-    some simple manipulations
+    Части 2.--3. следуют из линейности $\EE$ и
+    нескольких простых манипуляций
 
 \end{frame}
 
@@ -1343,8 +1327,8 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:vacov}
-    If $x_1,\ldots,x_N$ are random variables and 
-    $\alpha_0, \alpha_1,\ldots,\alpha_N$ are constant scalars, then
+    Если $x_1,\ldots,x_N$ --- случайные величины и 
+    $\alpha_0, \alpha_1,\ldots,\alpha_N$ --- постоянные скаляры, то
     %
     \begin{equation*}
         \var \left[ \alpha_0 + \sum_{n=1}^N \alpha_n x_n \right]
@@ -1353,10 +1337,10 @@
     \end{equation*}
     
     \vspace{1em}
-    Some simple implications:
+    Некоторые простые выводы:
     %
     \begin{enumerate}
-        \item $\var[\alpha + \beta x] = \beta^2 \var[x]$ and
+        \item $\var[\alpha + \beta x] = \beta^2 \var[x]$ и
         \item $\var[\alpha x + \beta y] = \alpha^2 \var[x] + \beta^2 \var[y] + 2
             \alpha \beta \cov[x,y]$.
     \end{enumerate}
@@ -1366,44 +1350,42 @@
 \begin{frame}
 
     \vspace{2em}
-    The \navy{correlation} of $x$ and $y$:
+    \navy{Корреляция} $x$ и $y$:
     %
     \begin{equation*}
         \corr[x,y] := \frac{\cov[x,y]}{\sigma_x \, \sigma_y}
     \end{equation*}
     %
-    If $\corr[x,y] = 0$,  $x$ and $y$ are \navy{uncorrelated}
+    Если $\corr[x,y] = 0$, то $x$ и $y$ \navy{некоррелярованы}
     
-    Positive correlation means that $\corr[x,y]$ is positive and negative
-    correlation means that $\corr[x,y]$ is negative
+    Положительная корреляция означает, что $\corr[x,y]$ положительна, и отрицательная
+    корреляция значит, что $\corr[x,y]$ отрицательна
 
     \Fact\eqref{ET-fa:acorr}
-        Given any two random variables $x$, $y$ and positive constants $\alpha$,
-        $\beta$, we have 
+        Возьмем любые две случайные величины $x$, $y$ и положительные константы $\alpha$,
+        $\beta$, мы имеем 
         %
         \begin{equation*}
             -1 \leq \corr[x,y] \leq 1 
-            \quad \text{ and }\quad  
+            \quad \text{ и }\quad  
             \corr[\alpha x, \beta y] = \corr[x,y]
         \end{equation*}
         %
-    The first part follows from fact~\ref{ET-fa:csrv}; the second is 
-    algebra
+    первая часть следует из факта~\ref{ET-fa:csrv}; вторая --- из алгебры
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    \frametitle{Best Linear Predictors}
-    Consider the problem of predicting the value of a random variable $y$
-    given knowledge of the value of a second random variable $x$ 
+    \frametitle{Лучшие линейные предсказатели}
+    Рассмотрим задачу предсказания значения случайной величины $y$,
+    учитывая знание значения второй случайной величины $x$ 
     
-    We seek a
-    function $f$ such that $f(x)$ is close to $y$ on average
+    Мы ищем функцию $f$, такую что $f(x)$ в среднем близка к $y$
     
-    To measure the
-    latter, we will use \navy{mean squared error}, which amounts in this case to  
+    Для измерения последнего мы будем использовать \navy{среднеквадратичную ошибку}, 
+    которая в данном случае составляет  
     %
     \begin{equation*}
         \EE [ (y - f(x))^2 ]
@@ -1414,18 +1396,16 @@
 \begin{frame}
 
     \vspace{2em}
-    In\S\ref{ET-ss:ce}, to obtain minimizer of the mean squared
-    deviation over all functions of $x$, we choose 
-    $$f(x) = \EE[y \given
-    x]$$
+    В \S\ref{ET-ss:ce}, чтобы получить минимизатор среднеквадратичного отклонения по всем функциям $x$, мы выбираем 
+    $$f(x) = \EE[y \given x]$$
     
     \vspace{.7em}
-    Here we'll consider finding a good predictor of $y$ within 
-    the class of ``linear'' functions
+    Здесь мы рассмотрим поиск хорошего предсказателя $y$ среди 
+    класса ''линейных'' функций
     %
     \begin{equation*}
         \label{eq:llrv}
-        \llL := \{ \text{ all functions of the form } \ell(x) = \alpha + \beta x \}
+        \llL := \{ \text{ все функции вида } \ell(x) = \alpha + \beta x \}
     \end{equation*}
     
 \end{frame}
@@ -1433,7 +1413,7 @@
 \begin{frame}
 
     \vspace{2em}
-    Consider:
+    Рассмотрим:
     %
     \begin{equation}
         \label{eq:llsrf}
@@ -1442,14 +1422,14 @@
     \end{equation}
     
     \vspace{.7em}
-    If $\alpha$ and $\beta$ solve \eqref{eq:llsrf}, then the function
+    Если $\alpha$ и $\beta$ решают \eqref{eq:llsrf}, то функция
     %
     \begin{equation}
         \label{eq:blpre}
         \ell^*(x) := \alpha^* + \beta^* x
     \end{equation}
     %
-    is called the \navy{best linear predictor} of $y$ given $x$
+    называется \navy{лучшим линейным предсказателем} $y$ при данном $x$
     
 \end{frame}
 
@@ -1457,25 +1437,23 @@
 
     \vspace{2em}
     \Eg\eqref{ET-eg:mktbeta}
-    Relationship between returns on a given asset $R_a$ and returns
-    on a market benchmark $R_m$ is called the \navy{beta} of the asset
+    Взаимосвязь между доходностью данного актива $R_a$ и рыночной доходностью 
+    $R_m$ называется коэффициентом \navy{бета}
     
-    Measures
-    exposure to systemic risk, as opposed to idiosyncratic risk specific to
-    the asset
+    Измеряет подверженность системному риску в отличие от нерыночного риска.
     
     \vspace{.7em}
-    The beta of $R_a$ is often defined as the coefficient
-    $\beta^*$ in the best linear prediction \eqref{eq:blpre} when $x$ is
-    returns on the market benchmark and $y=R_a$
+    Бета $R_a$ часто определяется как коэффициент
+    $\beta^*$ в лучшем линейном предсказании \eqref{eq:blpre}, когда $x$ --- это
+    рыночная доходность и $y=R_a$
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    To solve \eqref{eq:llsrf}, expand the square on the right-hand side and
-    use linearity of $\EE$ to write the objective function as
+    Чтобы решить \eqref{eq:llsrf}, раскроем квадрат с правой стороны и
+    используем линейность $\EE$, чтобы написать целевую функцию как
     %
     \begin{equation*}
         \psi(\alpha, \beta) 
@@ -1483,7 +1461,7 @@
             + \alpha^2 + \beta^2 \EE[x^2]
     \end{equation*}
     %
-    Computing the derivatives and solving the first-order conditions:
+    Вычисление производных и решение условий первого порядка:
     %
     \begin{equation}
         \label{eq:slpp}
@@ -1492,24 +1470,25 @@
         \alpha^* := \EE[y] - \beta^* \EE[x]
     \end{equation}
     %
-    See ex.~\ref{ET-ex:ctmi}
+    Смотрите упр.~\ref{ET-ex:ctmi}
     
 \end{frame}
 
-\section{Distributions}
+\section{Распределения}
 
-\begin{frame}\frametitle{Distributions}
+\begin{frame}\frametitle{Распределения}
 
     \vspace{2em}
-    Take a random variable $x$ on probability space $(\Omega, \mathscr{F}, \mathbb{P})$
+    Возьмем случайную величину $x$ на вероятностное пространство 
+    $(\Omega, \mathscr{F}, \mathbb{P})$
     
-    Probability of $x$ taking on value in Borel set $B$ 
+    Вероятность, $x$ примет значение из Борелевского множества $B$ 
     %
         $$\PP\{x\in B\}$$
     
     \vspace{1em}
-    In practice, more convenient to represent the probability
-    as a \emph{distribution} over $\mathbb{R}$ 
+    На практике, удобнее представлять вероятность
+    как \emph{распределение} в $\mathbb{R}$ 
     
 \end{frame}
 
@@ -1517,23 +1496,23 @@
 \begin{frame}
 
     \vspace{2em}
-    Specialise $\Omega$ to $\RR$ and take the set of 
-    events over $\RR$ as $\mathscr{B}(\RR)$
+    Специфицируем $\Omega$ в $\RR$ и возьмем множество 
+     событий в $\RR$ как $\mathscr{B}(\RR)$
     
     \begin{itemize}
-        \item A probability measure defined over $\mathscr{B}(\RR)$
-        is called a \navy{law} or \navy{distribution}
+        \item Вероятностная мера, определенная в $\mathscr{B}(\RR)$,
+        называется \navy{законом} или \navy{распределением}
     \end{itemize}
     
     \vspace{1em}
-    Formally, a distribution
-    $P$ is a map from $\bB(\RR)$ to $[0, 1]$ such that 
+    Формально, распределение
+    $P$ --- отображение из $\bB(\RR)$ в $[0, 1]$, такое что 
     %
     \begin{enumerate}
             \label{enum:nu}
-        \item $P(\RR) = 1$ and
+        \item $P(\RR) = 1$ и
         \item $P(\cup_{n=1}^{\infty} B_n) = \sum_{n=1}^\infty P(B_n)$ 
-            for any disjoint sequence $\{B_n\}$
+            для любой несовместной последовательности $\{B_n\}$
     \end{enumerate}
     
 \end{frame}
@@ -1541,18 +1520,18 @@
 \begin{frame}
 
     \vspace{2em}
-    If there exists a Borel set $S$
-    with $P(S) = 1$, then we say that $P$ is \navy{supported} on $S$
+    Если существует Борелевское множество $S$
+    с $P(S) = 1$, то мы говорим, что $S$ является \navy{носителем распределения} $P$
     
     \vspace{1em}
-    Characterise distributions using a \navy{cumulative distributed function},
-    or {\sc cdf}, which is any function $F \colon \RR \to [0, 1]$ satisfying
+    Распределения характеризуются \navy{функцией распределения},
+    или функция распределения, которой может быть любая функция $F \colon \RR \to [0, 1]$, удовлетворяющая следующим условиям:
     %
     \begin{enumerate}
-        \item monotonicity: $s \leq s'$ implies $F(s) \leq F(s')$,
-        \item right-continuity: $F(s_n) \downarrow F(s)$ whenever $s_n \downarrow
-            s$, and
-        \item $\lim_{s \to -\infty} F(s) = 0$ and $\lim_{s \to \infty} F(s) = 1$.
+        \item монотонность: $s \leq s'$ подразумевает, что $F(s) \leq F(s')$,
+        \item непрерывность справа: $F(s_n) \downarrow F(s)$ всюду, где $s_n \downarrow
+            s$, и
+        \item $\lim_{s \to -\infty} F(s) = 0$ и $\lim_{s \to \infty} F(s) = 1$.
     \end{enumerate}
     
 \end{frame}
@@ -1560,9 +1539,9 @@
 \begin{frame}
 
     \vspace{2em}
-    C{\sc df}s and distributions on $\RR$ can be put in one-to-one correspondence
+    Функция распределения и распределение в $\RR$ можно поставить во взаимно однозначное соответствие
     
-    A distribution $P$ is entirely characterized by the values of the function
+    Распределение $P$ полностью характеризуется значениями функции
     %
     \begin{equation}
         \label{eq:ntf}
@@ -1572,13 +1551,13 @@
     
     \vspace{1em}
     \Fact\eqref{ET-fa:cdf}
-    The following statements are true:
+    Следующие утверждения верны:
     %
     \begin{enumerate}
-        \item If $P$ is any distribution on $\RR$, then the function $F$ in
-            \eqref{eq:ntf} is a {\sc cdf}.
-        \item Given any {\sc cdf} $F$ on $\RR$, there exists exactly one
-            distribution $P$ satisfying \eqref{eq:ntf}
+        \item Если $P$ --- любое распределение в $\RR$, то функция $F$ в
+            \eqref{eq:ntf} --- функция распределения.
+        \item Возьмем любую функция распределения $F$ в $\RR$, существует ровно одно
+            распределение $P$, удовлетворяющее \eqref{eq:ntf}
     \end{enumerate}
     
 \end{frame}
@@ -1586,18 +1565,18 @@
 \begin{frame}
 
     \vspace{2em}
-    For a full proof, see \cite{williams1991probability}, lemma~1.6,
-    or \cite{dudley2002real}, theorem~9.1.1.
+    Для полного доказательства, смотрите \cite{williams1991probability}, лемма~1.6,
+    или \cite{dudley2002real}, теорема~9.1.1.
     
-    Here let's restrict ourselves to showing the function $F$ in
-    \eqref{eq:ntf} satisfies part 1. of the definition of a {\sc cdf}
+    Здесь ограничимся демонтрацией, что функция $F$ в
+    \eqref{eq:ntf} удовлетворяет части 1. определения функция распределения
     
     \begin{itemize}
-        \item observe 
-    $s \leq s'$ implies $(-\infty, s] \subset (-\infty, s']$
-        \item recall $P(A)\leq P(B)$ if $A\subset B$ 
-        \item we then have $P((-\infty, s]) \leq P((-\infty, s'])$
-        and $F(s) \leq F(s')$ as claimed
+        \item заметим, что 
+    	$s \leq s'$ подразумевает, что $(-\infty, s] \subset (-\infty, s']$
+        \item вспомним, что $P(A)\leq P(B)$, если $A\subset B$ 
+        \item тогда мы имеем $P((-\infty, s]) \leq P((-\infty, s'])$
+        и $F(s) \leq F(s')$, как и было заявлено
     \end{itemize}
  
 \end{frame}
@@ -1606,10 +1585,8 @@
 
     \vspace{2em}
     \Eg
-    The \navy{univariate normal distributions} or \navy{Gaussian
-        distributions} refer to the class of distributions identified by {\sc
-    cdf}s
-    of the form
+    \navy{Одномерные нормальные распределения} или \navy{распределения
+        Гаусса} относятся к распределениям классов, обозначенным как функция распределения вида
     %
     \begin{equation*}
         F(s) =
@@ -1620,15 +1597,13 @@
        \qquad (s \in \RR)
     \end{equation*}
     %
-    where $\mu \in \RR$ and $\sigma > 0$
+   где $\mu \in \RR$ и $\sigma > 0$
     
-    We represent the distribution
-    associated with $(\mu, \sigma)$ by $\nN(\mu, \sigma^2)$
+    Мы представляем распределение, связанное с $(\mu, \sigma)$ с помощью $\nN(\mu, \sigma^2)$
     
-    The distribution
-    $\nN(0, 1)$ is called the \navy{standard normal distribution}
+    Распределение $\nN(0, 1)$ называется \navy{стандартным нормальным распределением}
     
-    We use the symbol $\Phi$ for its {\sc cdf}
+    Мы используем символ $\Phi$ для его функции распределения
     
 \end{frame}
 
@@ -1637,7 +1612,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={0 0em 0 2em}, clip]{normal_cdfs.pdf}}
-    \caption{\label{f:normal_cdfs} Normal {\sc cdf}s }
+    \caption{\label{f:normal_cdfs} Функция распределения для нормальных распределений }
    \end{center}
     \end{figure}
     
@@ -1648,25 +1623,25 @@
 
     \vspace{2em}
     \Eg
-    The \navy{Pareto distributions} are the univariate distributions
-    with {\sc cdf}s of the form
+    \navy{Распределение Парето} --- одномерное распределение
+    с функция распределения вида
     %
     \begin{equation*}
         F(s) = 
         \begin{cases}
             0   
-                & \text{ if } s < s_0
+                & \text{, если } s < s_0
             \\
             1 - \left(
                     \frac{s_0}{s}
                 \right)^{\alpha} 
-                & \text{ if } s_0 \leq s
+                & \text{, если } s_0 \leq s
         \end{cases}
         \qquad (s \in \RR, \; s_0, \, \alpha > 0)
     \end{equation*}
     %
-    Pareto distributions often used to model phenomena with heavy right-hand tails, 
-    such as the distribution of wealth or income
+    Распределения Парето часто используются для моделирования явлений с тяжелым правым 
+    хвостом, таких как распределение богатства или дохода.
 
 \end{frame}
 
@@ -1674,24 +1649,24 @@
 
     \vspace{2em}
     \Eg
-    The class of \navy{beta {\sc cdf}s} is given by 
+    Класс \navy{функции распределения бета} дан с помощью 
     %
     \begin{equation*}
         F(s) =
         \begin{cases}
-            0 & \text{ if } s \leq 0
+            0 & \text{, если } s \leq 0
             \\
             \frac{1}{B(\alpha, \beta)}
                 \int_0^s u^{\alpha-1} (1-u)^{\beta-1} \diff u
-                & \text{ if } 0 < s < 1
+                & \text{, если } 0 < s < 1
             \\
-            1   & \text{ if } 1 \leq s
+            1   & \text{, если } 1 \leq s
         \end{cases}
     \end{equation*}
     %
-    where $\alpha, \beta > 0$. 
+   где $\alpha, \beta > 0$. 
 
-    In this example $B(\alpha, \beta)$ is the \navy{beta function} 
+    В этом примере $B(\alpha, \beta)$ --- \navy{функция бета} 
     %
     \begin{equation*}
         B(\alpha, \beta) 
@@ -1700,7 +1675,7 @@
         \Gamma(a) := \int_0^{\infty} u^{a-1} e^{-u} \diff u
     \end{equation*}
     %
-    The function $\Gamma$ is called the \navy{gamma function}. 
+    Функция $\Gamma$ называется \navy{функция гамма}. 
 
 \end{frame}
 
@@ -1710,7 +1685,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.45}{\includegraphics[trim={0 0em 0 3em}, clip]{beta_cdfs.pdf}}
-        \caption{\label{f:beta_cdfs} Beta {\sc cdf}s }
+        \caption{\label{f:beta_cdfs} Функции распределения бета}
        \end{center}
     \end{figure}
 
@@ -1719,7 +1694,7 @@
 \begin{frame}
 
     \Eg
-    The class of \navy{Cauchy {\sc cdf}s} is given by 
+    класс \navy{распределений Коши} определяется как 
     %
     \begin{equation*}
         F(s) 
@@ -1728,11 +1703,11 @@
        \qquad (s \in \RR)
     \end{equation*}
     %
-    The parameters $\tau \in \RR$ and $\gamma > 0$ are the location
-    and scale parameters respectively
+    параметры $\tau \in \RR$ и $\gamma > 0$ --- параметры местоположения и масштаба 
+    соответственно
     
-    If $\tau=0$ and $\gamma=1$, then $F$ is called
-    \navy{standard Cauchy}
+    Если $\tau=0$ и $\gamma=1$, то $F$ называется
+    \navy{стандартным распределением Коши}
 
 \end{frame}
 
@@ -1741,7 +1716,7 @@
     \begin{figure}
        \begin{center}
         \scalebox{.45}{\includegraphics[trim={0 0em 0 3em}, clip]{cauchy_cdfs.pdf}}
-        \caption{\label{f:cauchy_cdfs} Cauchy {\sc cdf}s }
+        \caption{\label{f:cauchy_cdfs} Функции распределения Коши }
        \end{center}
     \end{figure}
     
@@ -1751,74 +1726,71 @@
 
     \vspace{2em}
     \Eg
-    Given $a < b$, the \navy{uniform {\sc cdf}} on $[a, b]$ is the
-    {\sc cdf} 
+    Возьмем $a < b$, \navy{равномерная функция распределения} на промежутке $[a, b]$ --- это
     %
     \begin{equation*}
         F(s) = 
         \begin{cases}
-            0 & \text{ if } s \leq a
+            0 & \text{, если } s \leq a
             \\
-            \frac{s-a}{b-a} & \text{ if } a < s < b
+            \frac{s-a}{b-a} & \text{, если } a < s < b
             \\
-            1   & \text{ if }  b \leq s
+            1   & \text{, если }  b \leq s
         \end{cases}
     \end{equation*}
     %
-    We represent this distribution symbolically by $U[a, b]$
+    мы обозначаем это распределение как $U[a, b]$
         
 \end{frame}
 
 \begin{frame}
 
-    \frametitle{Densities and Probability Mass Functions}
+    \frametitle{Плотности и функции вероятности}
 
-    Two convenient special cases
+    Два удобных частных случая
     %
     \begin{itemize}
-        \item discrete: CDF is just jumps (a step function) 
-        \item absolutley continuous case: CDF smooth with no jumps
+        \item дискретный: функция распределения просто скачет (ступенчатая функция) 
+        \item абсолютно непрерывный случай: функция непрерывна, без скачков
     \end{itemize}
 
 \end{frame}
 
-\begin{frame}\frametitle{Discrete Case}
+\begin{frame}\frametitle{Дискретный случай}
     
     \vspace{2em}
-    A distribution $P$ is called \navy{discrete} if it is supported on a countable
-    set; that is, if there exists a countable set $\{s_j\}_{j \geq 1}$ with
+    Распределение $P$ называется \navy{дискретным}, если оно имеет носитель распределения в счетном
+    множестве; that is, если существует счетное множество $\{s_j\}_{j \geq 1}$ c
     $P(\{s_j\}_{j \geq 1}) = 1$
     
-    For such a $P$ let
+    для такого $P$ пусть
     %
     \begin{equation*}
         p_j 
         := P\{s_j\} 
         := P(\{s_j\})
-        = \text{probability mass on the single point } s_j
+        = \text{вероятность в одной точке } s_j
     \end{equation*}
     %
-    A
-    \navy{probability mass function}, or \navy{{\sc pmf}} is any non-negative
-    sequence (finite or infinite) that sums to unity
+    \navy{Функция вероятности} --- любая неотрицательная последовательность 
+    (конечная или бесконечная), сумма которой равна единице.
     
-    Exercise: show $\{p_j\}_{j \geq 1}$ is a
-    \navy{probability mass function}
+    Упражнение: покажите, что $\{p_j\}_{j \geq 1}$ является
+    \navy{функцией вероятности}
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    We can express the {\sc cdf} corresponding
-    to $P$ as:
+    Мы можем показать связь функции распределения с $P$ как:
     %
     \begin{equation}
         \label{eq:cdfdrv}
         F(s) = \sum_{j \geq 1} \1\{s_j \leq s\} p_j
     \end{equation}
     %
-    because
+    так как
     %
     \begin{align*}
         F_x(s) := 
@@ -1836,7 +1808,7 @@
     \begin{figure}
        \begin{center}
         \input{figs_code/tikzfigs/discrete_cdf.tex}
-        \caption{\label{f:discrete_cdf} Discrete {\sc cdf}}
+        \caption{\label{f:discrete_cdf} Дискретная функция распределения}
        \end{center}
     \end{figure}
 
@@ -1846,36 +1818,36 @@
 
     \vspace{2em}
     \Eg
-    Given $N \in \NN$ and $\pi \in (0, 1)$, the sequence $\{p_0, \ldots,
-    p_N\}$ defined by
+    Возьмем $N \in \NN$ и $\pi \in (0, 1)$, последовательность $\{p_0, \ldots,
+    p_N\}$, определяемая как
     %
     $$
         p_j = {N\choose j}\pi^j(1-\pi)^{N-j}
     $$ 
-    is called the \navy{binomial {\sc pmf}}
+    называется \navy{биномиальной функцией вероятности}
     
-    The
-    value $p_j$ is probability of $j$ successes in $N$ independent
-    trials, each having success probability $\pi$
+    Значение $p_j$ --- вероятность, $j$ успехов в $N$ независимых
+    испытаниях, вероятность успеха каждого случая равна $\pi$
 
 \end{frame}
 
-\begin{frame}\frametitle{Absolutely Continuous Case}
+\begin{frame}\frametitle{Абсолютно непрерывный случай}
     
     \vspace{2em}
-    A \navy{density} is a nonnegative function $p$ on $\RR$ that integrates to 1
+    \navy{Функция плотности} --- неотрицательная функция $p$ в $\RR$, которая 
+    интегрируется в 1
     
     \vspace{.7em}
-    A distribution $P$ is \navy{represented by density $p$} (or \navy{has density $p$}) 
-    if $p$ is a density and 
+    Распределение $P$ \navy{определяется функцией плотности $p$}, если $p$ --- функция 
+    плотности и 
     %
     \begin{equation*}
         \label{eq:drbd}
         P(B) = \int_B p(s) \diff s
-        \qquad \text{for all } B \in \bB(\RR)
+        \qquad \text{для всех } B \in \bB(\RR)
     \end{equation*}
     %
-    Note: 
+    Заметим, что 
     %
     \begin{equation*}
         \int_B p(s) \diff s := \int_{-\infty}^\infty \1_B(s) p(s) \diff s
@@ -1886,39 +1858,37 @@
 \begin{frame}
 
     \vspace{2em}
-    An exact necessary and
-    sufficient condition for existence of density representation is absolute continuity
+    Точное необходимое и достаточное условие существования функции плотности --- абсолютная непрерывность
     
     \vspace{.7em}
-    A
-    distribution $P$ on the Borel subsets of $\RR$ is called \navy{absolutely
-    continuous} if $P(B) = 0$ whenever $B$ has Lebesgue measure zero (see \S\ref{ET-ss:measure})
+    Распределение $P$ в Борелевских подмножествах $\RR$ называется \navy{абсолютно 
+    	непрерывным}, если $P(B) = 0$ всюду, где мера Лебега $B$ равна нулю 
+    (смотрите \S\ref{ET-ss:measure})
     \begin{itemize}
-        \item Any countable subset of $\RR$ has Lebesgue measure zero
+        \item Любое счетное подмножество $\RR$ имеет меру Лебега равную нулю
     \end{itemize}
     
     \vspace{2em}
     \Fact\eqref{ET-fa:denc}
-        If $P$ is absolutely continuous, then $P(C) = 0$ whenever $C$ is
-        countable
+        Если $P$ абсолютно непрерывная, то $P(C) = 0$ всюду, где $C$ 
+        счетно
         
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    If distribution is absolutely continuous:
+    Если распределение абсолютно непрерывно:
     
     \begin{itemize}
-        \item individual points
-    receive no probability mass 
-        \item corresponding {\sc cdf} contains no jumps
-        \item fundamental theorem of calculus says $F(s)$
-        differentiable at all continuity points of $p$, and:
+        \item вероятность в каждой точке равна нулю 
+        \item соответствующая функция распределения не содержит скачков
+        \item теорема Ньютона — Лейбница говорит, что $F(s)$
+        дифференцируема во всех точках непрерывности $p$, и:
         %
         \begin{equation*}
             F'(s) = p(s)
-            \qquad \text{for all } s \in \RR \text{ such that $p$  is continuous at $s$}
+            \qquad \text{для всех } s \in \RR \text{, таких что $p$ непрерывна в $s$}
         \end{equation*}
     \end{itemize}
     
@@ -1928,8 +1898,8 @@
 
     \vspace{2em}
     \Eg
-    Normal {\sc cdf}s  are differentiable for all
-    $\mu$, $\sigma$, with density
+    Нормальные функции распределения дифференцируемы для всех
+    $\mu$, $\sigma$, с функцией плотности
     %
     \begin{equation*}
         p(s) = F'(s) = 
@@ -1940,8 +1910,7 @@
     %
     
     \vspace{.7em}
-    We reserve the symbol $\phi$ for the
-    standard normal density
+    Мы используем символ $\phi$ для стандартного нормального распределения
     
 \end{frame}
 
@@ -1950,7 +1919,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={0 0em 0 2em}, clip]{normal_densities.pdf}}
-    \caption{\label{f:normal_densities} Normal densities}
+    \caption{\label{f:normal_densities} Функции плотности нормального распределения}
    \end{center}
     \end{figure}
     
@@ -1960,7 +1929,7 @@
 
     \vspace{2em}
     \Eg
-    The Cauchy {\sc cdf} has density
+    Функция распределения Коши имеет функцию плотности
     %
     \begin{equation*}
         p(s) = 
@@ -1971,8 +1940,7 @@
             \qquad (s \in \RR, \; \gamma > 0, \, \tau \in \RR)
     \end{equation*}
     %
-    The Cauchy densities are more peaked around their modes and have greater
-    mass in their tails than normal densities
+    Функции плотности Коши более остроконечны около своих мод и имеют большую массу в хвосте, чем нормальная функция плотности
     
 \end{frame}
 
@@ -1981,7 +1949,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={0 0em 0 2em}, clip]{cauchy_densities.pdf}}
-    \caption{\label{f:cauchy_densities} Cauchy densities}
+    \caption{\label{f:cauchy_densities} Функции плотности Коши}
    \end{center}
     \end{figure}
     
@@ -1991,14 +1959,14 @@
 
     \vspace{2em}
     \Eg
-    The beta {\sc cdf}s  have densities given by 
+    Бета имеет функцию плотности, определяемую как
     %
     \begin{equation*}
         p(s) = \frac{s^{\alpha-1} (1-s)^{\beta-1}}{B(\alpha, \beta)}
             \qquad (\alpha, \beta > 0)
     \end{equation*}
     %
-    when $0 < s < 1$ and zero elsewhere
+    Когда $0 < s < 1$ и $0$ в ином случае
 
 \end{frame}
 
@@ -2007,8 +1975,7 @@
 
     \vspace{2em}
     \Eg
-    The $U[a, b]$ distribution represented
-    by the density
+    $U[a, b]$ распределение представлено функцией плотности
     %
     \begin{equation*}
         p(s) = \frac{1}{b - a} \1\{a \leq s \leq b\}
@@ -2023,8 +1990,8 @@
 
     \vspace{2em}
     \Eg
-    The \navy{gamma distribution} with shape parameter $\alpha$ and scale
-    parameter $\beta$ is the distribution with density
+    \navy{Гамма-распределение} с параметром	формы $\alpha$ и параметром
+    масштаба $\beta$ --- распределение с функцей плотности
     %
     \begin{equation*}
         p(s) = 
@@ -2032,7 +1999,7 @@
             \qquad (\alpha, \beta > 0)
     \end{equation*}
     %
-    when $0 < s < 1$ and zero elsewhere
+    Когда $0 < s < 1$ и $0$ в ином случае
     
 \end{frame}
 
@@ -2041,15 +2008,15 @@
 
     \vspace{2em}
     \Eg
-    The \navy{chi-squared distribution with $k$ degrees of freedom}
-    is the distribution with density
+    \navy{Хи-квадрат распределение с $k$ степенями свободы}
+    --- распределение с функцией плотности
     %
     \begin{equation*}
         p(s) := \frac{1}{2^{k/2} \Gamma(k/2)} s^{k/2 - 1} e^{-s/2} 
         \qquad (s > 0,\; k \in \NN)
     \end{equation*}
     %
-    This distribution is represented by the symbol $\chi^2(k)$
+    Это распределение представлено символом $\chi^2(k)$
     
 \end{frame}
 
@@ -2058,7 +2025,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.45}{\includegraphics[trim={2em 2em 2em 2em}, clip]{chisq_densities.pdf}}
-    \caption{\label{f:chisq_densities} Chi-squared densities}
+    \caption{\label{f:chisq_densities} Функции плотности хи-квадрата}
    \end{center}
     \end{figure}
     
@@ -2068,9 +2035,9 @@
 
     \vspace{2em}
     \Eg
-    \navy{Student's $t$-distribution with $k$ degrees of freedom}, or, more simply,
-    the $t$-distribution with $k$ degrees of freedom, is the distribution on $\RR$
-    with density
+    \navy{Распределение Стьюдента $t$ с $k$ степенями свободы}, или, проще,
+    $t$-распределение с $k$ степенями свободы, --- распределение в $\RR$ с
+    функцией плотности
     %
     \begin{equation*}
         p(s) := \frac{\Gamma(\frac{k+1}{2})}{(k\pi)^{1/2} \Gamma(\frac{k}{2})}
@@ -2084,8 +2051,8 @@
 
     \vspace{2em}
     \Eg
-    The \navy{$F$-distribution} with parameters $k_1, k_2$ is the distribution
-    with the unlikely looking density
+    \navy{$F$-распределение} с параметрами $k_1, k_2$ --- распределение
+    с функцией плотности
     %
     \begin{equation*}
         p(s) 
@@ -2094,24 +2061,23 @@
         \qquad (s \geq 0, \; k_1, \, k_2 > 0)
     \end{equation*}
     %
-    The $F$-distribution arises in a number of hypothesis tests, as discussed below
+    $F$-распределение возникает при проверке ряда гипотез, как обсуждается ниже.
     
 \end{frame}
 
-\begin{frame}\frametitle{Integrating with Distribution}
+\begin{frame}\frametitle{Интегрирование}
 
     \vspace{2em}
-    Consider ordinary integral $\int_a^b
-    h(s)\diff s$ of a well-behaved function $h$ on some interval $[a, b]$
+    Рассмотрим обычный интергал $\int_a^b
+    h(s)\diff s$ функции $h$ на некотором интервале $[a, b]$
     
-    Suppose we want to weight this integral, assigning more mass to different regions of
+	Предположим, мы хотим сделать этот интергал взвешенным, придав больше массы различным частям
     $[a, b]$: $$\int_a^b h(s) p(s) \diff s$$
     
-    For example:
+    Например:
     \begin{itemize}
-        \item $h$ as a welfare function and $p$ the density of agents 
-        \item $p$ as a density
-    indicating probabilities of outcomes, $h$ as a payoff function 
+        \item $h$ --- функция благосостояния и $p$ плотность агентов 
+        \item $p$ --- плотность, указывающая на вероятности исходов, $h$ функция прибыли
     \end{itemize}
 
 \end{frame}
@@ -2119,20 +2085,22 @@
 \begin{frame}
 
     \vspace{2em}
-    Suppose $P$ does not have a density, but we still want to weight using $P$
+	    Предположим, что $P$ не имеет функции плотности, но мы все еще хотим взвесить 
+	    интеграл с помощью  $P$
     \begin{itemize}
-        \item we want to define $\int h(s) P(\diff s)$ 
+        \item мы хотим определить $\int h(s) P(\diff s)$ 
     \end{itemize}
     
-    Take distribution $P$ on $\RR$ and consider $(\RR, \bB(\RR), P)$ as a probability space
+    Возьмем распределение $P$ в $\RR$ и рассмотрим $(\RR, \bB(\RR), P)$ как 
+    вероятностное пространство
     
-    $(\RR, \bB(\RR), P)$ has its own expectation operator $\EEP $ 
+    $(\RR, \bB(\RR), P)$ имеет собственный оператор ожидания $\EEP $ 
     
-    Assume $h$ is a random variable on $(\RR, \bB(\RR), P)$, then
+    Предположим, что $h$ --- случайная величина в $(\RR, \bB(\RR), P)$, тогда
     %
     \begin{equation*}
         \EEP h :=: \int h(s) P(\diff s) 
-        := \text{the expectation of $h$ under $P$}
+        := \text{ожидания $h$ при $P$}
     \end{equation*}
     
 \end{frame}
@@ -2141,19 +2109,19 @@
 
     \vspace{2em}
     \Fact
-    Let $h \colon \RR \to \RR$ be $\bB$-measurable and let $P$ be a
-    distribution on $\RR$
+    Пусть $h \colon \RR \to \RR$ --- $\bB$-измерима и $P$ ---
+    распределение в $\RR$
     
-    If $P$
-    is discrete, with {\sc pmf} $\{p_j\}_{j \geq 1}$ and support
-    $\{s_j\}_{j \geq 1}$, then
+    Если $P$
+    дискретна, с функцией вероятности $\{p_j\}_{j \geq 1}$ и носителем распределения
+    $\{s_j\}_{j \geq 1}$, то
     %
     \begin{equation*}
         \label{eq:hasp}
         \int h(s) P(\diff s) = \sum_{j\geq 1} h(s_j) p_j 
     \end{equation*}
     %
-    If $P$ is absolutely continuous with density $p$, then
+    Если $P$ абсолютно непрерывно с функцией плотности $p$, то
     %
     \begin{equation*}
         \label{eq:hasd}
@@ -2163,18 +2131,18 @@
 \end{frame}
 
 
-\begin{frame}\frametitle{Distributions and Random Variables}
+\begin{frame}\frametitle{Распределения и случайные переменные}
 
     \vspace{2em}
-    Every random
-    variable defines a distribution on $\RR$ 
+    Каждая случайная переменная 
+    определяет распределение on $\RR$ 
     
     \vspace{.7em}
-    Let $x$ be a random variable on some probability space $(\Omega,\fF, \PP)$:
+    Пусть $x$ --- случайная величина на некотором вероятностном пространстве $(\Omega,\fF, \PP)$:
     \begin{itemize}
-        \item  probability $\PP\{x \in B\}$ is well-defined
-        for every $B \in \bB(\RR)$ (see \eqref{eq:dorv})
-        \item  the set function $P$ defined by
+        \item  вероятность $\PP\{x \in B\}$ определена
+        для каждого $B \in \bB(\RR)$ (смотрите \eqref{eq:dorv})
+        \item  множество функций $P$ определено как
             %
             \begin{equation}
                 \label{eq:pidox}
@@ -2182,7 +2150,7 @@
                 \qquad (B \in \bB(\RR))
             \end{equation}
             %
-            is the \navy{distribution of $x$}
+            является \navy{распределением $x$}
     \end{itemize}
     
 \end{frame}
@@ -2190,7 +2158,8 @@
 \begin{frame}
 
     \vspace{2em}
-    The  {\sc cdf} corresponding to the distribution $P$ of $x$ satisfies
+     Функция распределения соответствующая распределению $P$ случайной переменной $x$ 
+     удовлетворяет
     %
     \begin{equation}
         \label{eq:deffx}
@@ -2198,38 +2167,38 @@
         \qquad (s \in \RR)
     \end{equation}
     %
-    We write $\lL(x) = F$ to indicate that $F$ represents the distribution of $x$
+    мы пишем $\lL(x) = F$, чтобы подчеркнуть, что $F$ означает распределение $x$
     
     \vspace{.7em}
     \Fact\eqref{ET-fa:axb}
-    If $\lL(x)= F$, then $\PP\{a < x \leq b\} = F(b) - F(a)$ for any $a \leq b$
+    Если $\lL(x)= F$, то $\PP\{a < x \leq b\} = F(b) - F(a)$ для любых $a \leq b$
     
-    Proof is an exercise (or see page 111 in ET) 
+    Доказательство выполните в качестве упражнения (или смотрите страницу 111 в ET) 
     
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    For every {\sc cdf} $F$, there exists a probability
-    space $(\Omega, \fF, \PP)$ and a random variable $x \colon \Omega \to \RR$
-    such that $\lL(x) = F$;  \S\ref{ET-ss:it} outlines one construction
+    Для каждой функции распределения $F$, существует вероятностное пространство 
+    $(\Omega, \fF, \PP)$ и случайная величина $x \colon \Omega \to \RR$, 
+    такая что $\lL(x) = F$;  \S\ref{ET-ss:it} показывает построение
     
 \end{frame}
 
 \begin{frame}
     
     \vspace{2em}
-    If $\lL(x) = P$ and $P$ has density $p$, we say
-    \navy{$x$ has density $p$}
+    Если $\lL(x) = P$ и $P$ имеет функцию плотности $p$, мы говорим, что
+    \navy{$x$ имеет функцию плотности $p$}
     
-    If the distribution of $x$ is discrete, we'll call
-    $x$ a \navy{discrete random variable}
+    Если распределение $x$ дискретно, мы будем называть
+    $x$ \navy{дискретной случайной величиной}
     
     \vspace{1em}
     \Fact
-    If $x$ has a density, then $\PP\{x=s\}=0$ for all $s \in \RR$, and for
-    any $a < b$,
+    Если $x$ имеет функцию плотности, то $\PP\{x=s\}=0$ для всех $s \in \RR$, и для
+    любых $a < b$,
     %
     \begin{multline*}
         \PP\{a < x < b\}
@@ -2240,16 +2209,16 @@
     %
 \end{frame}
 
-\begin{frame}\frametitle{Distributions of Transformations}
+\begin{frame}\frametitle{Распределения преобразований}
 
     \vspace{2em}
     \Fact\eqref{ET-fa:cdftr}
-    If $\lL(x) = F$ and $y := \psi(x)$, where $\psi \colon \RR \to \RR$ is
-    strictly increasing, then $\lL(y)= G$ where $G(s) := F(\psi^{-1}(s))$.
+    Если $\lL(x) = F$ и $y := \psi(x)$, где $\psi \colon \RR \to \RR$ 
+    строго возрастает, то $\lL(y)= G$, где $G(s) := F(\psi^{-1}(s))$.
     
     \Prf
-    Observe under these hypotheses $\psi^{-1}$ exists and is
-    (weakly) increasing.  Hence 
+    При таких гипотезах $\psi^{-1}$ существует и
+    (медленно) возрастает. Следовательно 
     %
     \begin{equation*}
         \PP\{y \leq s\} 
@@ -2258,7 +2227,7 @@
         = F( \psi^{-1}(s) )
     \end{equation*}
     %
-    Note how monotonicity is used in the second equality
+    Заметьте, как монотонность используется во втором равенстве
 
 \end{frame}
 
@@ -2266,7 +2235,8 @@
 
     \vspace{2em}
     \Eg
-    If $\lL(x) = F$ and $y := \exp(x)$, then the {\sc cdf} of $y$ is $G(s) := F(\ln(s))$
+    Если $\lL(x) = F$ и $y := \exp(x)$, то функция распределения $y$ --- это 
+    $G(s) := F(\ln(s))$
     
 \end{frame}
 
@@ -2274,9 +2244,9 @@
 
     \vspace{2em}
     \Fact\eqref{ET-fa:trden}
-    If $x$ has density $p$ on $\RR$ and $y := \psi(x)$ where $\psi$ is a
-    diffeomorphism on $\RR$, then the distribution of $y$ is absolutely
-    continuous, with density
+    Если $x$ имеет плотность $p$ в $\RR$ и $y := \psi(x)$, где $\psi$ ---
+    диффеоморфизм в $\RR$, то распределение $y$ абсолютно
+    непрерывное с функцией плотности
     %
     \begin{equation*}
         \label{eq:trden}
@@ -2286,8 +2256,8 @@
     
     
     \vspace{1em}
-    The term \navy{diffeomorphism} means  $\psi$ is a bijection on
-    $\RR$ and both $\psi$ and its inverse are differentiable
+    термин \navy{диффеоморфизм} значит, что $\psi$ --- биекция в
+    $\RR$ и оба $\psi$ и его обратное дифференцируемы
     
 \end{frame}
 
@@ -2295,8 +2265,8 @@
 
     \vspace{2em}
     \Eg
-    If $x$ has density $p$ on $\RR$ and $\mu$ and $\sigma$ are constants with 
-    $\sigma > 0$, then the density of $y := \mu + \sigma x$ is
+    Если $x$ имеет функцию плотности $p$ в $\RR$, и $\mu$ и $\sigma$ --- константы с 
+    $\sigma > 0$, то функция плотности $y := \mu + \sigma x$ --- это
     %
     \begin{equation*}
         q(s) = p \left( \frac{s - \mu}{\sigma} \right) 
@@ -2304,13 +2274,13 @@
                  \qquad (s \in \RR)
     \end{equation*}
     %
-    When $x$ is standard normal: $y = \mu
+    Когда $x$ стандартное нормальное: $y = \mu
     + \sigma x$ is $\nN(\mu, \sigma^2)$
     
-    Why?
+    Почему?
     \begin{itemize}
-        \item Take $p$ to be the standard normal density $\phi$
-        \item Recall%
+        \item Возьмем $p$ функцию плотности стандартного нормального распределения $\phi$
+        \item Вспомним%
             \begin{equation*}
                 p(s) = F'(s) = 
                 \frac{1}{\sqrt{2 \pi} \sigma}
@@ -2325,21 +2295,21 @@
 \begin{frame}
 
     \vspace{2em}
-   Let $x$ be a random variable on probability space $(\Omega, \fF, \PP)$
+   Пусть $x$ --- случайная величина в вероятностном пространстве $(\Omega, \fF, \PP)$
    
-   The distribution of $x$ encodes all information to calculate 
-   expectations of $x$ or of any $\bB$-measurable transformation $h(x)$
+   Распределение $x$ кодирует всю информацию для расчета 
+   ожидания $x$ или любого $\bB$-измеримого преобразования $h(x)$
    
-   First, let $x$ be finite. Suppose 
+   Во-первых, пусть $x$ конечно. Предположим, что 
    
    \begin{itemize}
        \item  $\lL(x) = P$
-       \item  the function $h\colon \RR \to \RR$ is any $\bB$-measurable function
-       \item $P$ puts all mass on finite set $\{s_j\}_{j=1}^J$
+       \item  функция $h\colon \RR \to \RR$ --- любая $\bB$-измеримая функция
+       \item $P$ помещает все вероятности в конечное множество $\{s_j\}_{j=1}^J$
    \end{itemize}
    
    \vspace{.7em}
-   Using $\PP\{x = s_j\} = P\{s_j\}$ and the definition of expectations:
+   Исопльзуем $\PP\{x = s_j\} = P\{s_j\}$ и определение ожиданий:
    %
     \begin{equation*}
         \label{eq:ehx}
@@ -2354,23 +2324,23 @@
 \begin{frame}
        
     \vspace{2em}
-   The expectation of $h(x)$ on $(\Omega, \fF, \PP)$  equal to the 
-   expectation of $h$ on $(\RR, \bB(\RR), P)$
+   Ожидания $h(x)$ в $(\Omega, \fF, \PP)$ равны
+   ожиданиям $h$ в $(\RR, \bB(\RR), P)$
    
-   True also for the infinite case:
+   Верно также и для бесконечного случая:
    
    \vspace{1em}
    \Fact
-    Let $x$ be a random variable on some probability space $(\Omega, \fF,
-    \PP)$, let $\lL(x) = P$ and let $h$ be a $\bB$-measurable function such
-    that $h(x)$ is integrable. The expectation $\EE h(x)$ is entirely
-    determined by $h$ and $P$.  In particular,
+    Пусть $x$ --- случайная величина в некотором вероятностном пространстве $(\Omega, \fF,
+    \PP)$, пусть $\lL(x) = P$ и $h$ --- $\bB$-измеримая функция, такая
+    что $h(x)$ интегрируема. Ожидания $\EE h(x)$ полностью
+    определены $h$ и $P$. В частности,
     %
     \begin{equation*}
         \EE h(x) = \int h(s) P(\diff s)
     \end{equation*}
     %
-    where $\int h(s) P(\diff s)$ is the expectation of $h$ on $(\RR, \bB(\RR), P)$
+    где $\int h(s) P(\diff s)$ --- ожидания $h$ в $(\RR, \bB(\RR), P)$
 
 \end{frame}
 
@@ -2378,11 +2348,11 @@
 
     \vspace{2em}
     \Eg
-    Let $x$ be a random variable whose distribution $P$ is the uniform
-    distribution on $[a, b]$
+    Пусть $x$ --- случайная величина, чье распределение $P$ является равномерным
+    распределением в $[a, b]$
     
     \vspace{.7em}
-    Apply the definition of the uniform density
+    Применить определение функции плотности равномерного распределения
     %
     \begin{equation*}
         \EE x 
@@ -2392,7 +2362,7 @@
          \frac{s}{b - a} \1\{a \leq s \leq b\} \, \diff s 
     \end{equation*}
     %
-    Solving the integral gives $\EE x = \mu := (a + b)/2$.  The variance is 
+    Решение интеграла дает $\EE x = \mu := (a + b)/2$. Дисперсия равна
     %
     \begin{multline*}
         \var [x]
@@ -2411,9 +2381,9 @@
 
     \vspace{2em}
     \Eg
-    Suppose  $\lL(x) = \nN(\mu, \sigma)$
+    Предположим, что $\lL(x) = \nN(\mu, \sigma)$
     
-    If $\sigma > 0$, the mean can be computed via
+    Если $\sigma > 0$, среднее значение может быть вычислено с помощью
     %
     \begin{equation*}
         \EE x 
@@ -2424,7 +2394,7 @@
         = \mu
     \end{equation*}
     %
-    The variance is given by:
+    Дисперсия определяется как:
     %
     \begin{equation*}
         \var [x]
@@ -2438,57 +2408,58 @@
     
 \end{frame}
 
-\begin{frame}\frametitle{Moments from Distributions}
+\begin{frame}\frametitle{Моменты распределений}
 
     \vspace{2em}
-    Any two random variables with the same
-    distribution share the same moments
+    Любые две случайные величины с одинаковыми распределениями
+    имеют одинаковые моменты
     
-    Hence moments are best thought of as a
-    property of the distribution, not the random variable
+    Следовательно моменты лучше всего рассматривать как
+    свойство распределения, не как случайную величину
     
     \vspace{.7em}
-    Thus we define 
+    Таким образом, мы определяем 
     %
     \begin{itemize}
-        \item the \navy{mean} of $P$ as $\mu = \int s P(\diff s)$,
-        \item the \navy{$k$th moment} of $P$ as $\int s^k P(\diff s)$, 
-        \item the \navy{variance} of $P$ as $\int (s - \mu)^2 P(\diff s)$,
+        \item \navy{среднее} $P$ как $\mu = \int s P(\diff s)$,
+        \item \navy{$k$-ый момент} $P$ как $\int s^k P(\diff s)$, 
+        \item \navy{дисперсию} $P$ как $\int (s - \mu)^2 P(\diff s)$,
     \end{itemize}
     %
-    and so on
+    и так далее
 
 \end{frame}
 
-\begin{frame}\frametitle{Quantile Function}
+\begin{frame}\frametitle{Функция квантилей}
 
     \vspace{2em}
-    Let $F$ be a strictly increasing {\sc cdf} on $\RR$
+    Пусть $F$ --- строго возрастающая функция распределения в $\RR$
     
-    Given $\tau \in (0, 1)$, the \navy{$\tau$th quantile} of $F$ is the $\xi \in \RR$ that solves $F(\xi) = \tau$
+    Возьмем $\tau \in (0, 1)$, \navy{$\tau$-ая квантиль} $F$ --- это $\xi \in \RR$, 
+    который является решением $F(\xi) = \tau$
     
-    Under our assumptions on $F$, such a $\xi$ exists and is uniquely defined
+    Согласно нашим предположениям о $F$, такое $\xi$ существует и однозначно определено
     
-    The $0.5$th quantile is called the \navy{median} of $F$
+    $0.5$-ая квантиль называется \navy{медианой} $F$
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    The \navy{quantile function}:
+    \navy{Функция квантилей}:
     %
     \begin{equation*}
         \label{eq:quantwi}
-        F^{-1}(\tau) := \text{ the unique } \xi \text{ such that } F(\xi) = \tau
+        F^{-1}(\tau) := \text{ единственный } \xi \text{, такой что } F(\xi) = \tau
         \qquad (0 < \tau < 1)
     \end{equation*}
     
     
     \vspace{.7em}
     \Eg
-    The quantile function associated with the standard Cauchy distribution  
-    is $F^{-1}(\tau) = \tan [\pi(\tau - 1/2)]$
+    Функция квантилей связанная со стандартным распределением Коши --- это
+    $F^{-1}(\tau) = \tan [\pi(\tau - 1/2)]$
 
 \end{frame}
 
@@ -2497,8 +2468,8 @@
     \begin{figure}
    \begin{center}
     \scalebox{.44}{\includegraphics[trim={0 0em 0 2em}, clip]{cauchy_quant.pdf}}
-    \caption{\label{f:cauchy_quant} Cauchy quantile function (The horizontal axis is $\tau \in
-    (0, 1)$)}
+    \caption{\label{f:cauchy_quant} Функция квантилей распределения Коши 
+    	(горизонтальная ось --- это $\tau \in (0, 1)$)}
    \end{center}
 \end{figure}
 
@@ -2507,10 +2478,10 @@
 \begin{frame}
 
     \vspace{2em}
-    When $F$ is not strictly increasing, $F^{-1}$ not well-defined
+    Когда $F$ не строго возрастающая, $F^{-1}$ не определено
     
     \vspace{1em}
-    We can set:
+    Мы можем задать:
     %
     \begin{equation}
         \label{eq:quantwi2}
@@ -2523,44 +2494,43 @@
 \begin{frame}
 
     \vspace{2em}
-    A density $p$ is symmetric if $p(s) = p(-s)$ for all $s \in \RR$
+    Функция плотности $p$ симметрична, если $p(s) = p(-s)$ для всех $s \in \RR$
     
-    A common scenario in hypothesis testing 
+    Распространенный сценарий проверки гипотез 
     
     \vspace{.7em}
     \Fact\eqref{ET-fa:avsc}
-    Let $x$ be a random variable with density $p$.  If $p$ is symmetric, then
-    the {\sc cdf} $G$ of $y := |x|$ is given by 
+    Пусть $x$ --- случайная величина с функцией плотности $p$. Если $p$ симметрична, то
+    функция распределения $G$ $y := |x|$ определяется как 
     %
     \begin{equation*}
         G (s) 
         := \PP\{y\leq s\} 
         = 
         \begin{cases}
-            2 F(s) - 1 & \text{ if } s \geq 0
+            2 F(s) - 1 & \text{, если } s \geq 0
             \\
-            0 & \text{ otherwise}
+            0 & \text{ в ином случае}
         \end{cases}
     \end{equation*}
     %
-    Proof as exercise \ref{ET-ex:avsc}
+    Докажите в качестве упражнения \ref{ET-ex:avsc}
     
-    Fact equivalent to $F(s) = 1 - F(-s)$
+    Факт эквивалентен $F(s) = 1 - F(-s)$
 
 \end{frame}
 
 \begin{frame}
 
     \vspace{2em}
-    Take a random variable $x$ with $\lL(x) = F$ and constant $\alpha \in
-    (0,1)$ as given
+    Возьмем случайную величину $x$ с $\lL(x) = F$ и заданной константой $\alpha \in
+    (0,1)$ 
     
     \vspace{.7em}
-    Consider the $c$ that solves $\PP\{-c \leq x \leq c \}  =
-    1 - \alpha$
+    Рассмотрим $c$, являющийся решением $\PP\{-c \leq x \leq c \}  = 1 - \alpha$
     
     \Fact
-        If $\lL(x) = F$, $x$ has a symmetric density and $F$ is strictly increasing, then
+        Если $\lL(x) = F$, $x$ имеет симметричную функцию плотности и $F$ --- строго возрастающая, то
         %
         \begin{equation}
             \label{eq:symcdf}
@@ -2569,7 +2539,8 @@
             \PP\{-c \leq x \leq c\} = 1 - \alpha
         \end{equation}
         %
-    When $F$ is the standard normal {\sc cdf} $\Phi$, $c$ is usually denoted by $z_{\alpha/2}$:
+    Когда $F$ стандартная нормальная функция распределения $\Phi$, $c$ 
+    обычно обозначается как $z_{\alpha/2}$:
     %
     \begin{equation}
         \label{eq:zalpha2}
@@ -2583,7 +2554,7 @@
     \begin{figure}
    \begin{center}
     \scalebox{.44}{\includegraphics[trim={2em 2em 2em 2em}, clip]{fcca.pdf}}
-    \caption{\label{f:fcca} Critical values for the standard normal density}
+    \caption{\label{f:fcca} Критические значения для стандартной нормальной плотности}
    \end{center}
     \end{figure}
 
